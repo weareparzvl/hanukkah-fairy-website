@@ -1,0 +1,25 @@
+# Backups
+*.backup
+*.bak
+*.bak2
+*.stickybak
+*.revealback
+*.broken
+
+# System files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp
+.tmp/
+temp/
