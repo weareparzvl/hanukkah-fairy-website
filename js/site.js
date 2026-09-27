@@ -1,181 +1,267 @@
-/* The Hanukkah Fairy: site behavior. Vanilla, no build step. */
-(function () {
-  'use strict';
-
-  /* ---------- CONFIG: fill these in before deploy ----------
-     MC_URL: Mailchimp "post-json" endpoint for the audience (same pattern as kitchenblockparty).
-             Audience > Signup forms > Embedded form > copy the action URL, swap /post? for /post-json?
-     PREORDER_URL: retailer link (Amazon, Bookshop.org, etc). Leave empty to keep the button hidden. */
-  var MC_URL = '';
-  var PREORDER_URL = '';
-
-  /* ---------- sparkles ---------- */
-  function seedSparkles(host, count) {
-    var frag = document.createDocumentFragment();
-    for (var i = 0; i < count; i++) {
-      var s = document.createElement('span');
-      var dot = Math.random() < 0.45;
-      s.className = 'sparkle' + (dot ? ' sparkle--dot' : '');
-      s.style.left = (Math.random() * 100).toFixed(2) + '%';
-      s.style.top = (Math.random() * 100).toFixed(2) + '%';
-      var size = dot ? 3 + Math.random() * 4 : 8 + Math.random() * 12;
-      s.style.width = size.toFixed(1) + 'px';
-      s.style.height = size.toFixed(1) + 'px';
-      s.style.setProperty('--dur', (2.2 + Math.random() * 3).toFixed(2) + 's');
-      s.style.setProperty('--delay', (Math.random() * 4).toFixed(2) + 's');
-      frag.appendChild(s);
-    }
-    host.appendChild(frag);
-  }
-  document.querySelectorAll('.sparkles').forEach(function (host) {
-    seedSparkles(host, host.classList.contains('sparkles--few') ? 26 : 54);
-  });
-
-  /* ---------- fit display lines: explicit breaks only, shrink until every line fits ---------- */
-  function fitDisplay() {
-    document.querySelectorAll('.display, .statement, .coda p, .bubble').forEach(function (el) {
-      el.style.fontSize = '';
-      var size = parseFloat(getComputedStyle(el).fontSize);
-      var floor = el.classList.contains('bubble') ? 12 : 16;
-      var guard = 0;
-      while (el.scrollWidth > el.clientWidth + 1 && size > floor && guard++ < 40) {
-        size -= 1;
-        el.style.fontSize = size + 'px';
-      }
-    });
-  }
-  var fitTimer;
-  window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitDisplay, 120); });
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fitDisplay); }
-  fitDisplay();
-
-  /* ---------- mobile menu ---------- */
-  var burger = document.querySelector('.nav__burger');
-  var menu = document.getElementById('mobile-menu');
-  function closeMenu() {
-    menu.hidden = true;
-    burger.setAttribute('aria-expanded', 'false');
-    burger.setAttribute('aria-label', 'Open menu');
-    document.body.classList.remove('menu-open');
-  }
-  burger.addEventListener('click', function () {
-    var open = menu.hidden;
+/* The Hanukkah Fairy. Native scroll, progressive enhancement, no animation library. */
+(() => {
+  "use strict";
+  const config = window.HF_CONFIG || {};
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const body = document.body;
+  const menu = document.querySelector("#mobile-menu");
+  const menuToggle = document.querySelector(".menu-toggle");
+  function setMenu(open, returnFocus = false) {
     menu.hidden = !open;
-    burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.body.classList.toggle('menu-open', open);
-  });
-  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) closeMenu(); });
-
-  /* ---------- pre-order button ---------- */
-  document.querySelectorAll('[data-preorder]').forEach(function (a) {
-    if (PREORDER_URL) { a.href = PREORDER_URL; a.hidden = false; }
-  });
-
-  /* ---------- email capture (Mailchimp JSONP) ---------- */
-  function setStatus(form, msg, kind) {
-    var el = form.querySelector('.capture__status');
-    el.textContent = msg;
-    el.className = 'capture__status' + (kind ? ' is-' + kind : '');
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    body.classList.toggle("menu-open", open);
+    if (returnFocus) menuToggle.focus();
   }
-  function jsonp(url, cb) {
-    var name = 'mcCallback' + Date.now() + Math.floor(Math.random() * 1000);
-    var script = document.createElement('script');
-    var done = false;
-    window[name] = function (data) { done = true; cb(null, data); cleanup(); };
-    function cleanup() { delete window[name]; if (script.parentNode) script.parentNode.removeChild(script); }
-    script.src = url + '&c=' + name;
-    script.onerror = function () { cb(new Error('network')); cleanup(); };
-    setTimeout(function () { if (!done) { cb(new Error('timeout')); cleanup(); } }, 12000);
-    document.body.appendChild(script);
-  }
-  document.querySelectorAll('[data-capture]').forEach(function (form) {
-    var input = form.querySelector('input[type="email"]');
-    var btn = form.querySelector('button');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = input.value.trim();
-      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-      input.setAttribute('aria-invalid', String(!ok));
-      if (!ok) { setStatus(form, 'That email looks off. One more try?', 'err'); input.focus(); return; }
-      if (!MC_URL) {
-        setStatus(form, 'List not connected yet. Set MC_URL in js/site.js.', 'err');
-        return;
+  menuToggle.addEventListener("click", () => setMenu(menu.hidden));
+  menu.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (menu.hidden) return;
+    if (event.key === "Escape") setMenu(false, true);
+    if (event.key === "Tab") {
+      const links = [...menu.querySelectorAll("a")];
+      if (event.shiftKey && document.activeElement === menuToggle) {
+        event.preventDefault();
+        links.at(-1).focus();
       }
-      btn.disabled = true;
-      setStatus(form, 'Sending...');
-      jsonp(MC_URL + '&EMAIL=' + encodeURIComponent(email), function (err, data) {
-        btn.disabled = false;
-        if (err || !data) { setStatus(form, 'Hmm, that did not go through. Try again in a sec.', 'err'); return; }
-        if (data.result === 'success') {
-          form.reset();
-          setStatus(form, 'MAZEL! You are on the list.', 'ok');
-        } else {
-          var msg = String(data.msg || '').replace(/^\d+\s*-\s*/, '');
-          if (/already subscribed/i.test(msg)) msg = 'You are already on the list. Mazel anyway.';
-          setStatus(form, msg || 'Something went sideways. Try again?', 'err');
+      if (!event.shiftKey && document.activeElement === links.at(-1)) {
+        event.preventDefault();
+        menuToggle.focus();
+      }
+    }
+  });
+  matchMedia("(min-width: 761px)").addEventListener("change", (event) => {
+    if (event.matches) setMenu(false);
+  });
+
+  // The cover follows actual scroll position. Normal browser scrolling is preserved.
+  const story = document.querySelector(".story-scroll");
+  const stage = document.querySelector(".story-stage");
+  const clamp = (value) => Math.max(0, Math.min(1, value));
+  let frame = 0;
+  function drawStory() {
+    frame = 0;
+    if (reducedMotion.matches) return;
+    const top = parseFloat(getComputedStyle(stage).top) || 0;
+    const progress = clamp(
+      (top - story.getBoundingClientRect().top) /
+        (story.offsetHeight - stage.offsetHeight),
+    );
+    const open = clamp(progress / 0.73);
+    const eased = open * open * (3 - 2 * open);
+    stage.style.setProperty("--progress", progress);
+    stage.style.setProperty("--page-reveal", `${50 * (1 - eased)}%`);
+    stage.style.setProperty("--book-open", `${-178 * eased}deg`);
+    stage.style.setProperty("--book-x", `${-20 * (1 - eased)}%`);
+    stage.style.setProperty("--book-rotate", `${-6 + 6 * eased}deg`);
+    stage.style.setProperty("--book-scale", 0.9 + 0.1 * eased);
+    stage.style.setProperty("--cover-opacity", 1 - clamp((open - 0.88) / 0.12));
+    stage.style.setProperty("--fairy-opacity", clamp((progress - 0.4) / 0.25));
+    stage.style.setProperty("--fairy-x", `${120 - 180 * progress}px`);
+    stage.style.setProperty("--fairy-y", `${100 - 210 * progress}px`);
+    stage.style.setProperty("--fairy-rotate", `${-15 + 20 * progress}deg`);
+  }
+  function queueDraw() {
+    if (!frame) frame = requestAnimationFrame(drawStory);
+  }
+  const reveals = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("is-waiting");
+          observer.unobserve(entry.target);
         }
-      });
+      }),
+    { threshold: 0.08 },
+  );
+  function setMotion() {
+    body.classList.toggle("motion-on", !reducedMotion.matches);
+    reveals.forEach((el) => {
+      el.classList.toggle(
+        "is-waiting",
+        !reducedMotion.matches && el.getBoundingClientRect().top > innerHeight,
+      );
+      observer.observe(el);
+    });
+    queueDraw();
+  }
+  reducedMotion.addEventListener("change", setMotion);
+  addEventListener("scroll", queueDraw, { passive: true });
+  addEventListener("resize", queueDraw, { passive: true });
+  setMotion();
+  document.fonts?.ready.then(queueDraw);
+
+  const tabs = [...document.querySelectorAll("[data-character]")];
+  function selectCharacter(tab, focus = false) {
+    tabs.forEach((item) => {
+      const active = item === tab;
+      item.setAttribute("aria-selected", String(active));
+      item.tabIndex = active ? 0 : -1;
+      document.getElementById(item.getAttribute("aria-controls")).hidden =
+        !active;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectCharacter(tab));
+    tab.addEventListener("keydown", (event) => {
+      let next;
+      if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft")
+        next = (index + tabs.length - 1) % tabs.length;
+      if (event.key === "Home") next = 0;
+      if (event.key === "End") next = tabs.length - 1;
+      if (next !== undefined) {
+        event.preventDefault();
+        selectCharacter(tabs[next], true);
+      }
     });
   });
 
-  // Sticky CTA (mobile)
-  const stickyCTA = document.querySelector('[data-sticky-cta]');
-  if (stickyCTA) {
-    let lastScroll = 0;
-    const showAt = 800; // Show after scrolling 800px
-    const hideAt = document.querySelector('#dibs')?.offsetTop - 100 || 9999;
-    
-    const toggleSticky = () => {
-      const scroll = window.scrollY;
-      const atForm = scroll >= hideAt;
-      
-      if (scroll > showAt && scroll > lastScroll && !atForm) {
-        stickyCTA.hidden = false;
-        stickyCTA.setAttribute('data-visible', '');
-      } else {
-        stickyCTA.removeAttribute('data-visible');
-      }
-      lastScroll = scroll;
-    };
-    
-    window.addEventListener('scroll', toggleSticky, { passive: true });
-    toggleSticky();
-  }
+  const nights = [
+    [
+      "one / Start a story",
+      "Scoot a little closer.",
+      "Find your favorite cozy spot and read together. Ask your little one: “When do you feel like you belong?”",
+    ],
+    [
+      "two / Hide & seek",
+      "Where would a fairy hide?",
+      "Pick a hiding place for a little handwritten fairy note. Let the kids hunt for it, then take turns dreaming up tomorrow’s spot.",
+    ],
+    [
+      "three / A small kindness",
+      "Make someone’s day.",
+      "Draw a picture for a neighbor, help set the table, or call someone you miss. Let your little reader choose the kind thing.",
+    ],
+    [
+      "four / A little nosh",
+      "Save room for something sweet.",
+      "Share a jelly donut and a favorite moment from the story. What snack would you leave for a hungry fairy?",
+    ],
+    [
+      "five / Be a good neighbor",
+      "Invite a little joy in.",
+      "Make a card for a friend or bring a grown-up along to say hello to a neighbor. A small hello can be a very big kindness.",
+    ],
+    [
+      "six / Find your courage",
+      "Little boots. Brave steps.",
+      "Talk about something that felt a little scary today. Celebrate a small brave moment, whether it was trying, asking, or helping.",
+    ],
+    [
+      "seven / Turn up the joy",
+      "Have a living-room dance party.",
+      "Pick a favorite song, make a little space, and dance together. Invite your best Grizzlebottom face to join in.",
+    ],
+    [
+      "eight / Keep the light",
+      "Make it a memory.",
+      "Ask everyone to share their favorite moment from the eight nights. Choose one little act of kindness to keep doing all year.",
+    ],
+  ];
+  const candleButtons = [...document.querySelectorAll("[data-night]")];
+  candleButtons.forEach((button, index) =>
+    button.addEventListener("click", () => {
+      candleButtons.forEach((item, i) => {
+        item.setAttribute("aria-pressed", String(i === index));
+        item.classList.toggle("is-lit", i <= index);
+      });
+      document.querySelector("#night-label").textContent =
+        `Night ${nights[index][0]}`;
+      document.querySelector("#night-title").textContent = nights[index][1];
+      document.querySelector("#night-description").textContent =
+        nights[index][2];
+    }),
+  );
 
-  // Countdown timer
-  const countdown = document.querySelector('[data-launch]');
-  if (countdown) {
-    const launch = new Date(countdown.dataset.launch).getTime();
-    const update = () => {
-      const now = Date.now();
-      const diff = launch - now;
-      if (diff <= 0) {
-        countdown.querySelector('.countdown__label').textContent = 'The book is here!';
-        countdown.querySelector('.countdown__digits').hidden = true;
-        return;
-      }
-      const days = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff % 86400000) / 3600000);
-      countdown.querySelector('.days').textContent = days;
-      countdown.querySelector('.hours').textContent = hours;
-    };
-    setInterval(update, 60000);
-    update();
+  // Activate retailer links only when a real public destination has been supplied.
+  function publicUrl(value) {
+    try {
+      const url = new URL(value);
+      return url.protocol === "https:" ? url.href : "";
+    } catch {
+      return "";
+    }
   }
-
-  // Scroll-triggered reveals
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+  const preorder = publicUrl(config.preorderUrl);
+  if (preorder) {
+    document.querySelectorAll("[data-preorder]").forEach((link) => {
+      link.href = preorder;
+      link.hidden = false;
     });
-  }, { threshold: 0.15 });
+    document.querySelector("[data-availability]").hidden = true;
+    const answer = document.querySelector("[data-purchase-answer]");
+    answer.textContent =
+      "The book is ready to order. Visit the book section and choose “Get the book” to see the retailer’s current price and delivery options.";
+  }
 
-  document.querySelectorAll('.field, .cast, .plush').forEach(el => {
-    el.classList.add('reveal');
-    observer.observe(el);
+  const form = document.querySelector("[data-capture]");
+  const input = form.querySelector("input");
+  const submit = form.querySelector("button");
+  const status = form.querySelector(".capture-status");
+  const setStatus = (message, kind = "") => {
+    status.textContent = message;
+    status.className = `capture-status ${kind}`;
+  };
+  input.addEventListener("input", () => {
+    input.removeAttribute("aria-invalid");
+    setStatus("");
+  });
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      input.setAttribute("aria-invalid", "true");
+      setStatus("Please enter a valid email address.", "error");
+      input.focus();
+      return;
+    }
+    submit.disabled = true;
+    form.setAttribute("aria-busy", "true");
+    setStatus("Saving your spot…");
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    try {
+      const response = await fetch(config.signupEndpoint || "/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
+        body: JSON.stringify({
+          email,
+          website: form.elements.website.value,
+          consent: form.elements.consent.checked,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok || !data.ok)
+        throw new Error(
+          response.status === 429
+            ? "Please wait a little before trying again."
+            : "We couldn’t save your signup. Please try again in a moment.",
+        );
+      form.reset();
+      setStatus(
+        "You’re on the list. A little magic is headed your way.",
+        "success",
+      );
+    } catch (error) {
+      setStatus(
+        error.name === "AbortError"
+          ? "That took a little too long. Please try again."
+          : error.message.includes("Please")
+            ? error.message
+            : "We couldn’t save your signup. Please try again in a moment.",
+        "error",
+      );
+    } finally {
+      clearTimeout(timeout);
+      submit.disabled = false;
+      form.removeAttribute("aria-busy");
+    }
   });
 })();

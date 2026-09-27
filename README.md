@@ -1,40 +1,54 @@
-# hanukkahfairy.com launch site
+# The Hanukkah Fairy website
 
-Static one-pager. No build step. Plain HTML, CSS, vanilla JS.
+A responsive storybook launch site for parents of children ages 3–9. Plain HTML, CSS and browser JavaScript; a small Node endpoint saves signups to a private CSV.
 
-## Run locally
+## Preview locally
 
-```bash
-cd /Users/parzvl/hanukkah-fairy-website/site
-python3 -m http.server 8760
-# http://localhost:8760/
+```sh
+npm install
+HF_LOCAL_CSV=1 npm run dev
 ```
 
-## Files
+Open http://localhost:8761. Local signups go to `data/signups.csv`, which is ignored by Git and never served as a website asset. Without `HF_LOCAL_CSV=1`, the server uses private Vercel Blob storage via `.env.local`.
 
+## Signup storage
+
+The Vercel project is `parzvl/hanukkah-fairy-website`. Its private Blob store is `hanukkah-fairy-signups`.
+
+- Production: `production/signups.csv`
+- Preview/development: `preview/signups.csv`
+- Columns: `email`, `signed_up_at` (UTC), `source`, `consent_version`
+- Addresses are normalized and duplicates are ignored. Conditional writes and retries protect concurrent signups.
+- The browser confirms success only after the CSV has been saved.
+- There is no public endpoint for reading the mailing list. Blob credentials stay on the server.
+
+Download the current production list to `exports/signups.csv`:
+
+```sh
+vercel env pull .env.local
+npm run export:signups
 ```
-site/
-├── index.html      hero, story, cast, ritual, plush, authors, email capture, footer
-├── css/site.css    tokens + layout (Bagel Fat One / Grandstander / Author)
-├── js/site.js      sparkles, mobile menu, display-line fitter, Mailchimp JSONP capture
-└── assets/         trimmed character PNGs, cover, logo, plush renders, favicon
+
+For the preview list: `npm run export:signups -- --preview`. The CSV is also available to authorized team members in the Vercel storage dashboard. Keep exports private. Signup stores the address; it does not send email. Import the CSV into the chosen email platform when launch communications are ready, and honor removal requests.
+
+## Open sales later
+
+Set `preorderUrl` in `js/config.js` to the verified retailer URL. The book section then shows a purchase button and the purchasing FAQ updates. Signup remains available. No price, publication day, format, or stock claim is invented while those details are unsettled.
+
+## Build and deploy
+
+```sh
+npm test
+npm run build
+vercel deploy
 ```
 
-## Before deploy: two constants in js/site.js
+Vercel uses Node 24. The build copies only the public site into `public/`; private data, server code and credentials are excluded. `api/subscribe.js` runs as a serverless function. Production promotion is a separate step after design approval.
 
-| Constant | What | Status |
-|---|---|---|
-| `MC_URL` | Mailchimp `post-json` endpoint for the Hanukkah Fairy audience (same pattern as kitchenblockparty) | EMPTY. Form shows "List not connected yet" until set |
-| `PREORDER_URL` | Retailer link. Button stays hidden while empty | EMPTY. No Amazon listing found 2026-09-26 |
+## Motion and interaction
 
-Do not deploy with `MC_URL` empty. The Sep 10 brief rule: no hanukkahfairy.com without email capture wired.
+The storybook cover opens with native scroll position. Characters use accessible keyboard tabs; the candle buttons show eight family activity ideas. Small-height screens, reduced-motion users and visitors without JavaScript receive a static open book. The signup form also supports ordinary HTML submission without JavaScript.
 
-## Domain state (checked 2026-09-26)
+## Source and design
 
-`hanukkahfairy.com` resolves to Squarespace (198.49.23.144/145, 198.185.159.144/145) and serves a one-image holding page with an Instagram link. The Sep 10 brief said the domain was on GoDaddy and unpointed. Someone connected Squarespace since. Deploy plan: new Vercel project, then swap the A records at the registrar to Vercel. Only on Harley's go.
-
-## Sources of truth
-
-- Copy bank and story beats: `/Users/parzvl/hanukkah-fairy-website/specs/Book bible.md`
-- Character canon: `/Users/parzvl/hanukkah-fairy/art/refs/` (the CHARACTER-SPECS.md in this package is generated and wrong on the angel: the book's angel is an older man)
-- Coda line verified against the printed spread `art/web/32.jpg`: "once left that way too."
+Existing cover, logo and character assets are reused. The supplied Book Bible remains the story reference; unpublished spreads are not exposed. The rebuild uses the user's current audience range, ages 3–9.

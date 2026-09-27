@@ -1,0 +1,13 @@
+.git
+.env*
+.claude-flow
+node_modules
+data
+exports
+qa
+tests
+*.md
+*.db
+*.rvf
+*.lock
+server.mjs

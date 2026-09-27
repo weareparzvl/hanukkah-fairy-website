@@ -23,3 +23,12 @@ npm-debug.log*
 # Temp
 .tmp/
 temp/
+
+# Website build and private signup records
+node_modules/
+public/
+data/
+exports/
+.env*
+.vercel/
+qa/

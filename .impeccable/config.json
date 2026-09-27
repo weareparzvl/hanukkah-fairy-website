@@ -1,0 +1,71 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T18:19:45.024Z",
+        "reason": "Codex verified section.updates: clipping contains decorative Pup artwork and the offscreen honeypot; signup controls, status text and navigation remain fully visible. No tooltip, menu or popover is inside this clipped section."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T18:20:18.608Z",
+        "reason": "Codex verified inner .wrap containers provide 20–56px horizontal inset and .faq has 55–70px top padding; detector does not resolve responsive padding-block and nested wrapper spacing."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T18:20:18.628Z",
+        "reason": "Codex retained the existing paper-colored storybook background during the requested mobile adaptation; it echoes the physical book and complements the supplied cover and character art."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T18:20:18.647Z",
+        "reason": "Codex verified this is a directional navy-tinted book shadow and literal candlelight in the Hanukkah activity illustration, not decorative UI glow."
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T18:20:18.667Z",
+        "reason": "Codex retained the incumbent audience label during mobile adaptation; increased its reading size and removed mobile uppercase/tracking."
+      },
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T18:20:18.688Z",
+        "reason": "Codex retained incumbent storybook chapter labels during mobile adaptation; these identify story, family activities, book details and signup without changing the desktop design."
+      },
+      {
+        "rule": "numbered-section-labels",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-27T18:20:18.712Z",
+        "reason": "Codex retained the four existing character indexes matching the ordered character picker, now at readable mobile size."
+      }
+    ]
+  }
+}
