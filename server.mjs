@@ -4,6 +4,8 @@ import { resolve, extname } from "node:path";
 import handler from "./api/subscribe.js";
 const root = process.cwd();
 const types = {
+  ".txt": "text/plain; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
   ".html": "text/html; charset=utf-8",
   ".css": "text/css",
   ".js": "text/javascript",
@@ -29,7 +31,7 @@ createServer(async (req, res) => {
   if (path === "/") path = "/index.html";
   // Only website assets are served; source, environment files, CSVs and scripts stay private.
   if (
-    !/^\/(?:index\.html|privacy\.html|(?:css|js|assets)\/[a-zA-Z0-9._/-]+)$/.test(
+    !/^\/(?:index\.html|privacy\.html|robots\.txt|sitemap\.xml|(?:css|js|assets)\/[a-zA-Z0-9._/-]+)$/.test(
       path,
     ) ||
     path.includes("..")

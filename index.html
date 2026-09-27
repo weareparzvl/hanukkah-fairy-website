@@ -4,14 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#faf5e9" />
-    <title>The Hanukkah Fairy | A little magic. A story to share.</title>
+    <title>The Hanukkah Fairy | Hanukkah Picture Book for Ages 3–9</title>
     <meta
       name="description"
       content="Meet The Hanukkah Fairy, a playful rhyming picture book for children ages 3–9. A Brooklyn adventure about belonging, kindness, and a little holiday magic."
     />
     <meta
       property="og:title"
-      content="The Hanukkah Fairy | A little magic. A story to share."
+      content="The Hanukkah Fairy | Hanukkah Picture Book for Ages 3–9"
     />
     <meta
       property="og:description"
@@ -19,11 +19,32 @@
     />
     <meta
       property="og:image"
-      content="https://hanukkahfairy.com/assets/cover.webp"
+      content="https://thehanukkahfairy.com/assets/cover.webp"
     />
     <meta property="og:type" content="book" />
+    <meta property="og:url" content="https://thehanukkahfairy.com/" />
+    <meta property="og:site_name" content="The Hanukkah Fairy" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:image:alt"
+      content="The Hanukkah Fairy front cover, featuring the fairy in her blue dress above a Brooklyn street"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="twitter:title"
+      content="The Hanukkah Fairy | Hanukkah Picture Book for Ages 3–9"
+    />
+    <meta
+      name="twitter:description"
+      content="A rhyming Brooklyn adventure about belonging, kindness, and Jewish joy. Join the list for book launch news."
+    />
+    <meta
+      name="twitter:image"
+      content="https://thehanukkahfairy.com/assets/cover.webp"
+    />
+    <meta name="twitter:image:alt" content="The Hanukkah Fairy book cover" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://hanukkahfairy.com/" />
+    <link rel="canonical" href="https://thehanukkahfairy.com/" />
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,17 +58,71 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Book",
-        "name": "The Hanukkah Fairy",
-        "author": [
-          { "@type": "Person", "name": "Elise Dykowsky" },
-          { "@type": "Person", "name": "Donny Dykowsky" }
-        ],
-        "illustrator": { "@type": "Person", "name": "Tincho Schmidt" },
-        "typicalAgeRange": "3-9",
-        "inLanguage": "en",
-        "image": "https://hanukkahfairy.com/assets/cover.webp",
-        "url": "https://hanukkahfairy.com/"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://thehanukkahfairy.com/#website",
+            "url": "https://thehanukkahfairy.com/",
+            "name": "The Hanukkah Fairy",
+            "inLanguage": "en"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://thehanukkahfairy.com/#webpage",
+            "url": "https://thehanukkahfairy.com/",
+            "name": "The Hanukkah Fairy | Hanukkah Picture Book for Ages 3–9",
+            "description": "Discover The Hanukkah Fairy, a rhyming picture book for children ages 3–9 about belonging, kindness, and a magical Brooklyn Hanukkah adventure.",
+            "isPartOf": {
+              "@id": "https://thehanukkahfairy.com/#website"
+            },
+            "mainEntity": {
+              "@id": "https://thehanukkahfairy.com/#book"
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Book",
+            "@id": "https://thehanukkahfairy.com/#book",
+            "name": "The Hanukkah Fairy",
+            "description": "A rhyming Hanukkah picture book for children ages 3–9, set in Brooklyn, about belonging, kindness, courage, and Jewish joy.",
+            "author": [
+              {
+                "@type": "Person",
+                "name": "Elise Dykowsky"
+              },
+              {
+                "@type": "Person",
+                "name": "Donny Dykowsky"
+              }
+            ],
+            "illustrator": {
+              "@type": "Person",
+              "name": "Tincho Schmidt"
+            },
+            "typicalAgeRange": "3-9",
+            "inLanguage": "en",
+            "genre": "Children's picture book",
+            "about": [
+              {
+                "@type": "Thing",
+                "name": "Hanukkah"
+              },
+              {
+                "@type": "Thing",
+                "name": "Kindness"
+              },
+              {
+                "@type": "Thing",
+                "name": "Belonging"
+              }
+            ],
+            "image": "https://thehanukkahfairy.com/assets/cover.webp",
+            "url": "https://thehanukkahfairy.com/#book",
+            "mainEntityOfPage": {
+              "@id": "https://thehanukkahfairy.com/#webpage"
+            }
+          }
+        ]
       }
     </script>
     <script src="js/config.js" defer></script>
@@ -182,7 +257,7 @@
                 alt="The front cover of The Hanukkah Fairy, by Elise and Donny Dykowsky, illustrated by Tincho Schmidt"
               />
               <figcaption class="sr-only">
-                The front cover. Scroll or choose Next to open the story.
+                The front cover. Scroll to open the story.
               </figcaption>
             </figure>
             <article
@@ -346,44 +421,6 @@
               </div>
             </article>
           </div>
-          <nav class="reader-controls" aria-label="Book pages" hidden>
-            <button
-              type="button"
-              data-reader-prev
-              aria-label="Previous book page"
-            >
-              ← <span>Back</span>
-            </button>
-            <div class="reader-position">
-              <p data-reader-caption>Front cover</p>
-              <div class="reader-dots">
-                <button
-                  type="button"
-                  data-reader-go="0"
-                  aria-label="Front cover"
-                  aria-current="step"
-                ></button
-                ><button
-                  type="button"
-                  data-reader-go="1"
-                  aria-label="The story"
-                ></button
-                ><button
-                  type="button"
-                  data-reader-go="2"
-                  aria-label="A little kindness"
-                ></button
-                ><button
-                  type="button"
-                  data-reader-go="3"
-                  aria-label="Signup page"
-                ></button>
-              </div>
-            </div>
-            <button type="button" data-reader-next aria-label="Next book page">
-              <span>Next</span> →
-            </button>
-          </nav>
         </div>
       </section>
       <section class="belonging wrap reveal">
@@ -682,10 +719,11 @@
         </div>
         <div class="purchase-copy">
           <p class="eyebrow">A story to come back to</p>
-          <h2 id="book-title">Make room on<br />the bookshelf.</h2>
+          <h2 id="book-title">The Hanukkah Fairy.</h2>
           <p>
-            A little laughter before lights-out. A familiar friend for all eight
-            nights. A story about kindness that stays with them all year.
+            The Hanukkah Fairy is a rhyming Hanukkah picture book for children
+            ages 3–9. Set in Brooklyn, it follows a girl discovering her own
+            light through kindness, courage, and a little holiday magic.
           </p>
           <dl class="book-details">
             <div>
@@ -834,8 +872,9 @@
               Where can I buy the book?<span aria-hidden="true">+</span>
             </summary>
             <p data-purchase-answer>
-              Purchase details are coming soon. Follow The Hanukkah Fairy for
-              launch news, and check the book section for ordering updates.
+              The book is not available to buy or preorder yet. Join the email
+              list for launch updates. A release date and ordering details will
+              be shared when they’re ready.
             </p>
           </details>
         </div>

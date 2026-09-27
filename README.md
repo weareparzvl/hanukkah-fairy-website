@@ -48,10 +48,14 @@ Vercel uses Node 24. The build copies only the public site into `public/`; priva
 
 ## Motion and interaction
 
-The actual front cover opens with native scroll position, followed by the original story spread, a kindness spread, and the signup page. Back/Next buttons and page dots provide direct navigation. Desktop pages open as a spread; mobile pages stack artwork above the text. Small-height screens, tablets, reduced-motion users and visitors without JavaScript receive all pages in ordinary document flow. The signup form also supports ordinary HTML submission without JavaScript.
+The actual front cover opens with native scroll position, followed by the original story spread, a kindness spread, and the signup page. The cover rotates around a fixed center seam; each desktop page stays square and expands to fill the available viewport. Desktop pages open as a spread; mobile pages stack artwork above the text. Small-height screens, tablets, reduced-motion users and visitors without JavaScript receive all pages in ordinary document flow. The signup form also supports ordinary HTML submission without JavaScript.
 
-The desktop hero fits the opening viewport, with the scroll instruction and divider visible above the fold. Characters use accessible keyboard tabs; the candle buttons show eight family activity ideas.
+The desktop hero fits the opening viewport, with the scroll instruction and divider visible above the fold. The mouse cue stays fixed in that screen position through the book, fading out after the last page and back in on reverse scrolling. Characters use accessible keyboard tabs; the candle buttons show eight family activity ideas.
 
 ## Source and design
 
 Existing cover, logo and character assets are reused. The supplied Book Bible remains the story reference; unpublished spreads are not exposed. The rebuild uses the user's current audience range, ages 3–9.
+
+## Search and AI search
+
+The homepage ships crawlable book details, canonical and social metadata, linked WebSite/WebPage/Book structured data, robots.txt, and sitemap.xml. See [SEO.md](SEO.md) for verified implementation and account-level indexing follow-up.

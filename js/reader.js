@@ -1,22 +1,11 @@
-/* Scroll-linked book with complete, uncropped pages and direct page navigation. */
+/* Scroll-linked book with complete, uncropped pages and a fixed spine. */
 (() => {
   const reader = document.querySelector(".reader");
   const stage = reader.querySelector(".reader-stage");
   const pages = [...reader.querySelectorAll("[data-reader-page]")];
   const cover = pages[0];
-  const controls = reader.querySelector(".reader-controls");
-  const prev = reader.querySelector("[data-reader-prev]");
-  const next = reader.querySelector("[data-reader-next]");
-  const caption = reader.querySelector("[data-reader-caption]");
-  const dots = [...reader.querySelectorAll("[data-reader-go]")];
   const reduce = matchMedia("(prefers-reduced-motion: reduce)");
   const mobile = matchMedia("(max-width: 760px)");
-  const labels = [
-    "Front cover",
-    "The story",
-    "A little kindness",
-    "Stay in the loop",
-  ];
   const stops = [0, 0.36, 0.64, 0.94];
   const signupAnchor = document.createElement("span");
   signupAnchor.className = "reader-signup-anchor";
@@ -28,6 +17,23 @@
   back.classList.add("reader-cover-inside");
   back.setAttribute("aria-hidden", "true");
   cover.append(back);
+  const cue = document.querySelector(".scroll-cue");
+  const followingCue = document.createElement("div");
+  followingCue.className = "scroll-cue scroll-cue-follow";
+  followingCue.innerHTML = cue.innerHTML;
+  followingCue.setAttribute("aria-hidden", "true");
+  document.body.append(followingCue);
+  function drawCue() {
+    const position = cue.getBoundingClientRect();
+    const pinned = position.bottom <= innerHeight - 35 + 1;
+    const remaining = reader.getBoundingClientRect().bottom - innerHeight;
+    const opacity = reduce.matches
+      ? Number(remaining >= 0)
+      : clamp(1 + remaining / 180);
+    followingCue.style.left = `${position.left}px`;
+    followingCue.style.opacity = pinned ? opacity : 0;
+    cue.style.visibility = pinned ? "hidden" : "";
+  }
   let enhanced = false;
   let active = -1;
   let frame = 0;
@@ -42,16 +48,10 @@
       if (enhanced && i !== index) page.setAttribute("aria-hidden", "true");
       page.classList.toggle("is-current", i === index);
     });
-    caption.textContent = labels[index];
-    prev.disabled = index === 0;
-    next.disabled = index === 3;
-    dots.forEach((dot, i) => {
-      if (i === index) dot.setAttribute("aria-current", "step");
-      else dot.removeAttribute("aria-current");
-    });
   }
   function draw() {
     frame = 0;
+    drawCue();
     if (!enhanced || frozen) return;
     const nav = parseFloat(getComputedStyle(stage).top) || 0;
     const travel = reader.offsetHeight - stage.offsetHeight;
@@ -69,16 +69,12 @@
     cover.style.visibility = open < 1 ? "visible" : "hidden";
     cover.style.transform = mobile.matches
       ? `rotateY(${-90 * open}deg)`
-      : `translateX(${50 * open}%) rotateY(${-180 * open}deg)`;
+      : `rotateY(${-180 * open}deg)`;
     cover.style.opacity = mobile.matches ? 1 - open : 1;
     pages.slice(1).forEach((page, i) => {
       const weight = weights[i + 1];
       page.style.visibility = weight > 0 ? "visible" : "hidden";
       page.style.opacity = weight;
-      // The final form is flat and still while typing. Only complete story surfaces move.
-      const offset =
-        i === 0 ? -second * 14 : i === 1 ? (1 - second) * 14 - third * 14 : 0;
-      page.style.transform = `translateX(${offset}px)`;
     });
     // The inside of the turning cover becomes the left page; never slice its artwork.
     pages[1].querySelector(".reader-art-page").style.opacity = mobile.matches
@@ -102,7 +98,7 @@
       innerHeight >= minimumHeight &&
       (mobile.matches || innerWidth >= 1040);
     reader.classList.toggle("is-enhanced", enhanced);
-    controls.hidden = !enhanced;
+
     // Native fragment navigation must target the final scroll position, not the
     // absolutely positioned form at the beginning of the sticky stage.
     pages[3].id = enhanced ? "" : "dibs";
@@ -116,7 +112,8 @@
         page.style.cssText = "";
       });
       pages[1].querySelector(".reader-art-page").style.opacity = "";
-    } else draw();
+    }
+    draw();
   }
   function go(index, focusForm = false) {
     if (!enhanced) {
@@ -135,11 +132,6 @@
     if (focusForm)
       reader.querySelector("#email").focus({ preventScroll: true });
   }
-  prev.addEventListener("click", () => go(Math.max(0, active - 1)));
-  next.addEventListener("click", () => go(Math.min(3, active + 1)));
-  dots.forEach((dot) =>
-    dot.addEventListener("click", () => go(Number(dot.dataset.readerGo))),
-  );
   document.querySelectorAll('a[href="#dibs"]').forEach((link) =>
     link.addEventListener("click", (event) => {
       event.preventDefault();
@@ -176,6 +168,7 @@
     ),
   ).observe(announcement);
   updateMode();
+  document.fonts.ready.then(queueDraw);
   function followSignupHash() {
     if (location.hash !== "#dibs") return;
     frozen = false;

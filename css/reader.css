@@ -21,7 +21,7 @@
   gap: 48px;
   width: min(1040px, calc(100% - 64px));
   margin: auto;
-  perspective: 2200px;
+  perspective: 6000px;
 }
 .reader-cover {
   position: relative;
@@ -56,6 +56,7 @@
 .reader-page {
   position: relative;
   min-width: 0;
+  min-height: 0;
   padding: 36px;
   display: flex;
   flex-direction: column;
@@ -208,59 +209,13 @@
   min-height: 20px;
   margin-top: 8px;
 }
-.reader-controls {
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  width: min(520px, calc(100% - 48px));
-  margin: 28px auto 0;
-}
-.reader-controls > button {
-  border: 1px solid #162d5233;
-  border-radius: 6px;
-  min-width: 88px;
-  min-height: 44px;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 14px;
-  padding: 8px 14px;
-}
-.reader-controls button:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-.reader-controls button:hover:not(:disabled) {
-  background: #efe7d9;
-}
-.reader-position {
-  text-align: center;
-}
-.reader-position > p {
-  font-size: 13px;
-  line-height: 1.4;
-}
-.reader-dots {
-  display: flex;
-  justify-content: center;
-}
-.reader-dots button {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  min-height: 28px;
-  border: 0;
-  padding: 0;
-  background: none;
-}
-.reader-dots button::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--ink);
-  border-radius: 50%;
-}
-.reader-dots button[aria-current]::after {
-  background: var(--ink);
+/* This stays still on screen until the last book page leaves the viewport. */
+.scroll-cue-follow {
+  position: fixed;
+  bottom: 35px;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
 }
 .reader.is-enhanced {
   height: 440svh;
@@ -273,15 +228,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 22px 0;
+  padding: 16px 0 100px;
 }
 .reader.is-enhanced .reader-book {
   display: block;
-  width: min(
-    1040px,
-    calc(100% - 64px),
-    calc((100svh - var(--nav) - 134px) * 2)
-  );
+  width: min(calc(100% - 48px), calc((100svh - var(--nav) - 116px) * 2));
   aspect-ratio: 2 / 1;
   margin: 0 auto;
 }
@@ -297,7 +248,7 @@
 }
 .reader.is-enhanced .reader-cover {
   position: absolute;
-  left: 25%;
+  left: 50%;
   top: 0;
   height: 100%;
   width: 50%;
@@ -318,9 +269,35 @@
   background: #f1e7cc;
   border-radius: 8px 0 0 8px;
 }
-.reader.is-enhanced .reader-controls {
-  display: flex;
-  flex: none;
+@media (min-width: 1040px) {
+  .reader.is-enhanced .reader-page {
+    padding: clamp(30px, 3.2vw, 62px);
+  }
+  .reader.is-enhanced .reader-art-page > img {
+    flex: 1 1 0;
+    height: 0;
+    max-height: none;
+  }
+  .reader.is-enhanced .reader-quote-page h3 {
+    font-size: clamp(40px, 3.7vw, 68px);
+  }
+  .reader.is-enhanced .reader-body {
+    font-size: clamp(15px, 1.2vw, 20px);
+  }
+  .reader.is-enhanced .reader-label,
+  .reader.is-enhanced .reader-folio {
+    font-size: clamp(12px, 0.9vw, 16px);
+  }
+  .reader.is-enhanced .reader-form-page {
+    justify-content: center;
+    padding: 24px clamp(24px, 2.4vw, 46px) 16px;
+  }
+  .reader.is-enhanced .reader-signup-art img {
+    flex: 1 1 0;
+    min-height: 0;
+    height: 0;
+    max-height: 48%;
+  }
 }
 /* Fit the desktop hero and its scroll hint inside the opening screen. */
 @media (min-width: 761px) and (min-height: 700px) {
@@ -480,7 +457,7 @@
     left: 0;
     top: 50%;
     margin-top: -50%;
-    transform-origin: center;
+    transform-origin: left center;
   }
   .reader.is-enhanced .reader-cover-inside {
     display: none;
@@ -497,22 +474,6 @@
   }
   .reader.is-enhanced .reader-signup {
     grid-template-rows: 1fr;
-  }
-  .reader-controls {
-    width: calc(100% - 32px);
-    gap: 8px;
-    margin-top: 18px;
-  }
-  .reader-controls > button {
-    min-width: 72px;
-    padding-inline: 10px;
-  }
-  .reader-position > p {
-    font-size: 12px;
-  }
-  .reader-dots button {
-    width: 28px;
-    min-height: 32px;
   }
 }
 @media (max-width: 350px) {
