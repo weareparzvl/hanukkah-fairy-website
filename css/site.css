@@ -274,7 +274,7 @@ button:disabled {
 }
 .hero .eyebrow {
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.02em;
   margin-bottom: 22px;
 }
 .hero .little-star {
@@ -387,7 +387,7 @@ button:disabled {
   left: 0;
   font-size: 12px;
   text-decoration: none;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -506,7 +506,7 @@ button:disabled {
   right: 0;
   text-align: center;
   font-size: 12px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   color: var(--muted);
 }
 .book-front {
@@ -543,7 +543,7 @@ button:disabled {
   width: 100%;
   text-align: center;
   font-size: 12px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
 }
 .story-fairy {
   position: absolute;
@@ -771,8 +771,8 @@ button:disabled {
   border-top: 1px solid #162d5226;
   padding-top: 20px;
   font-size: 12px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  text-transform: none;
+  letter-spacing: 0.02em;
 }
 .character-trait span {
   display: block;
@@ -1367,7 +1367,7 @@ footer {
   }
   .hero .eyebrow {
     font-size: 12px;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.02em;
     margin-bottom: 18px;
   }
   .hero .little-star {
@@ -1449,7 +1449,7 @@ footer {
   }
   .book-page .eyebrow {
     font-size: 12px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.02em;
     margin-bottom: 8px;
   }
   .page-right h3 {
@@ -1974,7 +1974,7 @@ footer {
 @media (max-width: 760px) {
   .hero .eyebrow {
     font-size: 12px;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.02em;
   }
   .hero-facts {
     font-size: 12px;
@@ -2047,9 +2047,24 @@ footer {
   }
 }
 @media (max-width: 760px) {
-  .story-fairy { top: 24%; bottom: auto; right: -20px; width: 140px; }
-  .story-mobile-copy { top: calc(50% + 115px); }
-  .eyebrow { text-transform: none; letter-spacing: .02em; }
-  .character-trait { text-transform: none; letter-spacing: .02em; }
+  .story-fairy {
+    top: 24%;
+    bottom: auto;
+    right: -20px;
+    width: 140px;
+  }
+  .story-mobile-copy {
+    top: calc(50% + 115px);
+  }
+  .eyebrow {
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+  .character-trait {
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
 }
-.scroll-cue { letter-spacing: .02em; }
+.scroll-cue {
+  letter-spacing: 0.02em;
+}
