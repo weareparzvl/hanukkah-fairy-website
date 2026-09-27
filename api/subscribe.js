@@ -1,4 +1,4 @@
-import { normalizeEmail, saveSignup } from "../lib/signups.mjs";
+import { normalizeSignup, saveSignup } from "../lib/signups.mjs";
 
 // Best-effort per-instance abuse throttle; private storage and validation are enforced separately.
 const attempts = new Map();
@@ -54,7 +54,7 @@ export default async function handler(req, res) {
     res.setHeader("Retry-After", "60");
     return reply(res, 429, { ok: false }, html);
   }
-  if (Number(req.headers["content-length"]) > 2048)
+  if (Number(req.headers["content-length"]) > 4096)
     return reply(res, 413, { ok: false }, html);
   let data;
   try {
@@ -64,10 +64,10 @@ export default async function handler(req, res) {
       if (!raw)
         for await (const chunk of req) {
           raw += chunk;
-          if (Buffer.byteLength(raw) > 2048)
+          if (Buffer.byteLength(raw) > 4096)
             return reply(res, 413, { ok: false }, html);
         }
-      if (Buffer.byteLength(raw) > 2048)
+      if (Buffer.byteLength(raw) > 4096)
         return reply(res, 413, { ok: false }, html);
       data = html
         ? Object.fromEntries(new URLSearchParams(raw))
@@ -79,11 +79,16 @@ export default async function handler(req, res) {
     return reply(res, 400, { ok: false }, html);
   }
   if (data.website) return reply(res, 400, { ok: false }, html);
-  const email = normalizeEmail(data.email || data.EMAIL);
-  if (!email || (data.consent !== true && data.consent !== "on"))
+  const record = normalizeSignup({
+    email: data.email || data.EMAIL,
+    name: data.name,
+    address: data.address,
+    phone: data.phone,
+  });
+  if (!record || (data.consent !== true && data.consent !== "on"))
     return reply(res, 400, { ok: false }, html);
   try {
-    await saveSignup(email);
+    await saveSignup(record);
     return reply(res, 200, { ok: true }, html);
   } catch (error) {
     // Never log submitted email addresses or credentials.

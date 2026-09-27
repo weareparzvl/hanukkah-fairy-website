@@ -36,36 +36,6 @@
     if (event.matches) setMenu(false);
   });
 
-  // The cover follows actual scroll position. Normal browser scrolling is preserved.
-  const story = document.querySelector(".story-scroll");
-  const stage = document.querySelector(".story-stage");
-  const clamp = (value) => Math.max(0, Math.min(1, value));
-  let frame = 0;
-  function drawStory() {
-    frame = 0;
-    if (reducedMotion.matches) return;
-    const top = parseFloat(getComputedStyle(stage).top) || 0;
-    const progress = clamp(
-      (top - story.getBoundingClientRect().top) /
-        (story.offsetHeight - stage.offsetHeight),
-    );
-    const open = clamp(progress / 0.73);
-    const eased = open * open * (3 - 2 * open);
-    stage.style.setProperty("--progress", progress);
-    stage.style.setProperty("--page-reveal", `${50 * (1 - eased)}%`);
-    stage.style.setProperty("--book-open", `${-178 * eased}deg`);
-    stage.style.setProperty("--book-x", `${-20 * (1 - eased)}%`);
-    stage.style.setProperty("--book-rotate", `${-6 + 6 * eased}deg`);
-    stage.style.setProperty("--book-scale", 0.9 + 0.1 * eased);
-    stage.style.setProperty("--cover-opacity", 1 - clamp((open - 0.88) / 0.12));
-    stage.style.setProperty("--fairy-opacity", clamp((progress - 0.4) / 0.25));
-    stage.style.setProperty("--fairy-x", `${120 - 180 * progress}px`);
-    stage.style.setProperty("--fairy-y", `${100 - 210 * progress}px`);
-    stage.style.setProperty("--fairy-rotate", `${-15 + 20 * progress}deg`);
-  }
-  function queueDraw() {
-    if (!frame) frame = requestAnimationFrame(drawStory);
-  }
   const reveals = document.querySelectorAll(".reveal");
   const observer = new IntersectionObserver(
     (entries) =>
@@ -86,13 +56,9 @@
       );
       observer.observe(el);
     });
-    queueDraw();
   }
   reducedMotion.addEventListener("change", setMotion);
-  addEventListener("scroll", queueDraw, { passive: true });
-  addEventListener("resize", queueDraw, { passive: true });
   setMotion();
-  document.fonts?.ready.then(queueDraw);
 
   const tabs = [...document.querySelectorAll("[data-character]")];
   function selectCharacter(tab, focus = false) {
@@ -200,7 +166,7 @@
   }
 
   const form = document.querySelector("[data-capture]");
-  const input = form.querySelector("input");
+  const input = form.querySelector('input[type="email"]');
   const submit = form.querySelector("button");
   const status = form.querySelector(".capture-status");
   const setStatus = (message, kind = "") => {
@@ -233,6 +199,9 @@
         signal: controller.signal,
         body: JSON.stringify({
           email,
+          name: form.elements.name.value,
+          address: form.elements.address.value,
+          phone: form.elements.phone.value,
           website: form.elements.website.value,
           consent: form.elements.consent.checked,
         }),

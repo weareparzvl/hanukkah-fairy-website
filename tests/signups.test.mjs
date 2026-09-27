@@ -85,3 +85,57 @@ test("local CSV persists complete rows and excludes duplicates", async () => {
     await rm(dir, { recursive: true });
   }
 });
+
+test("optional contact details are not required, are bounded, and stay spreadsheet-safe", async () => {
+  const { normalizeSignup, csvRow } = await import("../lib/signups.mjs");
+  assert.deepEqual(normalizeSignup({ email: "parent@example.com" }), {
+    email: "parent@example.com",
+    name: "",
+    address: "",
+    phone: "",
+  });
+  assert.equal(
+    normalizeSignup({ email: "parent@example.com", name: "x".repeat(121) }),
+    null,
+  );
+  assert.equal(
+    normalizeSignup({ email: "parent@example.com", phone: { number: "123" } }),
+    null,
+  );
+  const row = csvRow({
+    email: "parent@example.com",
+    name: 'A "Quoted" Name',
+    address: "12 Main St, Brooklyn\nNY",
+    phone: "+1 212 555 0100",
+  });
+  assert.ok(row.includes('"A ""Quoted"" Name"'));
+  assert.ok(row.includes('"12 Main St, Brooklyn NY"'));
+  assert.ok(row.includes('"\'+1 212 555 0100"'));
+  assert.equal(row.split("\n").length, 2);
+});
+
+test("existing four-column CSV upgrades without losing subscriber records", async () => {
+  const { LEGACY_HEADER, upgradeCsv } = await import("../lib/signups.mjs");
+  const legacy =
+    LEGACY_HEADER +
+    '"earlier@example.com","2026-09-27T00:00:00Z","website","launch-updates-2026-09"\r\n';
+  let stored = legacy;
+  await saveBlobSignup(
+    { email: "new@example.com", name: "New Parent", address: "", phone: "" },
+    {
+      read: async () => ({ csv: stored, etag: "1" }),
+      write: async (path, body) => {
+        stored = body;
+      },
+    },
+  );
+  assert.ok(stored.startsWith(HEADER));
+  assert.ok(
+    stored.includes(
+      '"earlier@example.com","2026-09-27T00:00:00Z","website","launch-updates-2026-09","","",""',
+    ),
+  );
+  assert.ok(stored.includes('"New Parent"'));
+  assert.equal(stored.trim().split("\n").length, 3);
+  assert.equal(upgradeCsv(stored), stored);
+});

@@ -17,8 +17,9 @@ The Vercel project is `parzvl/hanukkah-fairy-website`. Its private Blob store is
 
 - Production: `production/signups.csv`
 - Preview/development: `preview/signups.csv`
-- Columns: `email`, `signed_up_at` (UTC), `source`, `consent_version`
-- Addresses are normalized and duplicates are ignored. Conditional writes and retries protect concurrent signups.
+- Columns: `email`, `signed_up_at` (UTC), `source`, `consent_version`, `name`, `address`, `phone`
+- Email and adult email consent are required. Name, mailing address and phone are optional. Existing four-column files migrate on the next new signup, preserving earlier records.
+- Email addresses are normalized and duplicates are ignored. Conditional writes and retries protect concurrent signups. Contact fields are bounded, quoted, and protected against spreadsheet formula interpretation.
 - The browser confirms success only after the CSV has been saved.
 - There is no public endpoint for reading the mailing list. Blob credentials stay on the server.
 
@@ -47,7 +48,9 @@ Vercel uses Node 24. The build copies only the public site into `public/`; priva
 
 ## Motion and interaction
 
-The storybook cover opens with native scroll position. Characters use accessible keyboard tabs; the candle buttons show eight family activity ideas. Small-height screens, reduced-motion users and visitors without JavaScript receive a static open book. The signup form also supports ordinary HTML submission without JavaScript.
+The actual front cover opens with native scroll position, followed by the original story spread, a kindness spread, and the signup page. Back/Next buttons and page dots provide direct navigation. Desktop pages open as a spread; mobile pages stack artwork above the text. Small-height screens, tablets, reduced-motion users and visitors without JavaScript receive all pages in ordinary document flow. The signup form also supports ordinary HTML submission without JavaScript.
+
+The desktop hero fits the opening viewport, with the scroll instruction and divider visible above the fold. Characters use accessible keyboard tabs; the candle buttons show eight family activity ideas.
 
 ## Source and design
 

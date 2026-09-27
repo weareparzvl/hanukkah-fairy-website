@@ -33,6 +33,7 @@
     />
     <link rel="preload" as="image" href="assets/cover.webp" />
     <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/reader.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -51,6 +52,7 @@
     </script>
     <script src="js/config.js" defer></script>
     <script src="js/site.js" defer></script>
+    <script src="js/reader.js" defer></script>
   </head>
   <body id="top">
     <a class="skip" href="#main">Skip to content</a>
@@ -165,58 +167,223 @@
           Then an unexpected visitor comes knocking.
         </p>
       </div>
-      <section class="story-scroll" aria-label="Open the story as you scroll">
-        <div class="story-stage">
-          <div class="story-halo" aria-hidden="true"></div>
-          <span class="stage-star star-a" aria-hidden="true">✦</span
-          ><span class="stage-star star-b" aria-hidden="true">✧</span>
-          <div class="storybook">
-            <div class="book-interior">
-              <div class="book-page page-left">
-                <p class="eyebrow">It begins with a knock…</p>
+      <section
+        class="reader"
+        aria-label="Explore The Hanukkah Fairy book"
+        data-page="0"
+      >
+        <div class="reader-stage">
+          <div class="reader-book">
+            <figure class="reader-cover" data-reader-page="0">
+              <img
+                src="assets/cover.webp"
+                width="2000"
+                height="2000"
+                alt="The front cover of The Hanukkah Fairy, by Elise and Donny Dykowsky, illustrated by Tincho Schmidt"
+              />
+              <figcaption class="sr-only">
+                The front cover. Scroll or choose Next to open the story.
+              </figcaption>
+            </figure>
+            <article
+              class="reader-spread reader-story"
+              data-reader-page="1"
+              aria-label="The story"
+            >
+              <div class="reader-page reader-art-page">
+                <p class="reader-label">It begins with a knock…</p>
                 <img
                   src="assets/angel.webp"
-                  alt="The angel in sneakers arrives holding a glowing candle"
                   width="900"
                   height="888"
-                  loading="lazy"
-                /><span class="page-number">A little wonder</span>
+                  alt="The angel in sneakers arrives holding a glowing candle"
+                />
+                <p class="reader-folio">A little wonder</p>
               </div>
-              <div class="book-page page-right">
-                <p class="eyebrow">And a very big adventure</p>
+              <div class="reader-page reader-quote-page">
+                <p class="reader-label">And a very big adventure</p>
                 <h3>“The holiday spirit shines bright within you.”</h3>
-                <p>
+                <p class="reader-body">
                   A magic wand. A loyal Pup. And a girl discovering she has a
                   little light of her own.
                 </p>
-                <span class="page-number">A whole lot of heart</span>
+                <p class="reader-folio">A whole lot of heart</p>
+              </div>
+            </article>
+            <article
+              class="reader-spread reader-kindness"
+              data-reader-page="2"
+              aria-label="A little kindness"
+            >
+              <div class="reader-page reader-art-page">
+                <img
+                  src="assets/fairy-wand.webp"
+                  width="1159"
+                  height="1202"
+                  alt="The Hanukkah Fairy with her star wand and brave little boots"
+                />
+                <p class="reader-folio">Little wings. Big heart.</p>
+              </div>
+              <div class="reader-page reader-quote-page">
+                <h3>“Happiness grows when kindness is near.”</h3>
+                <p class="reader-body">
+                  A story to read together. A little courage to carry with you.
+                  And eight nights to make some magic of your own.
+                </p>
+                <p class="reader-folio">Take a little light home.</p>
+              </div>
+            </article>
+            <article
+              class="reader-spread reader-signup"
+              data-reader-page="3"
+              id="dibs"
+              aria-labelledby="signup-title"
+            >
+              <div class="reader-page reader-signup-art">
+                <h3>There’s more<br />magic to come.</h3>
+                <p>
+                  Book news, character mischief, and the first word on those
+                  plush pals.
+                </p>
+                <img
+                  src="assets/pup.webp"
+                  width="837"
+                  height="738"
+                  alt="Pup, waiting hopefully for a treat"
+                />
+              </div>
+              <div class="reader-page reader-form-page">
+                <h3 id="signup-title">Let’s keep in touch.</h3>
+                <p class="reader-form-intro">
+                  Join the list for book launch emails.
+                </p>
+                <form
+                  class="capture reader-form"
+                  data-capture
+                  method="post"
+                  action="/api/subscribe"
+                >
+                  <div class="reader-fields">
+                    <div class="reader-field">
+                      <label for="email">Email <span>(required)</span></label
+                      ><input
+                        id="email"
+                        name="EMAIL"
+                        type="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                        maxlength="254"
+                        aria-describedby="capture-status"
+                      />
+                    </div>
+                    <div class="reader-field">
+                      <label for="signup-name"
+                        >Name <span>(optional)</span></label
+                      ><input
+                        id="signup-name"
+                        name="name"
+                        type="text"
+                        autocomplete="name"
+                        maxlength="120"
+                      />
+                    </div>
+                    <div class="reader-field reader-field-wide">
+                      <label for="signup-address"
+                        >Mailing address <span>(optional)</span></label
+                      ><input
+                        id="signup-address"
+                        name="address"
+                        type="text"
+                        autocomplete="street-address"
+                        maxlength="500"
+                        placeholder="Street, city, region, postal code"
+                      />
+                    </div>
+                    <div class="reader-field reader-field-wide">
+                      <label for="signup-phone"
+                        >Phone <span>(optional)</span></label
+                      ><input
+                        id="signup-phone"
+                        name="phone"
+                        type="tel"
+                        autocomplete="tel"
+                        maxlength="50"
+                        inputmode="tel"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-trap" aria-hidden="true">
+                    <label for="website">Leave this empty</label
+                    ><input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabindex="-1"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <label class="consent"
+                    ><input type="checkbox" name="consent" required /><span
+                      >I’m a grown-up and I’d like launch emails from The
+                      Hanukkah Fairy.</span
+                    ></label
+                  >
+                  <button class="button" type="submit">
+                    Keep me posted <span aria-hidden="true">↗</span>
+                  </button>
+                  <p class="capture-note">
+                    Only email is needed.
+                    <a href="privacy.html">How we use your details</a>.
+                  </p>
+                  <p
+                    class="capture-status"
+                    id="capture-status"
+                    role="status"
+                    aria-live="polite"
+                  ></p>
+                </form>
+              </div>
+            </article>
+          </div>
+          <nav class="reader-controls" aria-label="Book pages" hidden>
+            <button
+              type="button"
+              data-reader-prev
+              aria-label="Previous book page"
+            >
+              ← <span>Back</span>
+            </button>
+            <div class="reader-position">
+              <p data-reader-caption>Front cover</p>
+              <div class="reader-dots">
+                <button
+                  type="button"
+                  data-reader-go="0"
+                  aria-label="Front cover"
+                  aria-current="step"
+                ></button
+                ><button
+                  type="button"
+                  data-reader-go="1"
+                  aria-label="The story"
+                ></button
+                ><button
+                  type="button"
+                  data-reader-go="2"
+                  aria-label="A little kindness"
+                ></button
+                ><button
+                  type="button"
+                  data-reader-go="3"
+                  aria-label="Signup page"
+                ></button>
               </div>
             </div>
-            <div class="book-front" aria-hidden="true">
-              <img src="assets/cover.webp" width="2000" height="2000" alt="" />
-              <div class="book-front-back"></div>
-            </div>
-          </div>
-          <img
-            class="story-fairy"
-            src="assets/fairy-flying.webp"
-            alt=""
-            width="1211"
-            height="826"
-            loading="lazy"
-            aria-hidden="true"
-          />
-          <p class="story-mobile-copy">
-            A magic wand. A loyal Pup. And a girl discovering she has a little
-            light of her own.
-          </p>
-          <div class="story-caption">
-            <span class="story-progress" aria-hidden="true"><i></i></span>
-            <p>Scroll to let the magic out</p>
-            <a href="#cast" class="text-link"
-              >Meet her whole crew <span aria-hidden="true">↓</span></a
-            >
-          </div>
+            <button type="button" data-reader-next aria-label="Next book page">
+              <span>Next</span> →
+            </button>
+          </nav>
         </div>
       </section>
       <section class="belonging wrap reveal">
@@ -673,63 +840,14 @@
           </details>
         </div>
       </section>
-      <section class="updates" id="dibs" aria-labelledby="updates-title">
+      <section class="updates" aria-labelledby="updates-title">
         <div class="wrap updates-grid">
           <div>
-            <p class="eyebrow">There’s more magic on the way</p>
-            <h2 id="updates-title">Let’s keep<br />in touch.</h2>
-            <p>
-              Book news, character mischief, and the first word on those plush
-              pals.
-            </p>
-            <form
-              class="capture"
-              data-capture
-              method="post"
-              action="/api/subscribe"
+            <h2 id="updates-title">The next chapter<br />is coming.</h2>
+            <p>Join the list for book news and a little more magic.</p>
+            <a class="button" href="#dibs"
+              >Turn to the signup page <span aria-hidden="true">↗</span></a
             >
-              <label for="email">Your email address</label>
-              <div class="capture-row">
-                <input
-                  id="email"
-                  name="EMAIL"
-                  type="email"
-                  placeholder="you@example.com"
-                  autocomplete="email"
-                  required
-                  aria-describedby="capture-note capture-status"
-                /><button class="button" type="submit">
-                  Keep me posted <span aria-hidden="true">↗</span>
-                </button>
-              </div>
-              <div class="form-trap" aria-hidden="true">
-                <label for="website">Leave this empty</label
-                ><input
-                  id="website"
-                  name="website"
-                  type="text"
-                  tabindex="-1"
-                  autocomplete="off"
-                />
-              </div>
-              <label class="consent"
-                ><input type="checkbox" name="consent" required />
-                <span
-                  >I’m a grown-up and I’d like book launch emails from The
-                  Hanukkah Fairy.</span
-                ></label
-              >
-              <p class="capture-note" id="capture-note">
-                We save your email address and signup time for launch updates.
-                <a href="privacy.html">Privacy &amp; your information</a>.
-              </p>
-              <p
-                class="capture-status"
-                id="capture-status"
-                role="status"
-                aria-live="polite"
-              ></p>
-            </form>
           </div>
           <div class="updates-art">
             <span class="speech-bubble">Did someone<br />say donuts?</span
