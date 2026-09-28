@@ -51,3 +51,7 @@ The email’s opening universal-neighborhood instruction governs copy, while its
 ## Functional verification
 
 Seven viewports passed (320×740, 375×812, 390×844, 768×1024, 1366×768, 1440×900, 1920×1080): no horizontal overflow, mobile menu and Escape, eight-night selection, direct signup, optional contact fields, and the final reader form. A synthetic local submission was read from the private local CSV; a simulated server failure displayed an error without false success. Reduced motion, no-JavaScript content, metadata age/date consistency, and absence of Brooklyn copy passed. The independent visual reviewer did not repeat these runtime checks.
+
+## Production release
+
+Source commit `2852c91` deployed September 28 to https://thehanukkahfairy.com/ via Vercel deployment `dpl_AcpqTffeYMNe2HNmAjM4pSfZscJs`. The explicit PARZVL scope resolved an initial unscoped authorization error. Live desktop (1440×900) and mobile (390×844) checks passed: layout, menu, candles, fixed hinge, square desktop pages, final signup and direct signup links. Both domains serve the new revision; all six new assets, robots.txt and sitemap.xml returned 200; live age metadata is 3–10. Live hero screenshots were inspected. No production mailing-list rows were created during this release. The unchanged storage backend was verified locally and by its six tests.
