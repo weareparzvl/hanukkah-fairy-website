@@ -299,45 +299,6 @@
     max-height: 48%;
   }
 }
-/* Fit the desktop hero and its scroll hint inside the opening screen. */
-@media (min-width: 761px) and (min-height: 700px) {
-  .hero {
-    box-sizing: border-box;
-    height: calc(100svh - var(--nav) - var(--announcement-h, 33px) - 16px);
-    min-height: 0;
-    padding: clamp(24px, 4svh, 48px) 0 70px;
-    border-bottom: 1px solid var(--line);
-  }
-  .hero-art {
-    width: min(
-      100%,
-      calc(100svh - var(--nav) - var(--announcement-h, 33px) - 150px)
-    );
-    aspect-ratio: 1 / 1.04;
-    justify-self: end;
-  }
-  .hero h1 {
-    font-size: clamp(52px, min(6.3vw, 9svh), 94px);
-  }
-  .hero .eyebrow {
-    margin-bottom: 14px;
-  }
-  .hero .intro {
-    margin-block: 20px;
-  }
-  .hero-facts {
-    margin-top: 20px;
-  }
-  .hero-note {
-    bottom: -3%;
-  }
-  .hero .scroll-cue {
-    bottom: 18px;
-  }
-  .story-lead {
-    border-top: 0;
-  }
-}
 @media (max-width: 1000px) and (min-width: 761px) {
   .reader-page {
     padding: 24px;

@@ -60,33 +60,6 @@
   reducedMotion.addEventListener("change", setMotion);
   setMotion();
 
-  const tabs = [...document.querySelectorAll("[data-character]")];
-  function selectCharacter(tab, focus = false) {
-    tabs.forEach((item) => {
-      const active = item === tab;
-      item.setAttribute("aria-selected", String(active));
-      item.tabIndex = active ? 0 : -1;
-      document.getElementById(item.getAttribute("aria-controls")).hidden =
-        !active;
-    });
-    if (focus) tab.focus();
-  }
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => selectCharacter(tab));
-    tab.addEventListener("keydown", (event) => {
-      let next;
-      if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
-      if (event.key === "ArrowLeft")
-        next = (index + tabs.length - 1) % tabs.length;
-      if (event.key === "Home") next = 0;
-      if (event.key === "End") next = tabs.length - 1;
-      if (next !== undefined) {
-        event.preventDefault();
-        selectCharacter(tabs[next], true);
-      }
-    });
-  });
-
   const nights = [
     [
       "one / Start a story",
@@ -214,10 +187,7 @@
             : "We couldn’t save your signup. Please try again in a moment.",
         );
       form.reset();
-      setStatus(
-        "You’re on the list. A little magic is headed your way.",
-        "success",
-      );
+      setStatus("You’re in! Watch your inbox for Fairy Mail.", "success");
     } catch (error) {
       setStatus(
         error.name === "AbortError"

@@ -17,6 +17,8 @@
   back.classList.add("reader-cover-inside");
   back.setAttribute("aria-hidden", "true");
   cover.append(back);
+  const hero = document.querySelector(".hero");
+  const flyingFairy = hero.querySelector(".hero-fairy");
   const cue = document.querySelector(".scroll-cue");
   const followingCue = document.createElement("div");
   followingCue.className = "scroll-cue scroll-cue-follow";
@@ -24,6 +26,13 @@
   followingCue.setAttribute("aria-hidden", "true");
   document.body.append(followingCue);
   function drawCue() {
+    const heroBounds = hero.getBoundingClientRect();
+    if (heroBounds.bottom > 0) {
+      const flight = reduce.matches
+        ? 0
+        : clamp(-heroBounds.top / heroBounds.height);
+      flyingFairy.style.transform = `translate3d(${flight * 28}px, ${flight * -65}px, 0)`;
+    }
     const position = cue.getBoundingClientRect();
     const pinned = position.bottom <= innerHeight - 35 + 1;
     const remaining = reader.getBoundingClientRect().bottom - innerHeight;

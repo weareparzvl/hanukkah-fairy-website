@@ -1,6 +1,6 @@
 # The Hanukkah Fairy website
 
-A responsive storybook launch site for parents of children ages 3–9. Plain HTML, CSS and browser JavaScript; a small Node endpoint saves signups to a private CSV.
+A responsive storybook launch site for parents of children ages 3–10. Plain HTML, CSS and browser JavaScript; a small Node endpoint saves signups to a private CSV.
 
 ## Preview locally
 
@@ -34,7 +34,7 @@ For the preview list: `npm run export:signups -- --preview`. The CSV is also ava
 
 ## Open sales later
 
-Set `preorderUrl` in `js/config.js` to the verified retailer URL. The book section then shows a purchase button and the purchasing FAQ updates. Signup remains available. No price, publication day, format, or stock claim is invented while those details are unsettled.
+Set `preorderUrl` in `js/config.js` to the verified retailer URL. The book section then shows a purchase button and the purchasing FAQ updates. Signup remains available. The October 15 launch is supplied by Elise. No price, format, or stock claim is invented while those details are unsettled.
 
 ## Build and deploy
 
@@ -50,11 +50,11 @@ Vercel uses Node 24. The build copies only the public site into `public/`; priva
 
 The actual front cover opens with native scroll position, followed by the original story spread, a kindness spread, and the signup page. The cover rotates around a fixed center seam; each desktop page stays square and expands to fill the available viewport. Desktop pages open as a spread; mobile pages stack artwork above the text. Small-height screens, tablets, reduced-motion users and visitors without JavaScript receive all pages in ordinary document flow. The signup form also supports ordinary HTML submission without JavaScript.
 
-The desktop hero fits the opening viewport, with the scroll instruction and divider visible above the fold. The mouse cue stays fixed in that screen position through the book, fading out after the last page and back in on reverse scrolling. Characters use accessible keyboard tabs; the candle buttons show eight family activity ideas.
+The desktop hero fits the opening viewport, with the scroll instruction and divider visible above the fold. The mouse cue stays fixed in that screen position through the book, fading out after the last page and back in on reverse scrolling. All four characters have their own crawlable panels; the candle buttons show eight family activity ideas.
 
 ## Source and design
 
-Existing cover, logo and character assets are reused. The supplied Book Bible remains the story reference; unpublished spreads are not exposed. The rebuild uses the user's current audience range, ages 3–9.
+Existing cover, logo and character assets are reused. The supplied Book Bible remains the story reference; unpublished spreads are not exposed. Elise’s September 28 feedback supplies the current age range (3–10), October 15 launch, family copy and bold illustrated direction. Original nightscape, liner and product mockups come from her attachments and the shared asset folder. See reviews/elise-feedback-2026-09-28.md for provenance and review coverage.
 
 ## Search and AI search
 

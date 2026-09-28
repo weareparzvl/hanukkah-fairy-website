@@ -1,15 +1,15 @@
 # Search and AI search setup
 
-## Implemented September 27, 2026
+## Updated September 28, 2026
 
 - Canonical origin: https://thehanukkahfairy.com/. The aliases serve the same canonical URL.
-- Homepage title and description identify the book, Hanukkah, and ages 3–9.
+- Homepage title and description identify the book, Hanukkah, and ages 3–10.
 - Open Graph and social-card metadata use the canonical origin and existing cover artwork.
-- Linked WebSite, WebPage, and Book JSON-LD identifies the title, authors, illustrator, audience, themes, and original cover. No unconfirmed ISBN, price, publication date, reviews, stock status, or purchasing offer is published.
+- Linked WebSite, WebPage, and Book JSON-LD identifies the title, authors, illustrator, audience, themes, and original cover. The visible October 15 launch comes from Elise’s September 28 feedback. No unconfirmed ISBN, price, publication metadata, reviews, stock status, or purchasing offer is published.
 - The book summary, author credits, age range, launch status, and parent FAQs are in the server-delivered HTML. They can be read without JavaScript or scrolling through an animation.
 - robots.txt allows public-page crawling and advertises the XML sitemap. API routes are excluded. Private CSVs remain outside the public build; robots.txt is not their access control.
 - sitemap.xml lists the canonical, indexable homepage. The privacy page retains its existing noindex setting and has its own canonical URL.
-- Hero cover is preloaded with high fetch priority; images retain dimensions; fonts use display=swap; optional motion uses native scroll/requestAnimationFrame and has a reduced-motion/static fallback.
+- Hero nightscape is preloaded with high fetch priority; images retain dimensions; fonts use display=swap; optional motion uses native scroll/requestAnimationFrame and has a reduced-motion/static fallback.
 
 ## Account-level follow-up
 

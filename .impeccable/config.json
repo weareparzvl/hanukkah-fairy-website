@@ -65,6 +65,15 @@
         ],
         "createdAt": "2026-09-27T18:20:18.712Z",
         "reason": "Codex retained the four existing character indexes matching the ordered character picker, now at readable mobile size."
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-28T19:50:01.456Z",
+        "reason": "Codex review: 0.96 line height applies only to oversized display headings, per Elise’s approved bold editorial direction. Paragraphs use 1.5–1.7. This is not body-text leading."
       }
     ]
   }
