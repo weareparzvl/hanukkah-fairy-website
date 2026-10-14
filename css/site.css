@@ -295,6 +295,8 @@ input {
   line-height: 1.08;
   letter-spacing: -0.025em;
   text-shadow: 0 2px 12px #003b73;
+  max-width: 16em;
+  text-wrap: balance;
 }
 .hero-caption strong {
   color: var(--yellow);
@@ -1157,9 +1159,6 @@ footer {
   }
   .scroll-cue-follow {
     padding: 6px 11px;
-  }
-  .hero-caption strong {
-    white-space: nowrap;
   }
   .brand-statement {
     padding: 64px 0 48px;
