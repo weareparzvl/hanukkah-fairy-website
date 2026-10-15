@@ -237,6 +237,7 @@ input {
 }
 .hero {
   position: relative;
+  container-type: size;
   height: calc(100svh - var(--nav) - 16px);
   min-height: 650px;
   color: white;
@@ -299,14 +300,41 @@ input {
   margin-top: 16px;
   font-weight: 500;
 }
+/* Same box as the cover-fitted nightscape, so Pup can stand on a painted roof. */
+.hero-scene {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100cqw, 150cqh);
+  aspect-ratio: 3 / 2;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
 .hero-pup {
   position: absolute;
-  top: 2%;
-  right: 3%;
+  /* Paws on the right-hand roof (x 1446–1504, y 463 of the 1536×1024 art). */
+  left: 87.6%;
+  bottom: 54.8%;
   width: auto;
-  height: 34%;
-  z-index: 1;
+  height: 21%;
   filter: drop-shadow(0 12px 18px #05285955);
+}
+/* Tall heroes crop that roof out of view; keep Pup in the sky instead. */
+@container (aspect-ratio < 1.35) {
+  .hero-scene {
+    top: 0;
+    width: min(1560px, 92%);
+    height: calc(100% - 86px);
+    aspect-ratio: auto;
+    transform: translateX(-50%);
+  }
+  .hero-pup {
+    left: auto;
+    right: 3%;
+    top: 2%;
+    bottom: auto;
+    height: 34%;
+  }
 }
 .hero-fairy {
   position: absolute;
@@ -1065,11 +1093,22 @@ footer {
     bottom: 29%;
     object-position: center;
   }
+  /* Phones crop the art at 57% (see .hero-city), so the scene box follows. */
+  .hero-scene {
+    left: calc((100cqw - max(100cqw, 150cqh)) * 0.57);
+    top: 50%;
+    width: max(100cqw, 150cqh);
+    height: auto;
+    aspect-ratio: 3 / 2;
+    transform: translateY(-50%);
+  }
+  /* Paws on the brick roof beside the Fairy (x ≈ 1040, y 514 of the art). */
   .hero-pup {
+    left: 60.5%;
+    right: auto;
     top: auto;
-    right: 0;
-    bottom: 33%;
-    height: 21%;
+    bottom: 49.8%;
+    height: 18%;
   }
   .hero-caption {
     left: 6%;
