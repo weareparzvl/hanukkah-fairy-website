@@ -167,17 +167,6 @@ input {
   font-weight: 700;
   min-height: 44px;
 }
-.announcement {
-  background: var(--yellow);
-  text-align: center;
-  padding: 6px 16px;
-  font-size: 13px;
-  line-height: 20px;
-}
-.announcement span {
-  margin-left: 12px;
-  font-weight: 700;
-}
 .nav {
   position: sticky;
   top: 0;
@@ -248,7 +237,7 @@ input {
 }
 .hero {
   position: relative;
-  height: calc(100svh - var(--nav) - var(--announcement-h, 32px) - 16px);
+  height: calc(100svh - var(--nav) - 16px);
   min-height: 650px;
   color: white;
   background: #0758ab;
@@ -397,12 +386,31 @@ input {
   font-size: 19px;
   line-height: 1.5;
 }
-.launch-date {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(36px, 5vw, 78px);
-  line-height: 1;
-  letter-spacing: -0.04em;
+.buy-book {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: none;
+}
+.buy-book img {
+  width: 132px;
+  height: auto;
+  border-radius: 3px 6px 6px 3px;
+  box-shadow: 0 14px 28px #13244733;
+}
+.buy-links {
+  display: grid;
+  gap: 10px;
+}
+.buy-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.buy-links .button {
+  justify-content: space-between;
+  white-space: nowrap;
 }
 .product-world {
   background: #ffdae8;
@@ -467,29 +475,6 @@ input {
   font-size: 13px;
   margin-top: 6px;
 }
-.collection-feature {
-  display: grid;
-  grid-template-columns: 0.8fr 1.45fr;
-  gap: 50px;
-  align-items: center;
-  padding: 90px 0;
-}
-.collection-feature h3 {
-  font-size: clamp(45px, 5.8vw, 92px);
-}
-.collection-feature p {
-  margin-top: 24px;
-  max-width: 33ch;
-}
-.collection-feature figure img {
-  width: 100%;
-  height: auto;
-}
-.collection-feature figcaption {
-  font-size: 12px;
-  margin-top: 12px;
-  line-height: 1.5;
-}
 .ritual-feature {
   background: #c7eff1;
   padding: 50px 0 70px;
@@ -533,23 +518,12 @@ input {
 }
 .ritual-steps {
   list-style: none;
-  counter-reset: steps;
   margin: 35px 0 0;
   padding: 32px 0 0;
   border-top: 1px solid var(--line);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-}
-.ritual-steps li {
-  counter-increment: steps;
-}
-.ritual-steps li:before {
-  content: "0" counter(steps);
-  display: block;
-  font-size: 12px;
-  margin-bottom: 12px;
-  font-weight: 700;
 }
 .ritual-steps strong {
   display: block;
@@ -798,31 +772,6 @@ input {
   font-size: 13px;
   margin-top: 28px;
 }
-.story-intro {
-  background: #ffdae8;
-  padding: 90px 0 55px;
-}
-.story-intro h2 {
-  font-size: clamp(54px, 8vw, 125px);
-}
-.story-intro-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 45px;
-  margin-top: 36px;
-  align-items: end;
-}
-.story-intro-bottom > p {
-  font-size: 18px;
-  max-width: 53ch;
-}
-.story-intro-bottom > div {
-  flex: none;
-  font-weight: 700;
-}
-.purchase-button {
-  margin-top: 18px;
-}
 .reader {
   background: #ffdae8;
 }
@@ -1059,13 +1008,6 @@ footer {
   h2 {
     font-size: 58px;
   }
-  .announcement {
-    font-size: 12px;
-    padding: 5px 10px;
-  }
-  .announcement span {
-    margin-left: 5px;
-  }
   .nav {
     padding: 8px 20px;
     gap: 12px;
@@ -1091,7 +1033,7 @@ footer {
     display: block;
   }
   .hero {
-    height: calc(100svh - var(--nav) - var(--announcement-h, 30px) - 16px);
+    height: calc(100svh - var(--nav) - 16px);
     min-height: 650px;
   }
   .hero-city {
@@ -1173,9 +1115,11 @@ footer {
   .statement-bottom > p:first-child {
     font-size: 16px;
   }
-  .launch-date {
-    font-size: 44px;
-    margin-top: 32px;
+  .buy-book {
+    margin-top: 28px;
+  }
+  .buy-book img {
+    width: 104px;
   }
   .product-world {
     padding-top: 60px;
@@ -1210,23 +1154,6 @@ footer {
   }
   .product-caption p {
     margin-top: 9px;
-  }
-  .collection-feature {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 60px 0;
-  }
-  .collection-feature h3 {
-    font-size: 55px;
-  }
-  .collection-feature p {
-    margin-top: 20px;
-  }
-  .collection-feature figure {
-    margin-inline: -20px;
-  }
-  .collection-feature figcaption {
-    padding-inline: 20px;
   }
   .ritual-feature {
     padding: 25px 0 50px;
@@ -1299,6 +1226,9 @@ footer {
   .cast-troll .cast-description h3 {
     font-size: clamp(52px, 14vw, 85px);
     max-width: none;
+  }
+  .cast-troll .cast-description h3 {
+    font-size: clamp(40px, 12vw, 85px);
   }
   .cast-description > p {
     font-size: 16px;
@@ -1398,23 +1328,6 @@ footer {
   }
   .authors-credit {
     font-size: 12px;
-  }
-  .story-intro {
-    padding: 60px 0 35px;
-  }
-  .story-intro h2 {
-    font-size: clamp(42px, 11vw, 72px);
-  }
-  .story-intro-bottom {
-    display: block;
-    margin-top: 27px;
-  }
-  .story-intro-bottom > p {
-    font-size: 16px;
-  }
-  .story-intro-bottom > div {
-    margin-top: 24px;
-    font-size: 15px;
   }
   .reader-signup-art {
     display: none;

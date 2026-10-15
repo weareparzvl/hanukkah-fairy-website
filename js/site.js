@@ -64,7 +64,7 @@
     [
       "one / Start a story",
       "Scoot a little closer.",
-      "Find your favorite cozy spot and read together. Ask your little one: “When do you feel like you belong?”",
+      "Find your favorite cozy spot and read together. Ask your little one: “What does Hanukkah mean to you?”",
     ],
     [
       "two / Hide & seek",
@@ -83,18 +83,18 @@
     ],
     [
       "five / Be a good neighbor",
-      "Invite a little joy in.",
-      "Make a card for a friend or bring a grown-up along to say hello to a neighbor. A small hello can be a very big kindness.",
+      "Spread the joy.",
+      "Invite someone to join you for a treat, a game, or a candle lighting.",
     ],
     [
       "six / Find your courage",
-      "Little boots. Brave steps.",
-      "Talk about something that felt a little scary today. Celebrate a small brave moment, whether it was trying, asking, or helping.",
+      "Let the good times troll.",
+      "Tell a joke, make a funny face, or do your best Grizzlebottom impression. First one to laugh loses. (Actually, everybody wins.)",
     ],
     [
       "seven / Turn up the joy",
       "Have a living-room dance party.",
-      "Pick a favorite song, make a little space, and dance together. Invite your best Grizzlebottom face to join in.",
+      "Pick a favorite song, make a little space, and dance together.",
     ],
     [
       "eight / Keep the light",
@@ -116,27 +116,6 @@
         nights[index][2];
     }),
   );
-
-  // Activate retailer links only when a real public destination has been supplied.
-  function publicUrl(value) {
-    try {
-      const url = new URL(value);
-      return url.protocol === "https:" ? url.href : "";
-    } catch {
-      return "";
-    }
-  }
-  const preorder = publicUrl(config.preorderUrl);
-  if (preorder) {
-    document.querySelectorAll("[data-preorder]").forEach((link) => {
-      link.href = preorder;
-      link.hidden = false;
-    });
-    document.querySelector("[data-availability]").hidden = true;
-    const answer = document.querySelector("[data-purchase-answer]");
-    answer.textContent =
-      "The book is ready to order. Visit the book section and choose “Get the book” to see the retailer’s current price and delivery options.";
-  }
 
   const form = document.querySelector("[data-capture]");
   const input = form.querySelector('input[type="email"]');

@@ -6,14 +6,16 @@
   const cover = pages[0];
   const reduce = matchMedia("(prefers-reduced-motion: reduce)");
   const mobile = matchMedia("(max-width: 760px)");
-  const stops = [0, 0.36, 0.64, 0.94];
+  const stops = [0, 0.94];
+  const last = pages.length - 1;
   const signupAnchor = document.createElement("span");
   signupAnchor.className = "reader-signup-anchor";
   signupAnchor.setAttribute("aria-hidden", "true");
   reader.append(signupAnchor);
   const clamp = (x) => Math.max(0, Math.min(1, x));
   const ease = (x) => x * x * (3 - 2 * x);
-  const back = pages[1].querySelector(".reader-art-page").cloneNode(true);
+  const firstSpreadLeft = pages[1].querySelector(".reader-page");
+  const back = firstSpreadLeft.cloneNode(true);
   back.classList.add("reader-cover-inside");
   back.setAttribute("aria-hidden", "true");
   cover.append(back);
@@ -65,16 +67,9 @@
     const nav = parseFloat(getComputedStyle(stage).top) || 0;
     const travel = reader.offsetHeight - stage.offsetHeight;
     const p = clamp((nav - reader.getBoundingClientRect().top) / travel);
-    const open = ease(clamp((p - 0.1) / 0.18));
-    const second = ease(clamp((p - 0.46) / 0.12));
-    const third = ease(clamp((p - 0.74) / 0.12));
-    const weights = [
-      1 - open,
-      open * (1 - second),
-      second * (1 - third),
-      third,
-    ];
-    setActive(p < 0.2 ? 0 : p < 0.52 ? 1 : p < 0.8 ? 2 : 3);
+    const open = ease(clamp((p - 0.1) / 0.45));
+    const weights = [1 - open, open];
+    setActive(p < 0.35 ? 0 : 1);
     cover.style.visibility = open < 1 ? "visible" : "hidden";
     cover.style.transform = mobile.matches
       ? `rotateY(${-90 * open}deg)`
@@ -86,7 +81,7 @@
       page.style.opacity = weight;
     });
     // The inside of the turning cover becomes the left page; never slice its artwork.
-    pages[1].querySelector(".reader-art-page").style.opacity = mobile.matches
+    firstSpreadLeft.style.opacity = mobile.matches
       ? open
       : open >= 1
         ? 1
@@ -110,9 +105,9 @@
 
     // Native fragment navigation must target the final scroll position, not the
     // absolutely positioned form at the beginning of the sticky stage.
-    pages[3].id = enhanced ? "" : "dibs";
+    pages[last].id = enhanced ? "" : "dibs";
     signupAnchor.id = enhanced ? "dibs" : "";
-    signupAnchor.style.top = `${(reader.offsetHeight - stage.offsetHeight) * stops[3]}px`;
+    signupAnchor.style.top = `${(reader.offsetHeight - stage.offsetHeight) * stops[last]}px`;
     active = -1;
     if (!enhanced) {
       pages.forEach((page) => {
@@ -120,7 +115,7 @@
         page.removeAttribute("aria-hidden");
         page.style.cssText = "";
       });
-      pages[1].querySelector(".reader-art-page").style.opacity = "";
+      firstSpreadLeft.style.opacity = "";
     }
     draw();
   }
@@ -145,14 +140,14 @@
     link.addEventListener("click", (event) => {
       event.preventDefault();
       frozen = false;
-      go(3, true);
+      go(last, true);
       history.replaceState(null, "", "#dibs");
     }),
   );
   // Touch keyboards can resize the viewport and shift scroll. Keep the signup page stable.
   reader.addEventListener("focusin", (event) => {
     if (event.target.closest("form")) {
-      go(3);
+      go(last);
       frozen = true;
     }
   });
@@ -162,27 +157,20 @@
         const previousMode = enhanced;
         frozen = false;
         updateMode();
-        if (previousMode !== enhanced) go(3);
+        if (previousMode !== enhanced) go(last);
       }
     }, 0),
   );
   addEventListener("scroll", queueDraw, { passive: true });
   addEventListener("resize", updateMode, { passive: true });
   reduce.addEventListener("change", updateMode);
-  const announcement = document.querySelector(".announcement");
-  new ResizeObserver(() =>
-    document.documentElement.style.setProperty(
-      "--announcement-h",
-      `${announcement.offsetHeight}px`,
-    ),
-  ).observe(announcement);
   updateMode();
   document.fonts.ready.then(queueDraw);
   function followSignupHash() {
     if (location.hash !== "#dibs") return;
     frozen = false;
     // Wait for fonts and the browser's own fragment jump before choosing the page.
-    document.fonts.ready.then(() => requestAnimationFrame(() => go(3)));
+    document.fonts.ready.then(() => requestAnimationFrame(() => go(last)));
   }
   addEventListener("pageshow", followSignupHash);
   addEventListener("hashchange", followSignupHash);

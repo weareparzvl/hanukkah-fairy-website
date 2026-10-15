@@ -218,7 +218,7 @@
   pointer-events: none;
 }
 .reader.is-enhanced {
-  height: 440svh;
+  height: 240svh;
   padding: 0;
 }
 .reader.is-enhanced .reader-stage {
