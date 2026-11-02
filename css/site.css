@@ -346,6 +346,23 @@ input {
   bottom: -3%;
   filter: drop-shadow(0 16px 22px #05285955);
 }
+/* Buy card shares the caption's bottom line, opposite corner. */
+.hero-buy {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  z-index: 3;
+  width: 232px;
+  padding: 16px;
+  border-radius: 6px;
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 0 16px 32px #05285966;
+}
+.hero-buy .button {
+  min-height: 46px;
+  padding: 11px 18px;
+}
 .hero-baseline {
   position: absolute;
   bottom: 16px;
@@ -422,18 +439,6 @@ input {
 .statement-bottom > p:first-child {
   font-size: 19px;
   line-height: 1.5;
-}
-.buy-book {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex: none;
-}
-.buy-book img {
-  width: 132px;
-  height: auto;
-  border-radius: 3px 6px 6px 3px;
-  box-shadow: 0 14px 28px #13244733;
 }
 .buy-links {
   display: grid;
@@ -1166,12 +1171,6 @@ footer {
   .statement-bottom > p:first-child {
     font-size: 16px;
   }
-  .buy-book {
-    margin-top: 28px;
-  }
-  .buy-book img {
-    width: 104px;
-  }
   .product-world {
     padding-top: 60px;
   }
@@ -1473,7 +1472,7 @@ footer {
   overflow-x: clip;
 }
 .hero-meet {
-  margin-left: auto;
+  margin-inline: auto;
 }
 @media (max-width: 760px) {
   .hero-caption {
@@ -1488,5 +1487,51 @@ footer {
   }
   .hero-fairy {
     bottom: 32%;
+  }
+}
+
+/* Buy card on tablets and phones: two-button strip under the caption. */
+@media (max-width: 1100px) {
+  .hero-fairy {
+    height: 38%;
+    bottom: calc(32% + 60px);
+  }
+  .hero-caption {
+    bottom: 95px;
+  }
+  .hero-buy {
+    right: 5%;
+    bottom: 0;
+    width: min(420px, 90%);
+    padding: 10px 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .hero-buy .buy-label {
+    grid-column: 1 / -1;
+    font-size: 11px;
+  }
+  .hero-buy .button {
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 13px;
+    gap: 12px;
+  }
+  .hero-buy .button span {
+    font-size: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .hero h1 {
+    height: 24%;
+  }
+  .hero-meet {
+    margin-right: 0;
+  }
+}
+@media (min-width: 1600px) {
+  .hero-buy {
+    bottom: 40px;
+    width: 264px;
   }
 }
