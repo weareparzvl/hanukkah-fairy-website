@@ -1561,3 +1561,22 @@ footer {
     width: 264px;
   }
 }
+.hero-meet {
+  position: relative;
+  z-index: 4;
+  padding-inline: 4px;
+  filter: drop-shadow(0 2px 8px #031230d9);
+}
+.hero-meet:before {
+  content: "";
+  position: absolute;
+  inset: -22px -48px;
+  z-index: -1;
+  background: radial-gradient(closest-side, #061e46e0 0%, #061e46c2 55%, #061e4600 100%);
+  pointer-events: none;
+}
+@media (max-width: 1100px) {
+  .hero-meet:before {
+    display: none;
+  }
+}
