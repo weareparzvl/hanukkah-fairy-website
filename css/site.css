@@ -353,15 +353,42 @@ input {
   bottom: 16px;
   z-index: 3;
   width: 232px;
-  padding: 16px;
-  border-radius: 6px;
+  color: white;
+}
+/* Soft navy glow, not a box: dims the lit windows behind the buttons. */
+.hero-buy:before {
+  content: "";
+  position: absolute;
+  inset: -64px -56px;
+  z-index: -1;
+  background: radial-gradient(
+    closest-side,
+    #061e46eb 0%,
+    #061e46d1 55%,
+    #061e4600 100%
+  );
+  pointer-events: none;
+}
+.hero-buy .buy-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  filter: drop-shadow(0 2px 8px #031230d9);
+}
+.hero-buy .buy-label:before {
+  content: "";
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
   background: var(--yellow);
-  color: var(--ink);
-  box-shadow: 0 16px 32px #05285966;
 }
 .hero-buy .button {
   min-height: 46px;
   padding: 11px 18px;
+  box-shadow: 0 0 0 2px var(--ink);
+  filter: drop-shadow(0 6px 14px #031230b3);
 }
 .hero-baseline {
   position: absolute;
@@ -1503,7 +1530,6 @@ footer {
     right: 5%;
     bottom: 0;
     width: min(420px, 90%);
-    padding: 10px 12px;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
