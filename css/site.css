@@ -1561,3 +1561,19 @@ footer {
     width: 264px;
   }
 }
+/* Laptop, tablet, phone: no glow over the lit windows; the strip sits
+   under the caption on the left, over the dark buildings. */
+@media (max-width: 1100px) {
+  .hero-buy:before {
+    display: none;
+  }
+  .hero-buy {
+    left: 2%;
+    right: auto;
+  }
+}
+@media (max-width: 760px) {
+  .hero-buy {
+    left: 5%;
+  }
+}
