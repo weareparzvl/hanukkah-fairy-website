@@ -1577,3 +1577,109 @@ footer {
     left: 5%;
   }
 }
+
+
+/* The supplied merchandise art stays complete and links to the Etsy shop. */
+.gift-shop {
+  background: var(--blue);
+  color: white;
+  padding: clamp(64px, 7vw, 108px) 0;
+}
+.gift-shop-layout {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: clamp(40px, 7vw, 112px);
+  align-items: center;
+}
+.gift-shop-image {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.gift-shop-image img {
+  width: 100%;
+  height: auto;
+}
+.gift-shop-label {
+  color: var(--yellow);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.gift-shop-copy h2 {
+  font-size: clamp(44px, 4.4vw, 52px);
+}
+.gift-shop-copy > p:not(.gift-shop-label) {
+  max-width: 30ch;
+  margin-top: 28px;
+  font-size: 18px;
+}
+.gift-shop-copy .button {
+  margin-top: 30px;
+}
+.hero-buy .hero-gift-shop {
+  font-size: 14px;
+  gap: 12px;
+}
+@media (max-width: 1100px) {
+  .hero-buy .hero-gift-shop {
+    grid-column: 1 / -1;
+  }
+  .hero-caption {
+    bottom: 147px;
+  }
+  .hero-fairy {
+    bottom: calc(32% + 112px);
+  }
+}
+@media (max-width: 760px) {
+  .gift-shop-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .gift-shop-copy > p:not(.gift-shop-label) {
+    font-size: 17px;
+  }
+  .gift-shop-label {
+    margin-bottom: 18px;
+    font-size: 11px;
+  }
+}
+
+/* Keep the expanded navigation on one line; tablets use the menu. */
+@media (min-width: 761px) and (max-width: 960px) {
+  .desktop-nav { display: none; }
+  .menu-toggle { display: block; }
+}
+
+/* Pup and the city share the same cover-fit coordinates. Extra space below
+   the illustration keeps the caption clear without lifting Pup off the roof. */
+@media (max-width: 760px) {
+  .hero {
+    --hero-mobile-extension: 104px;
+    height: calc(100svh - var(--nav) - 16px + var(--hero-mobile-extension));
+    min-height: calc(650px + var(--hero-mobile-extension));
+  }
+  .hero-city {
+    height: calc(100% - var(--hero-mobile-extension));
+  }
+  .hero-poster {
+    height: calc(100% - 80px - var(--hero-mobile-extension));
+  }
+  .hero-scene {
+    top: 0;
+    left: calc((100cqw - max(100cqw, (100cqh - var(--hero-mobile-extension)) * 1.5)) * 0.57);
+    width: max(100cqw, (100cqh - var(--hero-mobile-extension)) * 1.5);
+    height: calc(100% - var(--hero-mobile-extension));
+    aspect-ratio: auto;
+    transform: none;
+  }
+  .hero-caption {
+    bottom: calc(147px - var(--hero-mobile-extension));
+  }
+  .hero-buy {
+    bottom: calc(0px - var(--hero-mobile-extension));
+  }
+}

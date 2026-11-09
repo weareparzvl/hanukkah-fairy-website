@@ -24,7 +24,16 @@ npm-debug.log*
 .tmp/
 temp/
 
-# Website build and private signup records
+# Claude internal
+.claude-flow/
+ruvector.db
+
+# Development scripts
+quick-wins.sh
+.vercel
+.env*
+
+# Website build, private signup records, and browser artifacts
 node_modules/
 public/
 data/
@@ -32,3 +41,10 @@ exports/
 .env*
 .vercel/
 qa/
+
+# Review evidence: screenshots and page snapshots stay local
+reviews/*/shots/
+reviews/**/*.png
+reviews/**/*.html
+reviews/**/*.css
+reviews/**/*.js
