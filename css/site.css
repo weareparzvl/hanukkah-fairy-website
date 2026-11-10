@@ -238,7 +238,7 @@ input {
 .hero {
   position: relative;
   container-type: size;
-  height: calc(100svh - var(--nav) - 16px);
+  height: calc(100svh - var(--nav));
   min-height: 650px;
   color: white;
   background: #0758ab;
@@ -1099,7 +1099,7 @@ footer {
     display: block;
   }
   .hero {
-    height: calc(100svh - var(--nav) - 16px);
+    height: calc(100svh - var(--nav));
     min-height: 650px;
   }
   .hero-city {
@@ -1659,7 +1659,7 @@ footer {
 @media (max-width: 760px) {
   .hero {
     --hero-mobile-extension: 104px;
-    height: calc(100svh - var(--nav) - 16px + var(--hero-mobile-extension));
+    height: calc(100svh - var(--nav) + var(--hero-mobile-extension));
     min-height: calc(650px + var(--hero-mobile-extension));
   }
   .hero-city {
