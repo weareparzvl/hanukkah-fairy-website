@@ -1,5 +1,5 @@
 # Status
-Shopify swap plus the "Shop Here" label (Donny's 4:24 PM ET follow-up) are built, tested and on a preview. Not live yet: the production promote and the email both wait on Harley.
+LIVE. Promoted by Harley on 2026-11-10; production deployment exj8wn1b9. thehanukkahfairy.com shows "Shop Here", 3 Shopify links, 0 Etsy. 13-viewport QA on the live site is clean and matches the approved preview pixel for pixel (shots/prod-after, shots/diff-prod-after). Remaining: Harley sends draft r231835830172965726.
 
 # Ship-ready
 - Preview: https://hanukkah-fairy-website-gklpacu5a-parzvl.vercel.app (Vercel login, or the share link given in chat, valid until 2026-11-10 9:31 PM; regenerate with the Vercel connector get_access_to_vercel_url)
