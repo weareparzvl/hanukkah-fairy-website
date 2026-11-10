@@ -16,3 +16,4 @@ Side effect: on tall phones the white "A little scroll" pill now appears after t
 
 Promote (Harley runs it; auto mode blocks it for Claude):
 vercel promote https://hanukkah-fairy-website-nn0f2rosv-parzvl.vercel.app --scope parzvl --yes
+- 2026-11-10 about 5:00 PM ET: promoted with Harley's GTM go (lm38w8fpv, production 31kXNA42M31mcnjaA2twhi4tR2sp). Live: 0px strip at 13 sizes.
