@@ -12,3 +12,4 @@ Harley, 11/10: "Install this google analytics code" then "Use this one instead t
 - The published container (version 1) has no tags, triggers or measurement IDs. Nothing is recorded until a GA4 tag is added in GTM and published.
 - This snippet pushes `gtag('js', ...)`, not the standard `{'gtm.start', event: 'gtm.js'}`. dataLayer shows gtm.dom and gtm.load only. Unverified whether "All Pages" (Page View) triggers fire; check in GTM Preview once a tag exists.
 - privacy.html does not mention analytics or cookies.
+- 2026-11-10 5:15 PM ET: deleted untracked js/site.js.bak2 and js/site.js.broken (identical Sep 26 copies, unreferenced, served live at /js/). Copies kept in the session scratchpad deleted-js-20261110/. Preview 3rqg7k8bc: both 404, 13-size QA clean. Live until promoted.
