@@ -43,7 +43,7 @@ const note = (night) => `
   <article class="note">
     <p class="note-title">You found me!</p>
     <p class="note-night">Night ${night.n} of 8</p>
-    <p class="note-line">A kind thing I saw today:</p>
+    <p class="note-line">A kind thing to try tomorrow:</p>
     <span class="rule"></span><span class="rule"></span>
     <p class="note-sign">Love, the Hanukkah Fairy</p>
   </article>`;

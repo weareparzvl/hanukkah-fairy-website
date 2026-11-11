@@ -12,7 +12,7 @@ export const nights = [
     title: "Where would a fairy hide?",
     activity: "Pick a hiding place for a little handwritten fairy note. Let the kids hunt for it, then take turns dreaming up tomorrow’s spot.",
     hide: "Inside the refrigerator door, next to the juice.",
-    kind: "Hide a kind note for someone else to find.",
+    kind: "Let someone else pick the game tonight.",
   },
   {
     n: 3, word: "three", date: "Sunday, December 6", theme: "A small kindness",

@@ -8,7 +8,7 @@ const { location, yellow = true, limit = buyLinks.length } = Astro.props;
     class:list={["button", { "button-yellow": yellow }]}
     href={link.url}
     target="_blank"
-    rel="noopener sponsored"
+    rel={link.retailer === "amazon" ? "noopener sponsored" : "noopener"}
     data-track="buy_click"
     data-retailer={link.retailer}
     data-edition={link.edition}

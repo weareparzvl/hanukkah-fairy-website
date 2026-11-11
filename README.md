@@ -1,15 +1,29 @@
 # The Hanukkah Fairy website
 
-A responsive storybook launch site for parents of children ages 3–10. Plain HTML, CSS and browser JavaScript; a small Node endpoint saves signups to a private CSV.
+A multi-page storybook site for parents of children ages 3 to 10, rebuilt on Astro in November 2026. Pages are static HTML; one small Node function (`api/subscribe.js`) saves signups to a private CSV. Rebuild notes: `reviews/rebuild-20261111/NOTES.md`. The research behind it: `reviews/benchmark-20261110/`.
+
+## Layout
+
+- `src/pages/`: home, `/book`, `/tradition`, `/eight-nights`, `/kit`, `/kit/thanks`, `/faq`, `/privacy`, 404 and the sitemap.
+- `src/data/book.js`: the one fact set (authors, ISBNs, retailer links, Hanukkah dates). Page text and JSON-LD both read from it. Change a fact here, nowhere else.
+- `src/data/nights.js`: the eight nights. The site and the printable kit both read from it.
+- `src/components/KitForm.astro`: the one-field signup used in the modal, the home band, the reader and `/kit`.
+- `static/`: files served as they are (robots.txt, icons, the kit PDF).
 
 ## Preview locally
 
 ```sh
 npm install
-HF_LOCAL_CSV=1 npm run dev
+HF_LOCAL_CSV=1 npm run preview
 ```
 
-Open http://localhost:8761. Local signups go to `data/signups.csv`, which is ignored by Git and never served as a website asset. Without `HF_LOCAL_CSV=1`, the server uses private Vercel Blob storage via `.env.local`.
+Open http://localhost:8761. This builds to `dist/` and serves it with the signup function, so forms work. Local signups go to `data/signups.csv`, which is ignored by Git. `npm run dev` gives live reload without the signup function.
+
+## The 8-Night Kit
+
+`npm run kit` rebuilds `static/kit/the-fairys-8-night-kit.pdf` and the page previews in `src/assets/kit/` from `src/data/nights.js`, using only the approved character art. It needs Playwright (set `PLAYWRIGHT_PATH`). Commit the results. `npm run icons` rebuilds the favicon and social image.
+
+Kit promises that need an email platform (nightly notes) are off: see `kit.nightlyNotes` in `src/data/book.js`. Turn them on only once a platform sends them.
 
 ## Signup storage
 
@@ -17,8 +31,8 @@ The Vercel project is `parzvl/hanukkah-fairy-website`. Its private Blob store is
 
 - Production: `production/signups.csv`
 - Preview/development: `preview/signups.csv`
-- Columns: `email`, `signed_up_at` (UTC), `source`, `consent_version`, `name`, `address`, `phone`
-- Email and adult email consent are required. Name, mailing address and phone are optional. Existing four-column files migrate on the next new signup, preserving earlier records.
+- Columns: `email`, `signed_up_at` (UTC), `source`, `consent_version`, `name`, `address`, `phone`, `entry`, `reads_with`
+- Email and adult email consent are required. The form no longer asks for name, mailing address or phone; those columns stay for earlier records. `entry` is the button that opened the form. `reads_with` is the optional one-tap answer after signup (kids, grandkids, class, gift). Older four- and seven-column files migrate on the next signup, preserving earlier records.
 - Email addresses are normalized and duplicates are ignored. Conditional writes and retries protect concurrent signups. Contact fields are bounded, quoted, and protected against spreadsheet formula interpretation.
 - The browser confirms success only after the CSV has been saved.
 - There is no public endpoint for reading the mailing list. Blob credentials stay on the server.
@@ -32,19 +46,17 @@ npm run export:signups
 
 For the preview list: `npm run export:signups -- --preview`. The CSV is also available to authorized team members in the Vercel storage dashboard. Keep exports private. Signup stores the address; it does not send email. Import the CSV into the chosen email platform when launch communications are ready, and honor removal requests.
 
-## Open sales later
-
-Set `preorderUrl` in `js/config.js` to the verified retailer URL. The book section then shows a purchase button and the purchasing FAQ updates. Signup remains available. The October 15 launch is supplied by Elise. No price, format, or stock claim is invented while those details are unsettled.
-
 ## Build and deploy
 
 ```sh
 npm test
 npm run build
-vercel deploy
+vercel deploy --scope parzvl --yes
 ```
 
-Vercel uses Node 24. The build copies only the public site into `public/`; private data, server code and credentials are excluded. `api/subscribe.js` runs as a serverless function. Production promotion is a separate step after design approval.
+Vercel runs `astro build` and serves `dist/`; `api/subscribe.js` runs as a serverless function beside it. Previews are protected. Production promotion is a separate step and needs Harley's go.
+
+Checks: `node scripts/qa-sizes.mjs <base> <outDir> [shareToken]` (13 sizes, 7 pages) and `node scripts/qa-flows.mjs <base> <outDir>` (modal, signup, step two, reader, nights, no-JavaScript post).
 
 ## Motion and interaction
 

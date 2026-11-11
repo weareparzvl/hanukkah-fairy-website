@@ -23,7 +23,7 @@ export const faq = [
     group: "The free kit",
     items: [
       ["What is The Fairy’s 8-Night Kit?", "A free six-page printable: a paper Fairy and Pup to cut out, a card for each of the eight nights, eight notes from the Fairy and a menorah to color."],
-      ["What do you do with my email?", "We save it so we can send you news from The Hanukkah Fairy. We don’t sell it or share it for advertising. You can ask to leave the list at any time."],
+      ["What do you do with my email?", "We save it so we can email you news from The Hanukkah Fairy. We don’t sell it or share it for advertising. You can ask to leave the list at any time."],
     ],
   },
 ];

@@ -148,7 +148,7 @@ document.querySelectorAll("[data-kit-capture]").forEach((capture) => {
     }
     submit.disabled = true;
     form.setAttribute("aria-busy", "true");
-    setStatus("Fetching your kit…");
+    setStatus("One moment…");
     try {
       const result = await post({
         email,
@@ -166,6 +166,7 @@ document.querySelectorAll("[data-kit-capture]").forEach((capture) => {
       store.set("hf-kit", "1");
       track("sign_up", { step: 1, location: form.elements.entry.value });
       form.reset();
+      setStatus("");
       form.hidden = true;
       done.hidden = false;
       done.focus({ preventScroll: true });

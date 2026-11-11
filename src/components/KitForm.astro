@@ -1,7 +1,7 @@
 ---
 // One email field. Works as an ordinary form post without JavaScript.
 import { kit, hanukkah } from "../data/book.js";
-const { id, entry, button = "Send my 8-night kit" } = Astro.props;
+const { id, entry, button = "Get my 8-Night Kit" } = Astro.props;
 ---
 
 <div class="kit-capture" data-kit-capture>
@@ -27,16 +27,16 @@ const { id, entry, button = "Send my 8-night kit" } = Astro.props;
     </div>
     <label class="consent">
       <input type="checkbox" name="consent" required />
-      <span>I’m a grown-up. Send me the kit and emails from The Hanukkah Fairy.</span>
+      <span>I’m a grown-up. Email me news from The Hanukkah Fairy.</span>
     </label>
     <p class="capture-note">
-      Free. Leave the list whenever you like. <a href="/privacy">How we use your email</a>.
+      Free. You can ask to leave the list anytime. <a href="/privacy">How we use your email</a>.
     </p>
     <p class="capture-status" id={`${id}-status`} role="status" aria-live="polite"></p>
   </form>
   <div class="kit-done" data-kit-done tabindex="-1" hidden>
     <p class="kit-done-title">It’s yours.</p>
-    <p>Print it tonight. The first candle is {hanukkah.first}.</p>
+    <p>Your kit is ready to print. The first candle is {hanukkah.first}.</p>
     <a class="button button-yellow" href={kit.file} download data-kit-download>Download the kit (PDF)</a>
     <fieldset class="kit-step" data-kit-step>
       <legend>One quick thing. Who are you reading with?</legend>

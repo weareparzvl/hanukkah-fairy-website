@@ -564,3 +564,107 @@
     padding: 11px 20px;
   }
 }
+
+/* Critic pass, 2026-11-11 */
+.affiliate-note {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 10px;
+}
+.page-lede > p.affiliate-note {
+  font-size: 12px;
+  margin-top: 12px;
+}
+.hero-buy .affiliate-note {
+  margin-top: 0;
+  font-size: 11px;
+  filter: drop-shadow(0 1px 6px #031230);
+}
+/* Comfortable tap targets */
+.kit-form .consent {
+  min-height: 44px;
+  align-items: center;
+  cursor: pointer;
+}
+.kit-form .consent input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+}
+.footer-main nav {
+  gap: 0 15px;
+}
+.footer-main nav a,
+.footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.faq-list details {
+  padding: 11px 0;
+}
+.faq-list summary {
+  align-items: center;
+  min-height: 44px;
+}
+.faq-list details p {
+  margin: 6px 0 12px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+.candle-picker button {
+  flex: 1;
+}
+@media (max-width: 1100px) {
+  .hero-buy .affiliate-note {
+    position: absolute;
+    top: 1px;
+    right: 0;
+  }
+}
+@media (max-width: 760px) {
+  .br-wide {
+    display: none;
+  }
+  .brand-statement h2 {
+    font-size: clamp(36px, 10.4vw, 80px);
+  }
+  .cast-intro h2 {
+    font-size: clamp(40px, 11vw, 78px);
+  }
+  .kit-band-copy h2 {
+    font-size: clamp(40px, 12vw, 76px);
+  }
+}
+@media (max-width: 350px) {
+  .page-lede > p.page-refrain,
+  .ritual-refrain {
+    font-size: 24px;
+  }
+}
+/* Tablets: the Fairy flies below the wordmark, beside the caption, not across the title. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .hero-fairy {
+    width: 42%;
+    height: 34%;
+    right: 5%;
+    bottom: 27%;
+    object-position: right bottom;
+  }
+}
+@media (max-width: 760px) {
+  .hero-buy .affiliate-note {
+    position: static;
+    grid-column: 1 / -1;
+    order: 9;
+  }
+  .hero-caption {
+    bottom: calc(169px - var(--hero-mobile-extension));
+  }
+  .hero-buy {
+    bottom: calc(-22px - var(--hero-mobile-extension));
+  }
+}
