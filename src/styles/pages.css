@@ -661,10 +661,4 @@
     grid-column: 1 / -1;
     order: 9;
   }
-  .hero-caption {
-    bottom: calc(169px - var(--hero-mobile-extension));
-  }
-  .hero-buy {
-    bottom: calc(-22px - var(--hero-mobile-extension));
-  }
 }

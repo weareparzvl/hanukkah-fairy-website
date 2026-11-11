@@ -23,7 +23,6 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-
     <Fragment slot="title">The Hanukkah<br />Fairy</Fragment>
     <p>A rhyming Hanukkah picture book for ages {book.ages}. Written by Elise and Donny Dykowsky. Illustrated by {book.illustrator}.</p>
     <div class="page-hero-buy buy-links"><BuyLinks location="book-hero" yellow={false} /></div>
-    <p class="affiliate-note">We earn from qualifying Amazon purchases.</p>
     <Image slot="art" class="book-cover" src={cover} alt="The Hanukkah Fairy front cover: the Fairy in her blue dress above a neighborhood street at night" widths={[320, 480, 640, 960]} sizes="(max-width: 760px) 78vw, 36vw" loading="eager" />
   </PageHero>
 
@@ -84,7 +83,7 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-
             </p>
           </div>
         ))}
-        <p class="editions-note">Shopping local? Ask your bookstore to order it by ISBN. We earn from qualifying Amazon purchases.</p>
+        <p class="editions-note">Shopping local? Ask your bookstore to order it by ISBN.</p>
       </div>
     </div>
   </section>
