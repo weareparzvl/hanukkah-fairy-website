@@ -1,4 +1,5 @@
 /* The Hanukkah Fairy. Native browser features, progressive enhancement, no libraries. */
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const body = document.body;
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const track = (event, detail = {}) => {
@@ -103,7 +104,7 @@ document.addEventListener("click", (event) => {
 });
 
 /* Kit forms */
-const endpoint = "/api/subscribe";
+const endpoint = base ? "/api/subscribe-v2" : "/api/subscribe";
 async function post(payload) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12000);
@@ -201,7 +202,7 @@ if (new URLSearchParams(location.search).has("retry"))
   document.querySelectorAll("[data-kit-retry]").forEach((note) => (note.hidden = false));
 
 /* Nudge: once per visitor, only after real engagement, never over the form or the kit pages. */
-if (nudge && !store.get("hf-kit") && !store.get("hf-nudge") && !location.pathname.startsWith("/kit")) {
+if (nudge && !store.get("hf-kit") && !store.get("hf-nudge") && !location.pathname.startsWith(`${base}/kit`)) {
   let waited = false;
   let scrolled = false;
   const show = () => {

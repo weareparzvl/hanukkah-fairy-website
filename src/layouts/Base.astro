@@ -20,6 +20,8 @@ const {
   noindex = false,
   footerKit = true,
 } = Astro.props;
+// The approval preview under /v2 is never indexable.
+const preview = import.meta.env.BASE_URL !== "/";
 const canonical = `${site.origin}${path === "/" ? "/" : path}`;
 const graph = { "@context": "https://schema.org", "@graph": [website, organization, ...schema] };
 ---
@@ -43,7 +45,7 @@ const graph = { "@context": "https://schema.org", "@graph": [website, organizati
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content={noindex ? "noindex" : "index, follow, max-image-preview:large"} />
+    <meta name="robots" content={noindex || preview ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />

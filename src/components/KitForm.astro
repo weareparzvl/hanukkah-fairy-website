@@ -2,10 +2,11 @@
 // One email field. Works as an ordinary form post without JavaScript.
 import { kit, hanukkah } from "../data/book.js";
 const { id, entry, button = "Get my 8-Night Kit" } = Astro.props;
+const action = import.meta.env.BASE_URL === "/" ? "/api/subscribe" : "/api/subscribe-v2";
 ---
 
 <div class="kit-capture" data-kit-capture>
-  <form class="kit-form capture" data-kit-form method="post" action="/api/subscribe">
+  <form class="kit-form capture" data-kit-form method="post" action={action}>
     <input type="hidden" name="entry" value={entry} />
     <label class="kit-label" for={`${id}-email`}>Your email</label>
     <div class="kit-row">

@@ -36,6 +36,7 @@ quick-wins.sh
 # Website build, private signup records, and browser artifacts
 node_modules/
 dist/
+dist-v2/
 .astro/
 scripts/kit/kit.html
 scripts/kit/img/
