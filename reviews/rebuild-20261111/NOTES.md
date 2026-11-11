@@ -34,7 +34,7 @@ https://hanukkah-fairy-website-7xijnisnv-parzvl.vercel.app (deployment protected
 One fresh-context critic judged the build against the brief and the Book Bible. Fixed: kit notes no longer imply the Fairy watches ("A kind thing to try tomorrow"), form verbs no longer promise an email that is not sent, affiliate note beside every Amazon button group, `sponsored` only on Amazon links, consent row and footer links and FAQ rows at 44px, phone headline breaks, tablet hero (the Fairy no longer covers the wordmark, a defect that is also on the live site), shorter titles, privacy page names the LLC and the two local storage flags.
 
 Not changed, with reasons:
-- Adult checkbox stays until counsel reviews the wording (Harley's default).
+- Adult checkbox stays. Harley, 2026-11-11: "leave it in".
 - The fixed "A little scroll" cue stays (locked in the manifest, 2026-09-27).
 - The liner pattern in the reader stays: Elise supplied it for the site and it is on production today.
 - Plush cards marked "In development" stay: Elise asked for the product mockups.
@@ -43,7 +43,7 @@ Not changed, with reasons:
 ## Open
 
 1. Production go from Harley. Nothing is promoted.
-2. Owners: email platform (Shopify Email or Klaviyo), GA4 ID, age range across retailers, counsel review of consent, a contact email for removal requests, ship-by dates, and a look at the kit's new copy (hiding spots, kind things, notes).
+2. Owners: email platform (Shopify Email or Klaviyo), GA4 ID, age range across retailers, a contact email for removal requests, ship-by dates, and a look at the kit's new copy (hiding spots, kind things, notes).
 3. `www.hanukkahfairy.com` serves a duplicate of the site with a canonical to thehanukkahfairy.com; it should 301. Domain settings change, needs a go.
 4. Confirm the Amazon Associates tag `thehanukkahfa-20` (taken from the old redirect) belongs to the owners.
 5. Second cut: `/gifts`, `/characters`, `/authors`, `/read-aloud`, `/press`.
