@@ -1,0 +1,184 @@
+[
+  {
+    "viewport": "1024x768",
+    "sizeA": [
+      768,
+      1024
+    ],
+    "sizeB": [
+      768,
+      1024
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "1280x800",
+    "sizeA": [
+      800,
+      1280
+    ],
+    "sizeB": [
+      800,
+      1280
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "1440x900",
+    "sizeA": [
+      900,
+      1440
+    ],
+    "sizeB": [
+      900,
+      1440
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "1512x860",
+    "sizeA": [
+      860,
+      1512
+    ],
+    "sizeB": [
+      860,
+      1512
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "1728x1000",
+    "sizeA": [
+      1000,
+      1728
+    ],
+    "sizeB": [
+      1000,
+      1728
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "1920x1080",
+    "sizeA": [
+      1080,
+      1920
+    ],
+    "sizeB": [
+      1080,
+      1920
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "2049x1150",
+    "sizeA": [
+      1150,
+      2049
+    ],
+    "sizeB": [
+      1150,
+      2049
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "2560x1300",
+    "sizeA": [
+      1300,
+      2560
+    ],
+    "sizeB": [
+      1300,
+      2560
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "340x640",
+    "sizeA": [
+      640,
+      340
+    ],
+    "sizeB": [
+      640,
+      340
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "390x844",
+    "sizeA": [
+      844,
+      390
+    ],
+    "sizeB": [
+      844,
+      390
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "430x932",
+    "sizeA": [
+      932,
+      430
+    ],
+    "sizeB": [
+      932,
+      430
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "768x1024",
+    "sizeA": [
+      1024,
+      768
+    ],
+    "sizeB": [
+      1024,
+      768
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  },
+  {
+    "viewport": "900x1300",
+    "sizeA": [
+      1300,
+      900
+    ],
+    "sizeB": [
+      1300,
+      900
+    ],
+    "sameSize": true,
+    "changedPixels": 0,
+    "boxes": []
+  }
+]

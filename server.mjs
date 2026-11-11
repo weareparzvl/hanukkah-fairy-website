@@ -2,7 +2,7 @@ import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { resolve, extname } from "node:path";
 import handler from "./api/subscribe.js";
-const root = process.cwd();
+const root = resolve(process.cwd(), "dist");
 const types = {
   ".txt": "text/plain; charset=utf-8",
   ".xml": "application/xml; charset=utf-8",
@@ -13,6 +13,9 @@ const types = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".woff2": "font/woff2",
+  ".pdf": "application/pdf",
+  ".ico": "image/x-icon",
+  ".svg": "image/svg+xml",
 };
 createServer(async (req, res) => {
   let path;
@@ -27,15 +30,10 @@ createServer(async (req, res) => {
     res.writeHead(405);
     return res.end();
   }
-  if (path === "/privacy") path = "/privacy.html";
+  // Same clean URLs as Vercel: /book serves dist/book.html.
   if (path === "/") path = "/index.html";
-  // Only website assets are served; source, environment files, CSVs and scripts stay private.
-  if (
-    !/^\/(?:index\.html|privacy\.html|robots\.txt|sitemap\.xml|(?:css|js|assets)\/[a-zA-Z0-9._/-]+)$/.test(
-      path,
-    ) ||
-    path.includes("..")
-  ) {
+  else if (!extname(path)) path = `${path}.html`;
+  if (!/^\/[a-zA-Z0-9._/-]+$/.test(path) || path.includes("..")) {
     res.writeHead(404);
     return res.end("Not found");
   }

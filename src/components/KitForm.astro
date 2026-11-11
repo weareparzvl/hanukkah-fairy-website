@@ -1,0 +1,50 @@
+---
+// One email field. Works as an ordinary form post without JavaScript.
+import { kit, hanukkah } from "../data/book.js";
+const { id, entry, button = "Send my 8-night kit" } = Astro.props;
+---
+
+<div class="kit-capture" data-kit-capture>
+  <form class="kit-form capture" data-kit-form method="post" action="/api/subscribe">
+    <input type="hidden" name="entry" value={entry} />
+    <label class="kit-label" for={`${id}-email`}>Your email</label>
+    <div class="kit-row">
+      <input
+        id={`${id}-email`}
+        name="EMAIL"
+        type="email"
+        placeholder="you@example.com"
+        autocomplete="email"
+        required
+        maxlength="254"
+        aria-describedby={`${id}-status`}
+      />
+      <button class="button button-yellow" type="submit">{button}</button>
+    </div>
+    <div class="form-trap" aria-hidden="true">
+      <label for={`${id}-website`}>Leave this empty</label>
+      <input id={`${id}-website`} name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+    <label class="consent">
+      <input type="checkbox" name="consent" required />
+      <span>I’m a grown-up. Send me the kit and emails from The Hanukkah Fairy.</span>
+    </label>
+    <p class="capture-note">
+      Free. Leave the list whenever you like. <a href="/privacy">How we use your email</a>.
+    </p>
+    <p class="capture-status" id={`${id}-status`} role="status" aria-live="polite"></p>
+  </form>
+  <div class="kit-done" data-kit-done tabindex="-1" hidden>
+    <p class="kit-done-title">It’s yours.</p>
+    <p>Print it tonight. The first candle is {hanukkah.first}.</p>
+    <a class="button button-yellow" href={kit.file} download data-kit-download>Download the kit (PDF)</a>
+    <fieldset class="kit-step" data-kit-step>
+      <legend>One quick thing. Who are you reading with?</legend>
+      <button type="button" data-reads-with="kids">My kids</button>
+      <button type="button" data-reads-with="grandkids">My grandkids</button>
+      <button type="button" data-reads-with="class">My class</button>
+      <button type="button" data-reads-with="gift">It’s a gift</button>
+    </fieldset>
+    <p class="kit-step-thanks" data-kit-step-thanks hidden>Thank you. Happy hiding.</p>
+  </div>
+</div>

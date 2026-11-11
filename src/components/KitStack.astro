@@ -1,0 +1,15 @@
+---
+// The real kit pages, fanned. Decorative: the list beside it says what is inside.
+import { Image } from "astro:assets";
+import cover from "../assets/kit/page-1.png";
+import how from "../assets/kit/page-2.png";
+import cards from "../assets/kit/page-3.png";
+const { sizes = "(max-width: 760px) 60vw, 360px", loading = "lazy" } = Astro.props;
+const widths = [240, 360, 480, 720];
+---
+
+<div class="kit-stack" aria-hidden="true">
+  <Image src={cards} alt="" widths={widths} sizes={sizes} loading={loading} class="kit-sheet kit-sheet-3" />
+  <Image src={how} alt="" widths={widths} sizes={sizes} loading={loading} class="kit-sheet kit-sheet-2" />
+  <Image src={cover} alt="" widths={widths} sizes={sizes} loading={loading} class="kit-sheet kit-sheet-1" />
+</div>

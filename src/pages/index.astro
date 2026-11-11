@@ -1,0 +1,305 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import "../styles/reader.css";
+import BuyLinks from "../components/BuyLinks.astro";
+import KitForm from "../components/KitForm.astro";
+import KitBand from "../components/KitBand.astro";
+import Nights from "../components/Nights.astro";
+import { site, book, hanukkah } from "../data/book.js";
+import { steps } from "../data/nights.js";
+import { bookNode, page } from "../data/schema.js";
+import nightscape from "../assets/nightscape.webp";
+import logo from "../assets/logo-wide.webp";
+import pupSign from "../assets/pup-sign.webp";
+import fairyFlying from "../assets/fairy-flying.png";
+import fairyWand from "../assets/fairy-wand.png";
+import cover from "../assets/cover.webp";
+import productBook from "../assets/product-book.webp";
+import productDoll from "../assets/product-doll.webp";
+import productPlush from "../assets/product-plush.webp";
+import giftShop from "../assets/fairy-gift-shop.webp";
+import pup from "../assets/pup.png";
+import angel from "../assets/angel.png";
+import grizzlebottom from "../assets/grizzlebottom.png";
+
+const title = "The Hanukkah Fairy | Picture Book and Eight-Night Hanukkah Tradition";
+const description =
+  "The Hanukkah Fairy is a rhyming picture book for ages 3 to 10, with a hide-and-seek tradition for all eight nights. Get the free printable 8-Night Kit.";
+const schema = [page("/", title, description, { mainEntity: { "@id": `${site.origin}/#book` } }), bookNode];
+const portrait = "(max-width: 760px) 100vw, 50vw";
+---
+
+<Base title={title} description={description} path="/" schema={schema} ogType="book" footerKit={false}>
+  <link slot="head" rel="preload" as="image" href={nightscape.src} fetchpriority="high" />
+  <section class="hero" aria-labelledby="hero-title">
+    <Image class="hero-city" src={nightscape} alt="" widths={[768, 1152, 1536]} sizes="(max-width: 760px) 300vw, 100vw" loading="eager" fetchpriority="high" />
+    <div class="hero-scene">
+      <Image class="hero-pup" src={pupSign} alt="Pup holding an “Out now!” sign" widths={[200, 400, 764]} sizes="(max-width: 760px) 160px, 14vw" loading="eager" />
+    </div>
+    <div class="hero-poster">
+      <h1 id="hero-title">
+        <span class="sr-only">The Hanukkah Fairy: a Hanukkah picture book and eight-night tradition for ages 3 to 10</span>
+        <Image class="hero-wordmark" src={logo} alt="" widths={[480, 800, 1200, 1600, 2172]} sizes="(max-width: 760px) 90vw, 64vw" loading="eager" />
+      </h1>
+      <div class="hero-caption">
+        <p>
+          Eight nights. One magical fairy.<br /><strong>And a troll with a serious chocolate-gelt problem.</strong>
+        </p>
+        <p class="hero-details">A rhyming picture book for the whole family</p>
+        <a class="button button-yellow hero-kit" href="/kit" data-kit-open data-entry="hero">Get the free 8-Night Kit</a>
+      </div>
+      <Image class="hero-fairy" src={fairyFlying} alt="The Hanukkah Fairy, in her blue dress and big black boots, flying into the story" widths={[400, 700, 1000, 1211]} sizes="(max-width: 760px) 88vw, 56vw" loading="eager" />
+      <div class="hero-buy buy-links" id="buy">
+        <p class="buy-label">Books &amp; gifts</p>
+        <BuyLinks location="hero" limit={2} />
+        <a class="button button-yellow hero-gift-shop" href={site.shop} target="_blank" rel="noopener" data-track="shop_click" data-location="hero">The Fairy Gift Shop <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="hero-baseline">
+      <a class="scroll-cue" href="#ritual"><span class="scroll-cue-line" aria-hidden="true"></span>A little scroll. A little magic.</a>
+      <a class="hero-meet" href="#cast">Meet the Fairy <span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+
+  <section class="brand-statement" aria-labelledby="brand-title">
+    <div class="wrap">
+      <h2 id="brand-title">A new Hanukkah<br />tradition is here.</h2>
+      <div class="statement-bottom">
+        <p>Eight nights. A little magic.<br />A tradition all your own.</p>
+        <p class="statement-date">First candle: {hanukkah.first}.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ritual-feature" id="ritual" aria-labelledby="ritual-title">
+    <div class="wrap">
+      <div class="ritual-stage">
+        <div class="ritual-illustration">
+          <Image src={fairyWand} alt="The Hanukkah Fairy with her star wand, ready for a little hide-and-seek" widths={[400, 700, 1000, 1159]} sizes={portrait} />
+        </div>
+        <div class="ritual-copy">
+          <h2 id="ritual-title">She hides.<br />You seek.</h2>
+          <p class="ritual-refrain">Be kind. Get a treat.</p>
+          <p>
+            One story becomes eight nights of wonder. A secret hiding place. A small act of kindness. A tradition that’s yours to make.
+          </p>
+          <p class="ritual-actions">
+            <a class="button" href="/kit" data-kit-open data-entry="tradition">Get the free 8-Night Kit</a>
+            <a class="text-link" href="/tradition">How the tradition works</a>
+          </p>
+        </div>
+      </div>
+      <ul class="ritual-steps">
+        {steps.map(([name, line]) => <li><strong>{name}</strong><span>{line}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <div id="kit"><KitBand id="band" entry="home-kit" /></div>
+
+  <section class="book-feature" id="book" aria-labelledby="book-title">
+    <div class="wrap book-feature-layout">
+      <div class="book-feature-cover">
+        <Image src={cover} alt="The Hanukkah Fairy front cover, by Elise and Donny Dykowsky, illustrated by Tincho Schmidt" widths={[320, 480, 640, 960]} sizes="(max-width: 760px) 80vw, 34vw" />
+      </div>
+      <div class="book-feature-copy">
+        <h2 id="book-title">It starts with<br />the story.</h2>
+        <p>
+          A girl feels left out of the holidays. Then an angel in sneakers knocks on her door and hands her a wand. With Pup at her side, the new Hanukkah Fairy has eight nights to light up the neighborhood, even with a gelt-stealing troll on the loose.
+        </p>
+        <p class="book-feature-facts">
+          A rhyming picture book for ages {book.ages}. By Elise and Donny Dykowsky, illustrated by {book.illustrator}. Hardcover, paperback and ebook.
+        </p>
+        <div class="book-feature-buy"><BuyLinks location="home-book" yellow={false} /></div>
+        <a class="text-link" href="/book">Every edition and the book’s details</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-world" id="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <div class="section-heading">
+        <h2 id="products-title">The story is just<br />the beginning.</h2>
+        <p>Start with the book. Meet the plush pals.<br />Make room for a little magic.</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card product-book">
+          <div class="product-image">
+            <Image src={productBook} alt="The Hanukkah Fairy hardcover book" widths={[400, 700, 1122]} sizes="(max-width: 760px) 90vw, 28vw" />
+          </div>
+          <div class="product-caption">
+            <h3>The Book</h3>
+            <p>Available now</p>
+            <a class="text-link" href="/book">Where to buy it</a>
+          </div>
+        </article>
+        <article class="product-card product-duo">
+          <div class="product-image">
+            <Image src={productDoll} alt="The Hanukkah Fairy doll in her blue dress and black boots, holding her star wand" widths={[400, 700, 1135]} sizes="(max-width: 760px) 90vw, 34vw" />
+          </div>
+          <div class="product-caption">
+            <h3>The Fairy</h3>
+            <p>A storybook friend to bring home.</p>
+            <span class="product-status">In development</span>
+          </div>
+        </article>
+        <article class="product-card product-trio">
+          <div class="product-image">
+            <Image src={productPlush} alt="The boxed plush collection: Pup, the Fairy, Grizzlebottom, and the angel in sneakers" widths={[400, 700, 1448]} sizes="(max-width: 760px) 90vw, 34vw" />
+          </div>
+          <div class="product-caption">
+            <h3>The Whole Crew</h3>
+            <p>The plush collection.</p>
+            <span class="product-status">In development</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="gift-shop" id="gift-shop" aria-labelledby="gift-shop-title">
+    <div class="wrap gift-shop-layout">
+      <a class="gift-shop-image" href={site.shop} target="_blank" rel="noopener" aria-label="Shop The Fairy Gift Shop (opens in a new tab)" data-track="shop_click" data-location="gift-shop-image">
+        <Image src={giftShop} alt="Hanukkah gifts: Serious Chocolate Gelt Problem, Nosh Club and Mazel Babe sweatshirts, with a Latke Lover tote bag" widths={[400, 700, 1199]} sizes="(max-width: 760px) 90vw, 48vw" />
+      </a>
+      <div class="gift-shop-copy">
+        <p class="gift-shop-label">A little more Hanukkah magic</p>
+        <h2 id="gift-shop-title">The Fairy<br />Gift Shop</h2>
+        <p>For latke lovers, nosh club members, and anyone with a serious chocolate-gelt problem.</p>
+        <a class="button button-yellow" href={site.shop} target="_blank" rel="noopener" data-track="shop_click" data-location="gift-shop">Shop Here <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cast-world" id="cast" aria-labelledby="cast-title">
+    <div class="cast-intro wrap">
+      <h2 id="cast-title">Four pals.<br />One very fluffy troll.</h2>
+      <p>Join them for a magical adventure filled with heart, mischief and surprises.</p>
+    </div>
+    <article class="cast-feature cast-fairy">
+      <div class="wrap cast-layout">
+        <div class="cast-portrait">
+          <Image src={fairyWand} alt="The Hanukkah Fairy in a blue dress, black boots, and blue bow" widths={[400, 700, 1000, 1159]} sizes={portrait} />
+        </div>
+        <div class="cast-description">
+          <h3>The Hanukkah<br />Fairy.</h3>
+          <p>After wondering where she fits in, she discovers how much light one little person can bring.</p>
+          <blockquote>“Sassy and quick, clever at hiding and sharp as a whip.”</blockquote>
+          <span>Blue dress. Big boots. Bigger heart.</span>
+        </div>
+      </div>
+    </article>
+    <article class="cast-feature cast-pup">
+      <div class="wrap cast-layout">
+        <div class="cast-portrait">
+          <Image src={pup} alt="Pup, the scruffy golden dog with a blue bow" widths={[400, 700, 837]} sizes={portrait} />
+        </div>
+        <div class="cast-description">
+          <h3>Meet Pup.</h3>
+          <p>Loyal companion. Expert nosher. This scruffy little sidekick follows the Fairy wherever the magic takes her, with a soft spot for donuts.</p>
+          <span>Here for the adventure. Also the snacks.</span>
+        </div>
+      </div>
+    </article>
+    <article class="cast-feature cast-angel">
+      <div class="wrap cast-layout">
+        <div class="cast-portrait">
+          <Image src={angel} alt="The angel in pink glasses and sneakers holds a glowing candle" widths={[400, 700, 900]} sizes={portrait} />
+        </div>
+        <div class="cast-description">
+          <h3>The angel<br />in sneakers.</h3>
+          <p>Pink glasses. Tiny wings. The warmest welcome on the block. He sees something special in our fairy before she sees it in herself.</p>
+          <span>Helping someone find their spark.</span>
+        </div>
+      </div>
+    </article>
+    <article class="cast-feature cast-troll">
+      <div class="wrap cast-layout">
+        <div class="cast-portrait">
+          <Image src={grizzlebottom} alt="Grizzlebottom, the pink fluffy troll with a stolen gelt coin" widths={[400, 700, 1000, 1289]} sizes={portrait} />
+        </div>
+        <div class="cast-description">
+          <h3>Grizzlebottom.</h3>
+          <p>Big. Pink. Grumpy. And always up to no good. Grizzlebottom will do just about anything for chocolate gelt. But there may be more to this fluffy troll than meets the eye.</p>
+          <span>Hide your gelt. Seriously.</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="eight-nights" id="nights" aria-labelledby="nights-title">
+    <div class="wrap nights-layout">
+      <div>
+        <h2 id="nights-title">Eight nights.<br />All yours.</h2>
+        <p>Eight nights with The Hanukkah Fairy. Find a little inspiration for the traditions you’ll make together.</p>
+        <p class="night-instruction">Choose a candle. Try a little magic.</p>
+        <a class="text-link nights-more" href="/eight-nights">See all eight nights on one page</a>
+      </div>
+      <Nights />
+    </div>
+  </section>
+
+  <section class="authors" id="authors">
+    <div class="wrap authors-layout">
+      <h2>From our<br />family<br />to yours.</h2>
+      <div>
+        <p>
+          Elise and Donny Dykowsky wrote The Hanukkah Fairy for their daughters. It began when their twin girls were babies as a way to add a little extra magic to the holidays. What started as a family tradition grew into a modern celebration of Hanukkah, magic, and belonging. And now…it’s yours!
+        </p>
+        <p class="authors-credit">Story by Elise &amp; Donny Dykowsky<br />Illustrations by Tincho Schmidt</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reader" id="story" aria-label="Open The Hanukkah Fairy book" data-page="0">
+    <div class="reader-stage">
+      <div class="reader-book">
+        <figure class="reader-cover" data-reader-page="0">
+          <Image src={cover} alt="The front cover of The Hanukkah Fairy, by Elise and Donny Dykowsky, illustrated by Tincho Schmidt" widths={[420, 640, 960, 1400]} sizes="(max-width: 760px) 90vw, 50vw" />
+          <figcaption class="sr-only">The front cover. Scroll to open the story.</figcaption>
+        </figure>
+        <article class="reader-spread reader-signup" data-reader-page="1" id="dibs" aria-labelledby="signup-title">
+          <div class="reader-page reader-signup-art">
+            <h3>She left you<br />something.</h3>
+            <p>A paper Fairy to hide, a card for every night and eight notes she leaves behind.</p>
+            <Image src={pup} alt="Pup, waiting hopefully for a treat" widths={[300, 600, 837]} sizes="30vw" />
+          </div>
+          <div class="reader-page reader-form-page">
+            <h3 id="signup-title">The Fairy’s<br />8-Night Kit.</h3>
+            <p class="reader-form-intro">Free to print. Ready for the first candle on {hanukkah.first}.</p>
+            <KitForm id="reader" entry="reader" />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq wrap" aria-labelledby="faq-title">
+    <div>
+      <h2 id="faq-title">For the<br />grown-ups.</h2>
+      <a class="text-link" href="/faq">Every question, answered</a>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>What ages is the book for?<span aria-hidden="true">+</span></summary>
+        <p>The Hanukkah Fairy is for children ages 3 to 10. Its rhyming story is made to be read aloud, so younger children can enjoy it with a grown-up and older readers can join in.</p>
+      </details>
+      <details>
+        <summary>Do we need a plush toy to enjoy it?<span aria-hidden="true">+</span></summary>
+        <p>The book is a complete adventure on its own. The hiding, seeking, and kindness ideas are optional ways to keep the story going at home, and the free 8-Night Kit has a paper Fairy to hide. The plush pals are still in development.</p>
+      </details>
+      <details>
+        <summary>Is it just for families who celebrate Hanukkah?<span aria-hidden="true">+</span></summary>
+        <p>The story celebrates Jewish joy and Hanukkah traditions, and welcomes anyone who wants to read along. Belonging, courage, and kindness are at its heart.</p>
+      </details>
+      <details>
+        <summary>Where can I buy the book?<span aria-hidden="true">+</span></summary>
+        <p>The Hanukkah Fairy is available on Amazon, Apple Books and Barnes &amp; Noble, with signed copies in the Fairy Gift Shop. <a href="/book">See every edition</a>. If your local shop doesn’t have it in stock, please request it.</p>
+      </details>
+    </div>
+  </section>
+  <script>
+    import "../scripts/home.js";
+  </script>
+</Base>

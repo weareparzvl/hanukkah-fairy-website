@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import BuyLinks from "../components/BuyLinks.astro";
+import { site, book, editions } from "../data/book.js";
+import { bookNode, breadcrumbs, page } from "../data/schema.js";
+import cover from "../assets/cover.webp";
+
+const title = "The Hanukkah Fairy Book | Rhyming Hanukkah Picture Book for Ages 3 to 10";
+const description =
+  "The Hanukkah Fairy is a rhyming Hanukkah picture book for ages 3 to 10 by Elise and Donny Dykowsky, illustrated by Tincho Schmidt. Editions, ISBNs and where to buy.";
+const schema = [
+  page("/book", title, description, { mainEntity: { "@id": `${site.origin}/#book` } }),
+  bookNode,
+  breadcrumbs([["The book", "/book"]]),
+];
+const slug = (text) => text.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
+---
+
+<Base title={title} description={description} path="/book" schema={schema} ogType="book">
+  <PageHero tone="pink" crumb="The book">
+    <Fragment slot="title">The Hanukkah<br />Fairy</Fragment>
+    <p>A rhyming Hanukkah picture book for ages {book.ages}. Written by Elise and Donny Dykowsky. Illustrated by {book.illustrator}.</p>
+    <div class="page-hero-buy buy-links"><BuyLinks location="book-hero" yellow={false} /></div>
+    <Image slot="art" class="book-cover" src={cover} alt="The Hanukkah Fairy front cover: the Fairy in her blue dress above a neighborhood street at night" widths={[320, 480, 640, 960]} sizes="(max-width: 760px) 78vw, 36vw" loading="eager" />
+  </PageHero>
+
+  <section class="page-section">
+    <div class="wrap split">
+      <h2>The story</h2>
+      <div class="prose">
+        <blockquote class="pull">“Once upon a time in your own neighborhood, lived a young girl who was misunderstood.”</blockquote>
+        <p>Every year the holidays come to her neighborhood, and every year they seem to skip her house. Then comes a knock at the door. An angel in sneakers, twinkling eyes and all, has news: she is the Hanukkah Fairy.</p>
+        <p>She isn’t sure a fairy could be someone like her. A magic blue dress, a pair of big black boots and a star-tipped wand say otherwise. With Pup trotting beside her, she sets out to bring a spark to all eight nights: presents perfectly wrapped, a dreidel game nobody wants to end, and a nightly round of hide-and-seek for any kid kind enough to find her.</p>
+        <p>One problem. Grizzlebottom, a big pink troll with a serious chocolate-gelt habit, is stealing the holiday spirit. The Fairy has a plan. It takes the whole neighborhood, a song and some dancing.</p>
+        <p>It is a story about belonging, courage and kindness, told in rhyme and made for reading aloud. The last page hands the tradition to your family.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section tone-paper-deep" id="details">
+    <div class="wrap split">
+      <h2>The details</h2>
+      <dl class="facts">
+        <div><dt>Title</dt><dd>{book.title}</dd></div>
+        <div><dt>Written by</dt><dd>{book.authors.join(" and ")}</dd></div>
+        <div><dt>Illustrated by</dt><dd>{book.illustrator}</dd></div>
+        <div><dt>Ages</dt><dd>{book.ages}</dd></div>
+        <div><dt>Published</dt><dd><time datetime={book.published}>{book.publishedText}</time></dd></div>
+        <div><dt>Publisher</dt><dd>{book.publisher}</dd></div>
+        <div><dt>Length</dt><dd>{book.pages} pages, {book.trim} (paperback)</dd></div>
+        <div><dt>Language</dt><dd>{book.language}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="page-section" id="editions">
+    <div class="wrap split">
+      <h2>Every edition</h2>
+      <div class="editions">
+        {editions.map((edition) => (
+          <div class="edition">
+            <div>
+              <h3>{edition.format}</h3>
+              {edition.isbnText && <p>ISBN {edition.isbnText}</p>}
+            </div>
+            <p class="edition-links">
+              {edition.links.map((link) => (
+                <a
+                  class="button button-small"
+                  href={link.url}
+                  target="_blank"
+                  rel={link.url.includes("amazon.com") ? "noopener sponsored" : "noopener"}
+                  data-track={edition.id === "signed" ? "shop_click" : "buy_click"}
+                  data-retailer={slug(link.retailer)}
+                  data-edition={edition.id}
+                  data-location="book-editions"
+                >
+                  {link.retailer} <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </p>
+          </div>
+        ))}
+        <p class="editions-note">Shopping local? Ask your bookstore to order it by ISBN.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section tone-aqua">
+    <div class="wrap split">
+      <h2>After the last page</h2>
+      <div class="prose">
+        <p>The book ends by handing you a tradition: the Fairy hides, the kids seek, and kindness earns a treat, for all eight nights.</p>
+        <p class="prose-actions">
+          <a class="button" href="/kit" data-kit-open data-entry="book">Get the free 8-Night Kit</a>
+          <a class="text-link" href="/tradition">How the tradition works</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

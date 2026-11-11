@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo-wide.webp";
+import { site } from "../data/book.js";
+const { showKit = true } = Astro.props;
+---
+
+{showKit && (
+  <section class="footer-kit" aria-labelledby="footer-kit-title">
+    <div class="wrap footer-kit-layout">
+      <div>
+        <h2 id="footer-kit-title">Eight nights.<br />One free kit.</h2>
+        <p>A paper Fairy to hide, a card for every night and eight notes from her.</p>
+      </div>
+      <a class="button" href="/kit" data-kit-open data-entry="footer">Get the free 8-Night Kit</a>
+    </div>
+  </section>
+)}
+<footer>
+  <div class="wrap footer-main">
+    <Image src={logo} alt="The Hanukkah Fairy" widths={[220, 440]} sizes="220px" />
+    <p>A little fairy.<br />A whole lot of Hanukkah.</p>
+    <nav aria-label="Footer">
+      <a href="/book">The book</a>
+      <a href="/tradition">The tradition</a>
+      <a href="/eight-nights">Eight nights</a>
+      <a href="/kit">The free kit</a>
+      <a href="/#products">The collection</a>
+      <a href="/faq">Questions</a>
+      <a href={site.shop} target="_blank" rel="noopener" data-track="shop_click" data-location="footer">The Gift Shop ↗</a>
+      <a href={site.instagram} target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© 2026 The Hanukkah Fairy™</p>
+    <p>This story belongs to you.</p>
+    <a href="#top">Back to top ↑</a>
+  </div>
+  <p class="wrap footer-note">
+    As an Amazon Associate, The Hanukkah Fairy earns from qualifying purchases.
+  </p>
+</footer>

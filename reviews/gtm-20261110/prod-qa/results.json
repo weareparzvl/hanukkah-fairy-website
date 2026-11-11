@@ -1,0 +1,1588 @@
+[
+  {
+    "width": 340,
+    "height": 640,
+    "overflowX": false,
+    "scrollWidth": 340,
+    "pageHeight": 11261,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 17,
+          "y": 672,
+          "w": 306,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 2820.58,
+          "w": 300,
+          "h": 328.27
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3444.47,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 227.94,
+      "y": 281.31,
+      "w": 99.31,
+      "h": 117
+    },
+    "heroBuy": {
+      "x": 17,
+      "y": 594.41,
+      "w": 306,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 17,
+        "y": 620,
+        "w": 149,
+        "h": 44
+      },
+      {
+        "x": 174,
+        "y": 620,
+        "w": 149,
+        "h": 44
+      },
+      {
+        "x": 17,
+        "y": 672,
+        "w": 306,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/340x640.png"
+  },
+  {
+    "width": 375,
+    "height": 667,
+    "overflowX": false,
+    "scrollWidth": 375,
+    "pageHeight": 11261,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 18.75,
+          "y": 681,
+          "w": 337.5,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 2916.77,
+          "w": 335,
+          "h": 366.56
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3578.95,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 247.88,
+      "y": 281.31,
+      "w": 99.31,
+      "h": 117
+    },
+    "heroBuy": {
+      "x": 18.75,
+      "y": 603.41,
+      "w": 337.5,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 18.75,
+        "y": 629,
+        "w": 164.75,
+        "h": 44
+      },
+      {
+        "x": 191.5,
+        "y": 629,
+        "w": 164.75,
+        "h": 44
+      },
+      {
+        "x": 18.75,
+        "y": 681,
+        "w": 337.5,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/375x667.png"
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "overflowX": false,
+    "scrollWidth": 390,
+    "pageHeight": 11327,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 19.5,
+          "y": 746,
+          "w": 351,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3019.11,
+          "w": 350,
+          "h": 382.98
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3697.72,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 262.83,
+      "y": 320.59,
+      "w": 117.95,
+      "h": 138.95
+    },
+    "heroBuy": {
+      "x": 19.5,
+      "y": 668.41,
+      "w": 351,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 19.5,
+        "y": 694,
+        "w": 171.5,
+        "h": 44
+      },
+      {
+        "x": 199,
+        "y": 694,
+        "w": 171.5,
+        "h": 44
+      },
+      {
+        "x": 19.5,
+        "y": 746,
+        "w": 351,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/390x844.png"
+  },
+  {
+    "width": 402,
+    "height": 670,
+    "overflowX": false,
+    "scrollWidth": 402,
+    "pageHeight": 11265,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 20.09,
+          "y": 688,
+          "w": 361.8,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 2945.58,
+          "w": 362,
+          "h": 396.11
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3637.31,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 263.27,
+      "y": 281.31,
+      "w": 99.31,
+      "h": 117
+    },
+    "heroBuy": {
+      "x": 20.09,
+      "y": 610.41,
+      "w": 361.8,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 20.09,
+        "y": 636,
+        "w": 176.89,
+        "h": 44
+      },
+      {
+        "x": 204.98,
+        "y": 636,
+        "w": 176.91,
+        "h": 44
+      },
+      {
+        "x": 20.09,
+        "y": 688,
+        "w": 361.8,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/402x670.png"
+  },
+  {
+    "width": 414,
+    "height": 736,
+    "overflowX": false,
+    "scrollWidth": 414,
+    "pageHeight": 11260,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 20.69,
+          "y": 698,
+          "w": 372.59,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 2989.66,
+          "w": 374,
+          "h": 409.23
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3694.52,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 270.84,
+      "y": 285.81,
+      "w": 101.45,
+      "h": 119.52
+    },
+    "heroBuy": {
+      "x": 20.69,
+      "y": 620.41,
+      "w": 372.59,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 20.69,
+        "y": 646,
+        "w": 182.3,
+        "h": 44
+      },
+      {
+        "x": 210.98,
+        "y": 646,
+        "w": 182.3,
+        "h": 44
+      },
+      {
+        "x": 20.69,
+        "y": 698,
+        "w": 372.59,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/414x736.png"
+  },
+  {
+    "width": 430,
+    "height": 932,
+    "overflowX": false,
+    "scrollWidth": 430,
+    "pageHeight": 11397,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 21.5,
+          "y": 808,
+          "w": 387,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3089.33,
+          "w": 390,
+          "h": 426.75
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3811.7,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 290.25,
+      "y": 348.94,
+      "w": 131.39,
+      "h": 154.8
+    },
+    "heroBuy": {
+      "x": 21.5,
+      "y": 730.41,
+      "w": 387,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 21.5,
+        "y": 756,
+        "w": 189.5,
+        "h": 44
+      },
+      {
+        "x": 219,
+        "y": 756,
+        "w": 189.5,
+        "h": 44
+      },
+      {
+        "x": 21.5,
+        "y": 808,
+        "w": 387,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/430x932.png"
+  },
+  {
+    "width": 600,
+    "height": 800,
+    "overflowX": false,
+    "scrollWidth": 600,
+    "pageHeight": 11844,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 30,
+          "y": 704,
+          "w": 420,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3342.77,
+          "w": 560,
+          "h": 612.77
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 4251.16,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 380.22,
+      "y": 306.44,
+      "w": 111.22,
+      "h": 131.03
+    },
+    "heroBuy": {
+      "x": 30,
+      "y": 626.41,
+      "w": 420,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 30,
+        "y": 652,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 244,
+        "y": 652,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 30,
+        "y": 704,
+        "w": 420,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/600x800.png"
+  },
+  {
+    "width": 760,
+    "height": 700,
+    "overflowX": false,
+    "scrollWidth": 760,
+    "pageHeight": 12345,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 38,
+          "y": 664,
+          "w": 420,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 3716.67,
+          "w": 720,
+          "h": 787.84
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 20,
+          "y": 4800.14,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 467.33,
+      "y": 281.31,
+      "w": 99.31,
+      "h": 117
+    },
+    "heroBuy": {
+      "x": 38,
+      "y": 586.41,
+      "w": 420,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 38,
+        "y": 612,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 252,
+        "y": 612,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 38,
+        "y": 664,
+        "w": 420,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/760x700.png"
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "overflowX": false,
+    "scrollWidth": 768,
+    "pageHeight": 10017,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 44.84,
+          "y": 894,
+          "w": 420,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 32,
+          "y": 2318.58,
+          "w": 342.23,
+          "h": 374.48
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 427.98,
+          "y": 2616.64,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 468.46,
+      "y": 97.16,
+      "w": 247.63,
+      "h": 291.72
+    },
+    "heroBuy": {
+      "x": 44.84,
+      "y": 816.41,
+      "w": 420,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 44.84,
+        "y": 842,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 258.84,
+        "y": 842,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 44.84,
+        "y": 894,
+        "w": 420,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/768x1024.png"
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "overflowX": false,
+    "scrollWidth": 1024,
+    "pageHeight": 9925,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": true,
+        "box": {
+          "x": 588.5,
+          "y": 29.91,
+          "w": 78.55,
+          "h": 19.19
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 59.78,
+          "y": 638,
+          "w": 420,
+          "h": 44
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 32,
+          "y": 2131.47,
+          "w": 467.53,
+          "h": 511.59
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 571.2,
+          "y": 2499.11,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 900.03,
+      "y": 246.52,
+      "w": 122.63,
+      "h": 144.47
+    },
+    "heroBuy": {
+      "x": 59.78,
+      "y": 560.41,
+      "w": 420,
+      "h": 121.59
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 59.78,
+        "y": 586,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 273.78,
+        "y": 586,
+        "w": 206,
+        "h": 44
+      },
+      {
+        "x": 59.78,
+        "y": 638,
+        "w": 420,
+        "h": 44
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/1024x768.png"
+  },
+  {
+    "width": 1280,
+    "height": 800,
+    "overflowX": false,
+    "scrollWidth": 1280,
+    "pageHeight": 10498,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": true,
+        "box": {
+          "x": 735.36,
+          "y": 28.3,
+          "w": 91.64,
+          "h": 22.39
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 996.8,
+          "y": 652,
+          "w": 232,
+          "h": 46
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 56,
+          "y": 2272.7,
+          "w": 567.58,
+          "h": 621.06
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 713.17,
+          "y": 2701.73,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 1121.27,
+      "y": 219.87,
+      "w": 152.11,
+      "h": 179.19
+    },
+    "heroBuy": {
+      "x": 996.8,
+      "y": 506,
+      "w": 232,
+      "h": 192
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 996.8,
+        "y": 540,
+        "w": 232,
+        "h": 46
+      },
+      {
+        "x": 996.8,
+        "y": 596,
+        "w": 232,
+        "h": 46
+      },
+      {
+        "x": 996.8,
+        "y": 652,
+        "w": 232,
+        "h": 46
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/1280x800.png"
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "overflowX": false,
+    "scrollWidth": 1440,
+    "pageHeight": 10787,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": true,
+        "box": {
+          "x": 815.36,
+          "y": 28.3,
+          "w": 91.64,
+          "h": 22.39
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 1150.39,
+          "y": 752,
+          "w": 232,
+          "h": 46
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 56,
+          "y": 2456.3,
+          "w": 645.89,
+          "h": 706.75
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 802.69,
+          "y": 2928.17,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 1261.44,
+      "y": 242.33,
+      "w": 171.13,
+      "h": 201.59
+    },
+    "heroBuy": {
+      "x": 1150.39,
+      "y": 606,
+      "w": 232,
+      "h": 192
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 1150.39,
+        "y": 640,
+        "w": 232,
+        "h": 46
+      },
+      {
+        "x": 1150.39,
+        "y": 696,
+        "w": 232,
+        "h": 46
+      },
+      {
+        "x": 1150.39,
+        "y": 752,
+        "w": 232,
+        "h": 46
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/1440x900.png"
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "overflowX": false,
+    "scrollWidth": 1920,
+    "pageHeight": 11257,
+    "etsyInHtml": 0,
+    "links": [
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": true,
+        "box": {
+          "x": 1055.36,
+          "y": 28.3,
+          "w": 91.64,
+          "h": 22.39
+        }
+      },
+      {
+        "href": "#gift-shop",
+        "text": "The Gift Shop",
+        "ariaLabel": null,
+        "target": null,
+        "rel": null,
+        "cls": "",
+        "visible": false,
+        "box": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "The Fairy Gift Shop ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow hero-gift-shop",
+        "visible": true,
+        "box": {
+          "x": 1476,
+          "y": 908,
+          "w": 264,
+          "h": 46
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "",
+        "ariaLabel": "Shop The Fairy Gift Shop (opens in a new tab)",
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "gift-shop-image",
+        "visible": true,
+        "box": {
+          "x": 210,
+          "y": 2729.44,
+          "w": 730.52,
+          "h": 799.36
+        }
+      },
+      {
+        "href": "https://thehanukkahfairy.myshopify.com/",
+        "text": "Shop Here ↗",
+        "ariaLabel": null,
+        "target": "_blank",
+        "rel": "noopener",
+        "cls": "button button-yellow",
+        "visible": true,
+        "box": {
+          "x": 1052.52,
+          "y": 3247.61,
+          "w": 173.64,
+          "h": 52
+        }
+      }
+    ],
+    "broken": [],
+    "notLoaded": [],
+    "pup": {
+      "x": 1681.91,
+      "y": 249.77,
+      "w": 228.17,
+      "h": 268.8
+    },
+    "heroBuy": {
+      "x": 1476,
+      "y": 762,
+      "w": 264,
+      "h": 192
+    },
+    "heroBuyBottomButtons": [
+      {
+        "x": 1476,
+        "y": 796,
+        "w": 264,
+        "h": 46
+      },
+      {
+        "x": 1476,
+        "y": 852,
+        "w": 264,
+        "h": 46
+      },
+      {
+        "x": 1476,
+        "y": 908,
+        "w": 264,
+        "h": 46
+      }
+    ],
+    "consoleErrors": [],
+    "failedRequests": [],
+    "shot": "/Users/parzvl/hanukkah-fairy-website/site/reviews/gtm-20261110/prod-qa/1920x1080.png"
+  }
+]

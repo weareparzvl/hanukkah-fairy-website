@@ -1,0 +1,19 @@
+---
+import { buyLinks } from "../data/book.js";
+const { location, yellow = true, limit = buyLinks.length } = Astro.props;
+---
+
+{buyLinks.slice(0, limit).map((link) => (
+  <a
+    class:list={["button", { "button-yellow": yellow }]}
+    href={link.url}
+    target="_blank"
+    rel="noopener sponsored"
+    data-track="buy_click"
+    data-retailer={link.retailer}
+    data-edition={link.edition}
+    data-location={location}
+  >
+    {link.label} <span aria-hidden="true">↗</span>
+  </a>
+))}

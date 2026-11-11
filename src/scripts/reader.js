@@ -53,6 +53,10 @@
     if (active === index) return;
     active = index;
     reader.dataset.page = index;
+    if (index === last && !reader.dataset.completed) {
+      reader.dataset.completed = "1";
+      (window.dataLayer = window.dataLayer || []).push({ event: "reader_complete" });
+    }
     pages.forEach((page, i) => {
       page.inert = enhanced && i !== index;
       page.toggleAttribute("aria-hidden", enhanced && i !== index);
@@ -134,9 +138,9 @@
       draw();
     }
     if (focusForm)
-      reader.querySelector("#email").focus({ preventScroll: true });
+      reader.querySelector("#reader-email").focus({ preventScroll: true });
   }
-  document.querySelectorAll('a[href="#dibs"]').forEach((link) =>
+  document.querySelectorAll('a[href="#dibs"], a[href="/#dibs"]').forEach((link) =>
     link.addEventListener("click", (event) => {
       event.preventDefault();
       frozen = false;

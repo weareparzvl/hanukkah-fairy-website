@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo-wide.webp";
+import { site } from "../data/book.js";
+const { path } = Astro.props;
+const links = [
+  ["/book", "The book"],
+  ["/tradition", "The tradition"],
+  ["/eight-nights", "Eight nights"],
+  ["/#cast", "Meet the Fairy"],
+];
+---
+
+<header class="nav">
+  <a class="nav-logo" href="/" aria-label="The Hanukkah Fairy home">
+    <Image src={logo} alt="The Hanukkah Fairy" widths={[180, 360, 540]} sizes="180px" loading="eager" />
+  </a>
+  <nav class="desktop-nav" aria-label="Main navigation">
+    {links.map(([href, label]) => (
+      <a href={href} aria-current={path === href ? "page" : undefined}>{label}</a>
+    ))}
+    <a href={site.shop} target="_blank" rel="noopener" data-track="shop_click" data-location="nav">The Gift Shop</a>
+  </nav>
+  <div class="nav-actions">
+    <a class="button button-small" href="/kit" data-kit-open data-entry="nav">Get the free kit</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden>
+    {links.map(([href, label]) => <a href={href}>{label}</a>)}
+    <a href="/faq">Questions</a>
+    <a href={site.shop} target="_blank" rel="noopener" data-track="shop_click" data-location="menu">The Gift Shop</a>
+    <a href="/kit" data-kit-open data-entry="menu">Get the free kit</a>
+  </nav>
+</header>

@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import KitBand from "../components/KitBand.astro";
+import { hanukkah } from "../data/book.js";
+import { breadcrumbs, page } from "../data/schema.js";
+import fairyWand from "../assets/fairy-wand.png";
+
+const title = "The Hanukkah Fairy Tradition | Hanukkah Hide-and-Seek for All Eight Nights";
+const description =
+  "How the Hanukkah Fairy tradition works: she hides, the kids seek, and kindness earns a treat on each of the eight nights of Hanukkah. No naughty list.";
+const schema = [page("/tradition", title, description), breadcrumbs([["The tradition", "/tradition"]])];
+const how = [
+  ["Read together.", "Start with the book on the first night, or any night before it. The story is where the Fairy, Pup and Grizzlebottom come from, and the tradition is in its rhymes."],
+  ["Find the Fairy.", "After bedtime, a grown-up hides her somewhere new. The kids go looking in the morning or after candles. The kitchen shelf and the refrigerator are her favorite spots."],
+  ["Get a little treat.", "Find her, be helpful and kind, and you might get a treat. Chocolate gelt and donuts are the classics. Small is the point."],
+  ["Leave a little nosh.", "Set out a jelly donut when the lights go off. Fairies get hungry, too. So do grown-ups, as it happens."],
+];
+---
+
+<Base title={title} description={description} path="/tradition" schema={schema}>
+  <PageHero tone="aqua" crumb="The tradition">
+    <Fragment slot="title">She hides.<br />You seek.</Fragment>
+    <p class="page-refrain">Be kind. Get a treat.</p>
+    <p>A Hanukkah tradition for all eight nights. It starts with a picture book and ends up in your kitchen cabinets.</p>
+    <Image slot="art" class="page-hero-figure" src={fairyWand} alt="The Hanukkah Fairy with her star wand" widths={[400, 700, 1000]} sizes="(max-width: 760px) 80vw, 40vw" loading="eager" />
+  </PageHero>
+
+  <section class="page-section">
+    <div class="wrap split">
+      <h2>How it works</h2>
+      <ol class="how-list">
+        {how.map(([name, text]) => <li><h3>{name}</h3><p>{text}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="page-section tone-yellow">
+    <div class="wrap split">
+      <h2>No naughty list</h2>
+      <div class="prose">
+        <p>The Fairy isn’t watching anyone, and nobody reports back. Kindness earns a treat. That is the whole rule.</p>
+        <p>Kids in boots and a blue dress can be the Fairy, too. The book says so on its last page: this story belongs to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section">
+    <div class="wrap split">
+      <h2>What you need</h2>
+      <div class="prose">
+        <ul class="plain-list">
+          <li><strong>The book.</strong> <a href="/book">Hardcover, paperback or ebook</a>.</li>
+          <li><strong>Something to hide.</strong> The free kit has a paper Fairy to cut out. The plush is still in development.</li>
+          <li><strong>Eight small treats.</strong> Gelt, a donut, a sticker. One a night.</li>
+        </ul>
+        <p>Hanukkah {hanukkah.year} begins at sundown on {hanukkah.first}, and the eighth candle is lit on {hanukkah.last}. <a href="/eight-nights">See an idea for every night</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section tone-paper-deep">
+    <div class="wrap split">
+      <h2>Good questions</h2>
+      <div class="prose qa">
+        <h3>Is it like Elf on the Shelf?</h3>
+        <p>It is a nightly hide-and-seek, so families who know that tradition will feel at home. The Fairy has her own story: an angel in sneakers, a gelt-stealing troll and eight nights of candles. And she never tattles.</p>
+        <h3>Does it replace lighting the menorah?</h3>
+        <p>No. It sits beside the candles, the dreidels and the latkes you already love. Light first, then go looking.</p>
+        <h3>What if she doesn’t move one night?</h3>
+        <p>She was tired. Big boots. Try again tomorrow.</p>
+      </div>
+    </div>
+  </section>
+
+  <KitBand id="tradition-kit" entry="tradition-page" title="Everything for|all eight nights" />
+</Base>

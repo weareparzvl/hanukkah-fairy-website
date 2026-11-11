@@ -463,3 +463,8 @@
     scroll-margin-top: var(--nav);
   }
 }
+
+/* Static layout (reduced motion, short screens): the turning-cover copy is never shown. */
+.reader:not(.is-enhanced) .reader-cover-inside {
+  display: none;
+}

@@ -1,0 +1,28 @@
+---
+import KitForm from "./KitForm.astro";
+import KitStack from "./KitStack.astro";
+---
+
+<dialog class="kit-modal" id="kit-modal" aria-labelledby="kit-modal-title">
+  <button class="kit-close" type="button" data-kit-close aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+  <div class="kit-modal-art"><KitStack sizes="220px" /></div>
+  <div class="kit-modal-copy">
+    <p class="kit-flag">Free printable</p>
+    <h2 id="kit-modal-title">The Fairy’s<br />8-Night Kit</h2>
+    <p class="kit-modal-lede">
+      A paper Fairy to hide, a card for every night and eight notes she leaves behind.
+    </p>
+    <KitForm id="modal" entry="modal" />
+  </div>
+</dialog>
+
+<aside class="kit-nudge" id="kit-nudge" aria-label="Free 8-Night Kit" hidden>
+  <button class="kit-close" type="button" data-nudge-close aria-label="Dismiss">
+    <span aria-hidden="true">×</span>
+  </button>
+  <p class="kit-nudge-title">Eight nights, sorted.</p>
+  <p>The Fairy’s 8-Night Kit is free to print.</p>
+  <a class="button button-yellow button-small" href="/kit" data-kit-open data-entry="nudge">Get the free kit</a>
+</aside>

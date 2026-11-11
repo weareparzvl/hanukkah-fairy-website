@@ -1,0 +1,23 @@
+---
+import KitForm from "./KitForm.astro";
+import KitStack from "./KitStack.astro";
+const { id, entry, title = "The Fairy’s|8-Night Kit" } = Astro.props;
+const [first, second] = title.split("|");
+---
+
+<section class="kit-band" aria-labelledby={`${id}-title`}>
+  <div class="wrap kit-band-layout">
+    <KitStack sizes="(max-width: 760px) 62vw, 30vw" />
+    <div class="kit-band-copy">
+      <p class="kit-flag">Free printable</p>
+      <h2 id={`${id}-title`}>{first}<br />{second}</h2>
+      <ul class="kit-list">
+        <li><strong>A paper Fairy to hide.</strong> Pup comes too.</li>
+        <li><strong>A card for every night.</strong> A hiding spot and a kind thing on each.</li>
+        <li><strong>Eight notes from the Fairy.</strong> Leave one wherever she hides.</li>
+        <li><strong>A menorah to color.</strong> One flame a night.</li>
+      </ul>
+      <KitForm id={id} entry={entry} />
+    </div>
+  </div>
+</section>

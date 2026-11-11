@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import KitBand from "../components/KitBand.astro";
+import { hanukkah } from "../data/book.js";
+import { nights } from "../data/nights.js";
+import { breadcrumbs, page } from "../data/schema.js";
+
+const title = "Eight Nights of Hanukkah Ideas for Kids | The Hanukkah Fairy";
+const description =
+  "A simple idea for each of the eight nights of Hanukkah 2026: something to do together, a spot to hide the Fairy and one kind thing to try. Dec 4 to Dec 11.";
+const schema = [page("/eight-nights", title, description), breadcrumbs([["Eight nights", "/eight-nights"]])];
+---
+
+<Base title={title} description={description} path="/eight-nights" schema={schema}>
+  <PageHero tone="night" crumb="Eight nights">
+    <Fragment slot="title">Eight nights.<br />All yours.</Fragment>
+    <p>One small idea for each night of Hanukkah: something to do together, a spot to hide the Fairy and a kind thing to try.</p>
+    <p class="page-date">Hanukkah {hanukkah.year} begins at sundown on {hanukkah.first}.</p>
+    <p class="page-hero-actions">
+      <a class="button button-yellow" href="/kit" data-kit-open data-entry="eight-nights-hero">Get the printable kit</a>
+      <button class="text-link print-button" type="button" data-print>Print this page</button>
+    </p>
+  </PageHero>
+
+  <section class="page-section nights-page">
+    <div class="wrap">
+      <ol class="night-list">
+        {nights.map((night) => (
+          <li class="night-row" id={`night-${night.n}`}>
+            <div class="night-row-head">
+              <p class="night-row-number">Night {night.n}</p>
+              <p class="night-row-date">{night.date}</p>
+              <p class="night-row-theme">{night.theme}</p>
+            </div>
+            <div class="night-row-body">
+              <h2>{night.title}</h2>
+              <p>{night.activity}</p>
+              <dl>
+                <div><dt>Where the Fairy hides</dt><dd>{night.hide}</dd></div>
+                <div><dt>Tonight’s kind thing</dt><dd>{night.kind}</dd></div>
+              </dl>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p class="nights-after">New to the Fairy? <a href="/tradition">Here is how the tradition works</a>, and <a href="/book">here is the book</a> it comes from.</p>
+    </div>
+  </section>
+
+  <KitBand id="nights-kit" entry="eight-nights-page" title="Take it off|the screen" />
+</Base>

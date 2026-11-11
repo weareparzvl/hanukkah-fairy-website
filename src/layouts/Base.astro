@@ -1,0 +1,95 @@
+---
+import "@fontsource-variable/bricolage-grotesque/wght.css";
+import "@fontsource-variable/dm-sans/wght.css";
+import "@fontsource/bagel-fat-one/latin-400.css";
+import "../styles/site.css";
+import "../styles/pages.css";
+import "../styles/kit.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import KitModal from "../components/KitModal.astro";
+import { site } from "../data/book.js";
+import { organization, website } from "../data/schema.js";
+
+const {
+  title,
+  description,
+  path = Astro.url.pathname,
+  schema = [],
+  ogType = "website",
+  noindex = false,
+  footerKit = true,
+} = Astro.props;
+const canonical = `${site.origin}${path === "/" ? "/" : path}`;
+const graph = { "@context": "https://schema.org", "@graph": [website, organization, ...schema] };
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline define:vars={{ gtm: site.gtm }}>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", gtm);
+    </script>
+    <meta name="theme-color" content="#fff8ee" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noindex ? "noindex" : "index, follow, max-image-preview:large"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="The Hanukkah Fairy" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={`${site.origin}/og-cover.jpg`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:image:alt" content="The Hanukkah Fairy front cover, featuring the Fairy in her blue dress above a neighborhood street" />
+    {ogType === "book" && (
+      <>
+        <meta property="book:author" content="Elise Dykowsky" />
+        <meta property="book:author" content="Donny Dykowsky" />
+        <meta property="book:isbn" content="9798998007903" />
+        <meta property="book:release_date" content="2026-10-15" />
+      </>
+    )}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site.origin}/og-cover.jpg`} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <slot name="head" />
+    <script type="application/ld+json" set:html={JSON.stringify(graph)} />
+  </head>
+  <body id="top">
+    <noscript
+      ><iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${site.gtm}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"></iframe></noscript
+    >
+    <a class="skip" href="#main">Skip to content</a>
+    <Header path={path} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer showKit={footerKit} />
+    <KitModal />
+    <script>
+      import "../scripts/site.js";
+    </script>
+  </body>
+</html>

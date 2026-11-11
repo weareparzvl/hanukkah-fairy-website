@@ -79,7 +79,7 @@ test("local CSV persists complete rows and excludes duplicates", async () => {
     const csv = await readFile(process.env.SIGNUPS_CSV_PATH, "utf8");
     assert.ok(csv.startsWith(HEADER));
     assert.equal(csv.trim().split("\n").length, 3);
-    assert.match(csv, /"website","launch-updates-2026-09"/);
+    assert.match(csv, /"website","kit-2026-11"/);
   } finally {
     delete process.env.SIGNUPS_CSV_PATH;
     await rm(dir, { recursive: true });
@@ -93,6 +93,8 @@ test("optional contact details are not required, are bounded, and stay spreadshe
     name: "",
     address: "",
     phone: "",
+    entry: "",
+    readsWith: "",
   });
   assert.equal(
     normalizeSignup({ email: "parent@example.com", name: "x".repeat(121) }),
@@ -132,10 +134,47 @@ test("existing four-column CSV upgrades without losing subscriber records", asyn
   assert.ok(stored.startsWith(HEADER));
   assert.ok(
     stored.includes(
-      '"earlier@example.com","2026-09-27T00:00:00Z","website","launch-updates-2026-09","","",""',
+      '"earlier@example.com","2026-09-27T00:00:00Z","website","launch-updates-2026-09","","","","",""',
     ),
   );
   assert.ok(stored.includes('"New Parent"'));
   assert.equal(stored.trim().split("\n").length, 3);
   assert.equal(upgradeCsv(stored), stored);
+});
+
+test("seven-column CSV upgrades to the kit columns without losing records", async () => {
+  const { CONTACT_HEADER, upgradeCsv } = await import("../lib/signups.mjs");
+  const row =
+    '"earlier@example.com","2026-10-01T00:00:00Z","website","launch-updates-2026-09","Ann","1 Main St","555"';
+  const upgraded = upgradeCsv(CONTACT_HEADER + row + "\r\n");
+  assert.equal(upgraded, HEADER + row + ',"",""\r\n');
+});
+
+test("kit signup records its entry point; step two fills who they read with", async () => {
+  let stored = HEADER;
+  const store = {
+    read: async () => ({ csv: stored, etag: "1" }),
+    write: async (path, body) => {
+      stored = body;
+    },
+  };
+  await saveBlobSignup({ email: "p@example.com", entry: "hero" }, store);
+  assert.match(stored, /"p@example.com",.*"kit-2026-11","","","","hero",""\r\n$/);
+  await saveBlobSignup(
+    { email: "p@example.com", readsWith: "grandkids", followUp: true },
+    store,
+  );
+  assert.match(stored, /"hero","grandkids"\r\n$/);
+  assert.equal(stored.trim().split("\n").length, 2);
+  // Unknown values and unknown addresses change nothing.
+  const before = stored;
+  await saveBlobSignup(
+    { email: "p@example.com", readsWith: "=cmd", followUp: true },
+    store,
+  );
+  await saveBlobSignup(
+    { email: "stranger@example.com", readsWith: "kids", followUp: true },
+    store,
+  );
+  assert.equal(stored, before);
 });

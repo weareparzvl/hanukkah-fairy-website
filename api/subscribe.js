@@ -15,14 +15,13 @@ function rateLimited(key) {
   return ++current.count > 8;
 }
 function reply(res, code, payload, html = false) {
-  res.statusCode = code;
+  res.statusCode = html ? 303 : code;
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("X-Content-Type-Options", "nosniff");
   if (html) {
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.end(
-      `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>The Hanukkah Fairy · Signup</title><link rel="stylesheet" href="/css/site.css"><main class="wrap privacy-page"><p class="eyebrow">The Hanukkah Fairy</p><h1>${payload.ok ? "You’re on the list." : "Let’s try that again."}</h1><p>${payload.ok ? "A little magic is headed your way. Thanks for joining us." : "We couldn’t save your signup. Please return to the form and try again."}</p><a class="button" href="/#dibs">Back to The Hanukkah Fairy</a></main></html>`,
-    );
+    // Ordinary form posts (no JavaScript) land on a real page either way.
+    res.setHeader("Location", payload.ok ? "/kit/thanks" : "/kit?retry=1");
+    res.end();
   } else {
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(payload));
@@ -84,9 +83,19 @@ export default async function handler(req, res) {
     name: data.name,
     address: data.address,
     phone: data.phone,
+    entry: data.entry,
+    readsWith: data.readsWith,
   });
-  if (!record || (data.consent !== true && data.consent !== "on"))
+  // The second step only adds who they read with to a row that already has consent.
+  const followUp = data.step === 2 || data.step === "2";
+  if (
+    !record ||
+    (followUp
+      ? !record.readsWith
+      : data.consent !== true && data.consent !== "on")
+  )
     return reply(res, 400, { ok: false }, html);
+  if (followUp) record.followUp = true;
   try {
     await saveSignup(record);
     return reply(res, 200, { ok: true }, html);

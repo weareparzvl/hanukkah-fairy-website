@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import KitForm from "../components/KitForm.astro";
+import KitStack from "../components/KitStack.astro";
+import { hanukkah } from "../data/book.js";
+import { breadcrumbs, page } from "../data/schema.js";
+import p2 from "../assets/kit/page-2.png";
+import p3 from "../assets/kit/page-3.png";
+import p5 from "../assets/kit/page-5.png";
+import p6 from "../assets/kit/page-6.png";
+
+const title = "The Fairy’s 8-Night Kit | Free Hanukkah Printable for Kids";
+const description =
+  "A free printable for the eight nights of Hanukkah: a paper Fairy to hide, a card for every night, eight notes from the Fairy and a menorah to color.";
+const schema = [page("/kit", title, description), breadcrumbs([["The free kit", "/kit"]])];
+const inside = [
+  [p2, "A paper Fairy to hide", "Cut her out and hide her somewhere new each night. Pup comes too."],
+  [p3, "A card for every night", "Each one has something to do together, a hiding spot and a kind thing to try."],
+  [p5, "Eight notes from the Fairy", "Fill one in after bedtime and leave it wherever she hides."],
+  [p6, "A menorah to color", "One flame a night, until all eight are lit."],
+];
+---
+
+<Base title={title} description={description} path="/kit" schema={schema} footerKit={false}>
+  <PageHero tone="yellow" crumb="The free kit">
+    <Fragment slot="title">The Fairy’s<br />8-Night Kit</Fragment>
+    <p>A free printable for all eight nights. Six pages, letter size, ready for the first candle on {hanukkah.first}.</p>
+    <p class="kit-retry" data-kit-retry hidden>That didn’t go through. Check the email address and the box, then try once more.</p>
+    <KitForm id="kit-page" entry="kit-page" />
+    <KitStack slot="art" sizes="(max-width: 760px) 62vw, 32vw" loading="eager" />
+  </PageHero>
+
+  <section class="page-section">
+    <div class="wrap">
+      <h2 class="section-title">What’s inside</h2>
+      <ul class="inside-grid">
+        {inside.map(([image, name, text]) => (
+          <li>
+            <Image src={image} alt="" widths={[240, 360, 480, 720]} sizes="(max-width: 760px) 44vw, 22vw" />
+            <h3>{name}</h3>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-section tone-aqua">
+    <div class="wrap split">
+      <h2>How to use it</h2>
+      <div class="prose">
+        <p>Print it at home. Cut out the Fairy. Read the book together, then hide her after bedtime and leave a note. In the morning, the hunt is on.</p>
+        <p class="prose-actions">
+          <a class="text-link" href="/tradition">How the tradition works</a>
+          <a class="text-link" href="/book">Get the book</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

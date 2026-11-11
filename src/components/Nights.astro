@@ -1,0 +1,29 @@
+---
+// All eight nights are in the HTML. The candles only choose which one is showing.
+import { nights } from "../data/nights.js";
+---
+
+<div class="night-card" data-nights>
+  <div class="candle-picker" role="group" aria-label="Choose a night of Hanukkah">
+    {nights.map((night, index) => (
+      <>
+        {index === 4 && (
+          <span class="shamash" aria-hidden="true"><span class="flame"></span><span class="candle"></span></span>
+        )}
+        <button type="button" aria-label={`Night ${night.n}`} aria-pressed={index === 0 ? "true" : "false"} data-night={index}>
+          <span class="flame"></span><span class="candle"></span><span>{night.n}</span>
+        </button>
+      </>
+    ))}
+  </div>
+  <div class="night-panels" aria-live="polite">
+    {nights.map((night, index) => (
+      <article class:list={["night-copy", { "is-active": index === 0 }]} data-night-panel={index}>
+        <p class="eyebrow">Night {night.word} / {night.theme}</p>
+        <h3>{night.title}</h3>
+        <p>{night.activity}</p>
+      </article>
+    ))}
+  </div>
+  <p class="night-footnote">Small moments. Memories that stay.</p>
+</div>

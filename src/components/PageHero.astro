@@ -1,0 +1,14 @@
+---
+const { tone = "sky", crumb, id = "page-title" } = Astro.props;
+---
+
+<section class:list={["page-hero", `tone-${tone}`]} aria-labelledby={id}>
+  <div class:list={["wrap", "page-hero-layout", { "has-art": Astro.slots.has("art") }]}>
+    <div class="page-hero-copy">
+      <p class="crumb"><a href="/">Home</a> <span aria-hidden="true">/</span> {crumb}</p>
+      <h1 id={id}><slot name="title" /></h1>
+      <div class="page-lede"><slot /></div>
+    </div>
+    {Astro.slots.has("art") && <div class="page-hero-art"><slot name="art" /></div>}
+  </div>
+</section>
