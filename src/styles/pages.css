@@ -243,7 +243,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 14px 20px;
+  flex-wrap: wrap;
   padding: 20px 0;
   border-bottom: 1px solid var(--line);
 }
@@ -261,7 +262,6 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
-  flex: none;
 }
 .editions-note {
   font-size: 14px;
@@ -547,5 +547,20 @@
   .night-row-body > p,
   .night-row-body dd {
     font-size: 10.5pt;
+  }
+}
+
+/* Tablets and small laptops: the kit button joins the caption, so tighten it to keep clear of the wordmark. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .hero-caption > p:first-child {
+    font-size: 27px;
+  }
+  .hero-details {
+    margin-top: 10px;
+  }
+  .hero-caption .hero-kit {
+    margin-top: 14px;
+    min-height: 46px;
+    padding: 11px 20px;
   }
 }
