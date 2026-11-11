@@ -60,3 +60,12 @@ Harley, 2026-11-11: "push it live to a preview page like hanukkahfairy.com/v2 - 
 - How it ships: branch `release/v2-preview` (worktree `/Users/parzvl/hanukkah-fairy-website/site-v2-release`) is the live site's branch plus a prebuilt `v2/` folder. To update: here run `npm run build:v2`, replace `v2/` in the worktree with `dist-v2/`, commit, `vercel deploy --scope parzvl --yes`, verify, then promote on Harley's go.
 - Verified on the live domain: 22 of 22 flow checks and the 13-size check on 7 pages.
 - At launch: deploy `rebuild/kit-2026-11` itself to production (indexable, real signup file) and drop /v2 with a redirect to `/`.
+
+## Phone fixes (live on /v2 2026-11-11, about 2:40 AM ET)
+
+Harley, 2026-11-11: "Mobile glitches a little bit. "A little scroll. A little magic." shouldnt show on mobile"
+
+- The scroll cue (hero and the fixed follower) is hidden at 760px and below. Desktop keeps it. This narrows the 2026-09-27 lock, which kept the cue fixed through the book.
+- Load jump on phones fixed: the hero caption and buy buttons moved after scripts loaded (one layout shift, 0.0256). The space is now sized by a small inline script before first paint, and the two fonts are preloaded. Measured after: 0 shifts on `/`, `/book`, `/kit`, `/eight-nights` (iPhone 13 profile, full scroll down and back).
+- Reader on phones: its mode is now chosen from the small viewport height and ignores height-only resizes, so it no longer switches layout when the browser toolbar hides. Not reproducible in headless Chrome; needs a look on a real phone.
+- Production deployment 8fNJZ7L4XaFiPSEZ7oKEBjpqumWy. Root home page hash unchanged (1ed375edff). On the live /v2: cue hidden on phone at four scroll positions, 13-size check clean, flow checks pass.
