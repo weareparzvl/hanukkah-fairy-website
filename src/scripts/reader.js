@@ -94,6 +94,11 @@
   function queueDraw() {
     if (!frame) frame = requestAnimationFrame(draw);
   }
+  // 100svh stays the same while a phone's toolbar slides away; innerHeight does not.
+  const probe = document.createElement("div");
+  probe.style.cssText = "position:fixed;top:0;left:0;width:0;height:100svh;visibility:hidden;pointer-events:none";
+  document.body.append(probe);
+  let lastWidth = innerWidth;
   function updateMode() {
     if (
       reader.contains(document.activeElement) &&
@@ -103,7 +108,7 @@
     const minimumHeight = innerWidth < 351 ? 840 : mobile.matches ? 760 : 760;
     enhanced =
       !reduce.matches &&
-      innerHeight >= minimumHeight &&
+      (probe.offsetHeight || innerHeight) >= minimumHeight &&
       (mobile.matches || innerWidth >= 1040);
     reader.classList.toggle("is-enhanced", enhanced);
 
@@ -166,7 +171,16 @@
     }, 0),
   );
   addEventListener("scroll", queueDraw, { passive: true });
-  addEventListener("resize", updateMode, { passive: true });
+  addEventListener(
+    "resize",
+    () => {
+      // Phones fire resize whenever the toolbar moves. Only a width change is a real resize there.
+      if (mobile.matches && innerWidth === lastWidth) return queueDraw();
+      lastWidth = innerWidth;
+      updateMode();
+    },
+    { passive: true },
+  );
   reduce.addEventListener("change", updateMode);
   updateMode();
   document.fonts.ready.then(queueDraw);

@@ -662,3 +662,10 @@
     order: 9;
   }
 }
+
+/* Phones: no scroll cue (Harley, 2026-11-11). */
+@media (max-width: 760px) {
+  .scroll-cue {
+    display: none !important;
+  }
+}

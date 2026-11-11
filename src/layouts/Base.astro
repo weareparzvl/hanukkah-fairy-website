@@ -9,6 +9,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import KitModal from "../components/KitModal.astro";
 import { site } from "../data/book.js";
+import displayFont from "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url";
+import bodyFont from "@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url";
 import { organization, website } from "../data/schema.js";
 
 const {
@@ -41,6 +43,8 @@ const graph = { "@context": "https://schema.org", "@graph": [website, organizati
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", gtm);
     </script>
+    <link rel="preload" as="font" type="font/woff2" href={displayFont} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={bodyFont} crossorigin />
     <meta name="theme-color" content="#fff8ee" />
     <title>{title}</title>
     <meta name="description" content={description} />

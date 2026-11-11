@@ -61,6 +61,22 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
     </div>
   </section>
 
+  <script is:inline>
+    // Runs before first paint so the caption and buttons do not jump on phones.
+    (function fit() {
+      var hero = document.querySelector(".hero");
+      if (!hero || !matchMedia("(max-width: 760px)").matches) return;
+      var caption = hero.querySelector(".hero-caption");
+      var pup = hero.querySelector(".hero-scene .hero-pup");
+      for (var i = 0; i < 3; i++) {
+        var current = parseFloat(getComputedStyle(hero).getPropertyValue("--hero-mobile-extension")) || 0;
+        var needed = Math.ceil(Math.max(0, pup.getBoundingClientRect().bottom + 16 - (caption.getBoundingClientRect().top - current)));
+        if (Math.abs(needed - current) <= 0.5) break;
+        hero.style.setProperty("--hero-mobile-extension", needed + "px");
+      }
+    })();
+  </script>
+
   <section class="brand-statement" aria-labelledby="brand-title">
     <div class="wrap">
       <h2 id="brand-title">A new Hanukkah<br />tradition is here.</h2>
