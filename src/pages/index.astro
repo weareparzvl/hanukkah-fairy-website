@@ -31,9 +31,8 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
 ---
 
 <Base title={title} description={description} path="/" schema={schema} ogType="book" footerKit={false}>
-  <link slot="head" rel="preload" as="image" href={nightscape.src} fetchpriority="high" />
   <section class="hero" aria-labelledby="hero-title">
-    <Image class="hero-city" src={nightscape} alt="" widths={[768, 1152, 1536]} sizes="(max-width: 760px) 300vw, 100vw" loading="eager" fetchpriority="high" />
+    <Image class="hero-city" src={nightscape} alt="" widths={[768, 1152, 1536]} sizes="(max-width: 760px) 1152px, 100vw" quality={62} loading="eager" fetchpriority="high" />
     <div class="hero-scene">
       <Image class="hero-pup" src={pupSign} alt="Pup holding an “Out now!” sign" widths={[200, 400, 764]} sizes="(max-width: 760px) 160px, 14vw" loading="eager" />
     </div>
