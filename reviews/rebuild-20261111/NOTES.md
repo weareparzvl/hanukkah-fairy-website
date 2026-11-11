@@ -48,3 +48,15 @@ Not changed, with reasons:
 4. Confirm the Amazon Associates tag `thehanukkahfa-20` (taken from the old redirect) belongs to the owners.
 5. Second cut: `/gifts`, `/characters`, `/authors`, `/read-aloud`, `/press`.
 6. Three QA rows sit in the preview CSV (`qa-preview-*@example.com`); production CSV untouched.
+
+## Approval preview at /v2 (live 2026-11-11, about 1:45 AM ET)
+
+Harley, 2026-11-11: "push it live to a preview page like hanukkahfairy.com/v2 - make it so it's not searchable until we get Donny and Elise's approval"
+
+- Live at https://thehanukkahfairy.com/v2 and https://www.hanukkahfairy.com/v2. Production deployment: https://vercel.com/parzvl/hanukkah-fairy-website/HcjesdK9KQZ81C9dCpudYhmmcW6F
+- Not searchable: every /v2 page has `<meta name="robots" content="noindex, nofollow">` and every /v2 response (pages, PDF, images) carries `X-Robots-Tag: noindex, nofollow`. /v2 is not in the sitemap, and the live site does not link to it. robots.txt is unchanged on purpose: blocking /v2 there would stop crawlers from seeing the noindex.
+- The live site at the root is unchanged: `/`, `/js/site.js`, `/css/site.css`, `/privacy`, `/robots.txt` and `/sitemap.xml` hash the same before and after.
+- Signups made on /v2 go to `production/v2-preview-signups.csv` through `/api/subscribe-v2`, not to the live list. It holds QA rows (`qa-*@example.com`).
+- How it ships: branch `release/v2-preview` (worktree `/Users/parzvl/hanukkah-fairy-website/site-v2-release`) is the live site's branch plus a prebuilt `v2/` folder. To update: here run `npm run build:v2`, replace `v2/` in the worktree with `dist-v2/`, commit, `vercel deploy --scope parzvl --yes`, verify, then promote on Harley's go.
+- Verified on the live domain: 22 of 22 flow checks and the 13-size check on 7 pages.
+- At launch: deploy `rebuild/kit-2026-11` itself to production (indexable, real signup file) and drop /v2 with a redirect to `/`.
