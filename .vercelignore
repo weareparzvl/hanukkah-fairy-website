@@ -2,10 +2,10 @@
 .env*
 .claude-flow
 node_modules
-data
-exports
-qa
-tests
+/data/
+/exports/
+/qa/
+/tests/
 *.md
 *.db
 *.rvf

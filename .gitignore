@@ -39,11 +39,11 @@ dist/
 .astro/
 scripts/kit/kit.html
 scripts/kit/img/
-data/
-exports/
+/data/
+/exports/
 .env*
 .vercel/
-qa/
+/qa/
 
 # Review evidence: screenshots and page snapshots stay local
 reviews/*/shots/
