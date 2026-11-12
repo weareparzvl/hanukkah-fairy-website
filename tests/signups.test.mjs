@@ -178,3 +178,18 @@ test("kit signup records its entry point; step two fills who they read with", as
   );
   assert.equal(stored, before);
 });
+
+test("mailchimp: email only, list ids and an empty bot trap", async () => {
+  const { mailchimpUrl, addToMailchimp } = await import("../lib/mailchimp.mjs");
+  const url = new URL(mailchimpUrl("a+b@example.com"));
+  assert.equal(url.pathname, "/subscribe/post-json");
+  assert.equal(url.searchParams.get("EMAIL"), "a+b@example.com");
+  assert.equal(url.searchParams.get("b_29369f3f907c98ca093dc4921_5b1a110c2d"), "");
+  assert.deepEqual([...url.searchParams.keys()].sort(), ["EMAIL", "b_29369f3f907c98ca093dc4921_5b1a110c2d", "c", "f_id", "id", "u"]);
+  const ok = await addToMailchimp("a@example.com", { fetchImpl: async () => ({ text: async () => 'cb({"result":"success","msg":"Thank you"})' }) });
+  assert.equal(ok.ok, true);
+  const dup = await addToMailchimp("a@example.com", { fetchImpl: async () => ({ text: async () => 'cb({"result":"error","msg":"a@example.com is already subscribed"})' }) });
+  assert.equal(dup.already, true);
+  const down = await addToMailchimp("a@example.com", { fetchImpl: async () => { throw new TypeError("net"); } });
+  assert.equal(down.ok, false);
+});

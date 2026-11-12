@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
-import "../styles/reader.css";
 import BuyLinks from "../components/BuyLinks.astro";
 import KitForm from "../components/KitForm.astro";
 import KitBand from "../components/KitBand.astro";
@@ -14,6 +13,7 @@ import logo from "../assets/logo-wide.webp";
 import pupSign from "../assets/pup-sign.webp";
 import fairyFlying from "../assets/fairy-flying.png";
 import fairyWand from "../assets/fairy-wand.png";
+import fairyWings from "../assets/fairy-wings.png";
 import cover from "../assets/cover.webp";
 import productBook from "../assets/product-book.webp";
 import productDoll from "../assets/product-doll.webp";
@@ -91,7 +91,7 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
     <div class="wrap">
       <div class="ritual-stage">
         <div class="ritual-illustration">
-          <Image src={fairyWand} alt="The Hanukkah Fairy with her star wand, ready for a little hide-and-seek" widths={[400, 700, 1000, 1159]} sizes={portrait} />
+          <Image src={fairyWings} alt="The Hanukkah Fairy flying on her wings, star wand out, ready for a little hide-and-seek" widths={[400, 700, 1000, 1600]} sizes={portrait} />
         </div>
         <div class="ritual-copy">
           <h2 id="ritual-title">She hides.<br />You seek.</h2>
@@ -128,6 +128,20 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
         </p>
         <div class="book-feature-buy"><BuyLinks location="home-book" yellow={false} /></div>
         <a class="text-link" href="/book">Every edition and the book’s details</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="gift-shop" id="gift-shop" aria-labelledby="gift-shop-title">
+    <div class="wrap gift-shop-layout">
+      <a class="gift-shop-image" href={site.shop} target="_blank" rel="noopener" aria-label="Shop The Fairy Gift Shop (opens in a new tab)" data-track="shop_click" data-location="gift-shop-image">
+        <Image src={giftShop} alt="Hanukkah gifts: Serious Chocolate Gelt Problem, Nosh Club and Mazel Babe sweatshirts, with a Latke Lover tote bag" widths={[400, 700, 1199]} sizes="(max-width: 760px) 90vw, 48vw" />
+      </a>
+      <div class="gift-shop-copy">
+        <p class="gift-shop-label">A little more Hanukkah magic</p>
+        <h2 id="gift-shop-title">The Fairy<br />Gift Shop</h2>
+        <p>For latke lovers, nosh club members, and anyone with a serious chocolate-gelt problem.</p>
+        <a class="button button-yellow" href={site.shop} target="_blank" rel="noopener" data-track="shop_click" data-location="gift-shop">Shop Here <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
@@ -173,20 +187,6 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
     </div>
   </section>
 
-  <section class="gift-shop" id="gift-shop" aria-labelledby="gift-shop-title">
-    <div class="wrap gift-shop-layout">
-      <a class="gift-shop-image" href={site.shop} target="_blank" rel="noopener" aria-label="Shop The Fairy Gift Shop (opens in a new tab)" data-track="shop_click" data-location="gift-shop-image">
-        <Image src={giftShop} alt="Hanukkah gifts: Serious Chocolate Gelt Problem, Nosh Club and Mazel Babe sweatshirts, with a Latke Lover tote bag" widths={[400, 700, 1199]} sizes="(max-width: 760px) 90vw, 48vw" />
-      </a>
-      <div class="gift-shop-copy">
-        <p class="gift-shop-label">A little more Hanukkah magic</p>
-        <h2 id="gift-shop-title">The Fairy<br />Gift Shop</h2>
-        <p>For latke lovers, nosh club members, and anyone with a serious chocolate-gelt problem.</p>
-        <a class="button button-yellow" href={site.shop} target="_blank" rel="noopener" data-track="shop_click" data-location="gift-shop">Shop Here <span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </section>
-
   <section class="cast-world" id="cast" aria-labelledby="cast-title">
     <div class="cast-intro wrap">
       <h2 id="cast-title">Four pals.<br class="br-wide" /> One very fluffy troll.</h2>
@@ -220,11 +220,11 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
     <article class="cast-feature cast-angel">
       <div class="wrap cast-layout">
         <div class="cast-portrait">
-          <Image src={angel} alt="The angel in pink glasses and sneakers holds a glowing candle" widths={[400, 700, 900]} sizes={portrait} />
+          <Image src={angel} alt="Harold, the angel in pink glasses and sneakers, holds a glowing candle" widths={[400, 700, 900]} sizes={portrait} />
         </div>
         <div class="cast-description">
           <h3>The angel<br />in sneakers.</h3>
-          <p>Pink glasses. Tiny wings. The warmest welcome on the block. He sees something special in our fairy before she sees it in herself.</p>
+          <p>Meet Harold. Pink glasses. Tiny wings. The warmest welcome on the block. He sees something special in our fairy before she sees it in herself.</p>
           <span>Helping someone find their spark.</span>
         </div>
       </div>
@@ -267,25 +267,14 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
     </div>
   </section>
 
-  <section class="reader" id="story" aria-label="Open The Hanukkah Fairy book" data-page="0">
-    <div class="reader-stage">
-      <div class="reader-book">
-        <figure class="reader-cover" data-reader-page="0">
-          <Image src={cover} alt="The front cover of The Hanukkah Fairy, by Elise and Donny Dykowsky, illustrated by Tincho Schmidt" widths={[420, 640, 960, 1400]} sizes="(max-width: 760px) 90vw, 50vw" />
-          <figcaption class="sr-only">The front cover. Scroll to open the story.</figcaption>
-        </figure>
-        <article class="reader-spread reader-signup" data-reader-page="1" id="dibs" aria-labelledby="signup-title">
-          <div class="reader-page reader-signup-art">
-            <h3>She left you<br />something.</h3>
-            <p>A paper Fairy to hide, a card for every night and eight notes she leaves behind.</p>
-            <Image src={pup} alt="Pup, waiting hopefully for a treat" widths={[300, 600, 837]} sizes="30vw" />
-          </div>
-          <div class="reader-page reader-form-page">
-            <h3 id="signup-title">The Fairy’s<br />8-Night Kit.</h3>
-            <p class="reader-form-intro">Free to print. Ready for the first candle on {hanukkah.first}.</p>
-            <KitForm id="reader" entry="reader" />
-          </div>
-        </article>
+  <section class="kit-ending" id="story" aria-labelledby="signup-title">
+    <div class="wrap kit-ending-layout">
+      <div class="kit-ending-copy">
+        <h2 id="signup-title">She left you<br />something.</h2>
+        <p>The Fairy’s 8-Night Kit: a paper Fairy to hide, a card for every night, eight notes she leaves behind and five pages to color. Free to print, ready for the first candle on {hanukkah.first}.</p>
+      </div>
+      <div class="kit-ending-form" id="dibs">
+        <KitForm id="reader" entry="home-close" />
       </div>
     </div>
   </section>

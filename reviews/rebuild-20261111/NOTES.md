@@ -69,3 +69,17 @@ Harley, 2026-11-11: "Mobile glitches a little bit. "A little scroll. A little ma
 - Load jump on phones fixed: the hero caption and buy buttons moved after scripts loaded (one layout shift, 0.0256). The space is now sized by a small inline script before first paint, and the two fonts are preloaded. Measured after: 0 shifts on `/`, `/book`, `/kit`, `/eight-nights` (iPhone 13 profile, full scroll down and back).
 - Reader on phones: its mode is now chosen from the small viewport height and ignores height-only resizes, so it no longer switches layout when the browser toolbar hides. Not reproducible in headless Chrome; needs a look on a real phone.
 - Production deployment 8fNJZ7L4XaFiPSEZ7oKEBjpqumWy. Root home page hash unchanged (1ed375edff). On the live /v2: cue hidden on phone at four scroll positions, 13-size check clean, flow checks pass.
+
+## Owners' notes, 2026-11-11 10:35 PM ET (email "Re: Website Notes", message 1a1cdd37a5be84b9)
+
+Donny and Elise sent seven notes after seeing /v2. All addressed on this branch:
+
+1. Gift Shop section now sits above the collection ("dolls in development").
+2. "She hides. You seek." uses their attached winged flying Fairy (`src/assets/fairy-wings.png`, from "Fairy 1.png").
+3. Angel in sneakers copy now opens "Meet Harold. Pink glasses. Tiny wings."
+4. Form is email only (already true on the rebuild; their screenshot was of the current root site, which still asks for name, address and phone).
+5. The scroll-opened book around the signup is gone. The page ends on a plain pink section with the kit form. `reader.js` and `reader.css` removed.
+6. Mailchimp: new signups are also added to their audience through the endpoint in their embed code (`lib/mailchimp.mjs`, email only). The private CSV stays as the fallback. `HF_MAILCHIMP=off` skips it for local QA. Checked against the endpoint with an invalid and an example.com address (both rejected by Mailchimp as expected); no real address was submitted.
+7. Kit: their five coloring pages (Fairy, Pup, Harold, Grizzlebottom, Mazel) are pages 7 to 11. Kit is 11 pages, 1.7 MB. Copy updated on /kit, the home kit band and the FAQ. Privacy page names Mailchimp and the unsubscribe link.
+
+Checks: 9 unit tests pass, 22 of 22 flow checks pass locally, no console errors or overflow at 1440 and 390.

@@ -1,5 +1,4 @@
-/* Home page only: the illustrated hero and the scroll-opened book. */
-import "./reader.js";
+/* Home page only: the illustrated hero. */
 
 // Keep Pup on the painted roof. Grow the space below the illustration only
 // as much as the actual caption needs, including after fonts or text resize.

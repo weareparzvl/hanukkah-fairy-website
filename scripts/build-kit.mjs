@@ -26,6 +26,8 @@ const prepared = {
 for (const [name, image] of Object.entries(prepared))
   await image.toFile(`scripts/kit/img/${name}`);
 const art = (name) => url(`scripts/kit/img/${name}`);
+// Coloring pages supplied by Elise and Donny (2026-11-11). Full-page line art with its own footer.
+const coloring = ["fairy", "pup", "harold", "grizzlebottom", "mazel"];
 
 const card = (night) => `
   <article class="card">
@@ -70,6 +72,8 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 h1, h2, h3 { font-family: "Bricolage", sans-serif; font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; }
 .sheet { position: relative; width: 8.5in; height: 11in; padding: 0.6in; overflow: hidden; page-break-after: always; background: #fff; display: flex; flex-direction: column; }
 .sheet:last-child { page-break-after: auto; }
+.sheet.color { padding: 0; }
+.sheet.color img { width: 100%; height: 100%; object-fit: contain; }
 .foot { margin-top: auto; padding-top: 0.2in; display: flex; justify-content: space-between; font-size: 9pt; color: #465572; border-top: 1px solid #13244730; }
 
 /* 1. Cover */
@@ -205,6 +209,8 @@ ${[0, 4]
   </div>
   <div class="foot"><span>© 2026 The Hanukkah Fairy™</span><span>This story belongs to you.</span></div>
 </section>
+${coloring.map((name) => `
+<section class="sheet color"><img src="${url(`src/assets/coloring/${name}.png`)}" alt="" /></section>`).join("")}
 </body>
 </html>`;
 

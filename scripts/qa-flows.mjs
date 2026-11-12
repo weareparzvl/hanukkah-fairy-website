@@ -1,4 +1,4 @@
-// Interaction checks: modal, signup, step two, reader, nights, no-JS post. Usage: node scripts/qa-flows.mjs [base] [outDir]
+// Interaction checks: modal, signup, step two, closing form, nights, no-JS post. Usage: node scripts/qa-flows.mjs [base] [outDir]
 import { pathToFileURL } from "node:url";
 const { chromium } = await import(pathToFileURL(process.env.PLAYWRIGHT_PATH || "/Users/parzvl/atlasrr-shop/_qa/node_modules/playwright/index.mjs").href);
 const base = process.argv[2] || "http://127.0.0.1:8761";
@@ -40,17 +40,12 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
   await page.click('[data-night="5"]');
   check(`${width} night 6 shows`, (await page.locator(".night-copy.is-active h3").innerText()).includes("troll"));
   await page.screenshot({ path: `${out}/flow-nights-${width}.png` });
-  // Reader: scroll to the last page
-  const reader = await page.evaluate(() => {
-    const r = document.querySelector(".reader");
-    const top = r.getBoundingClientRect().top + scrollY;
-    scrollTo(0, top + r.offsetHeight - innerHeight - 40);
-    return r.classList.contains("is-enhanced");
-  });
-  await page.waitForTimeout(600);
-  check(`${width} reader enhanced`, reader);
-  check(`${width} reader kit form visible`, await page.isVisible("#reader-email"));
-  await page.screenshot({ path: `${out}/flow-reader-${width}.png` });
+  // Closing signup: a plain section, no book to open
+  await page.locator(".kit-ending").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(300);
+  check(`${width} no opening-book reader on the page`, (await page.locator(".reader").count()) === 0);
+  check(`${width} closing kit form visible`, await page.isVisible("#reader-email"));
+  await page.screenshot({ path: `${out}/flow-ending-${width}.png` });
   check(`${width} no page errors`, errors.length === 0, errors.join(" | "));
   await context.close();
 }

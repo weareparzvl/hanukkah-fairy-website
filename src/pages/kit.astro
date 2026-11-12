@@ -10,23 +10,25 @@ import p2 from "../assets/kit/page-2.png";
 import p3 from "../assets/kit/page-3.png";
 import p5 from "../assets/kit/page-5.png";
 import p6 from "../assets/kit/page-6.png";
+import p7 from "../assets/kit/page-7.png";
 
 const title = "The Fairy’s 8-Night Kit | Free Hanukkah Printable for Kids";
 const description =
-  "A free printable for the eight nights of Hanukkah: a paper Fairy to hide, a card for every night, eight notes from the Fairy and a menorah to color.";
+  "A free printable for the eight nights of Hanukkah: a paper Fairy to hide, a card for every night, eight notes from the Fairy, a menorah to color and five coloring pages.";
 const schema = [page("/kit", title, description), breadcrumbs([["The free kit", "/kit"]])];
 const inside = [
   [p2, "A paper Fairy to hide", "Cut her out and hide her somewhere new each night. Pup comes too."],
   [p3, "A card for every night", "Each one has something to do together, a hiding spot and a kind thing to try."],
   [p5, "Eight notes from the Fairy", "Fill one in after bedtime and leave it wherever she hides."],
   [p6, "A menorah to color", "One flame a night, until all eight are lit."],
+  [p7, "Five coloring pages", "The Fairy, Pup, Harold, Grizzlebottom and one big Mazel."],
 ];
 ---
 
 <Base title={title} description={description} path="/kit" schema={schema} footerKit={false}>
   <PageHero tone="yellow" crumb="The free kit">
     <Fragment slot="title">The Fairy’s<br />8-Night Kit</Fragment>
-    <p>A free printable for all eight nights. Six pages, letter size, ready for the first candle on {hanukkah.first}.</p>
+    <p>A free printable for all eight nights. Eleven pages, letter size, ready for the first candle on {hanukkah.first}.</p>
     <p class="kit-retry" data-kit-retry hidden>That didn’t go through. Check the email address and the box, then try once more.</p>
     <KitForm id="kit-page" entry="kit-page" />
     <KitStack slot="art" sizes="(max-width: 760px) 62vw, 32vw" loading="eager" />

@@ -1,4 +1,5 @@
 import { normalizeSignup, saveSignup } from "../lib/signups.mjs";
+import { addToMailchimp } from "../lib/mailchimp.mjs";
 
 // Best-effort per-instance abuse throttle; private storage and validation are enforced separately.
 const attempts = new Map();
@@ -98,6 +99,12 @@ export default async function handler(req, res) {
   if (followUp) record.followUp = true;
   try {
     await saveSignup(record);
+    if (!followUp) {
+      const sent = await addToMailchimp(record.email);
+      // Never log the address. The CSV row is the fallback if this fails.
+      if (!sent.ok && !sent.already && !sent.skipped)
+        console.error("Mailchimp add failed:", sent.error || "rejected");
+    }
     return reply(res, 200, { ok: true }, html);
   } catch (error) {
     // Never log submitted email addresses or credentials.
