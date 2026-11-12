@@ -61,6 +61,16 @@
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/v2",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/v2/:path*",
+      "destination": "/:path*",
+      "permanent": false
     }
   ]
 }
