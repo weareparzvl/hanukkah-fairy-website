@@ -103,3 +103,5 @@ Commit `144c77e`, not live yet. Preview: https://hanukkah-fairy-website-jox0p8kb
 Home order: hero > brand-statement > gift-shop > ritual-feature > book-feature > product-world > cast-world > eight-nights > authors > kit-band > faq.
 
 Checks (local build): 15 of 15 flow checks (no-submit), 9 of 9 tests, no console errors or overflow at 1440 and 390. Shots in `reviews/rebuild-20261112/shots`.
+
+Update, 2026-11-12 9:15 AM ET: pushed to GitHub branch `dev` (`c1a5e70`, dev URL https://hanukkah-fairy-website-git-dev-parzvl.vercel.app), then promoted preview `jox0p8kbt` to production on Harley's go ("Push to production"), deployment `78tJ96pxwz3fEnPtpSEBRQPGhSMN`. Live checks: all pages, PDF, sitemap and robots 200, `/v2` 307, 15 of 15 flow checks (no-submit). Owners emailed in the "Website Notes" thread (Gmail message 1a1d01d41e0e39c8).
