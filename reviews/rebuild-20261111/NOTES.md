@@ -91,3 +91,15 @@ Harley: "Make v2 the mainsite". The rebuild now serves https://thehanukkahfairy.
 - Signups go to the real list (`production/signups.csv`) and to Mailchimp. The old file is upgraded to the new columns on the first new signup. Backup taken first: `exports/signups-before-launch-20261111.csv` (4 rows).
 - Live checks: 13 URLs respond as expected, 15 of 15 flow checks pass (no-submit), no console errors or overflow at 1440 and 390.
 - Not observed yet: a real signup on production (CSV upgrade plus Mailchimp add).
+
+## Owners' notes, 2026-11-12 (Gmail message 1a1ce393e7b1dd42)
+
+Commit `144c77e`, not live yet. Preview: https://hanukkah-fairy-website-jox0p8kbt-parzvl.vercel.app (private, target preview).
+
+1. Kit section moved to the bottom and merged with the mailing list signup: one section (`KitBand`, form id `band`, entry `home-kit`) replaces both the mid-page kit band and the "She left you something." closing section. Anchors `#kit`, `#story`, `#dibs` all point to it.
+2. "8-Night Kit" is now "8 Night Kit" everywhere, including the kit PDF (rebuilt, 11 pages, 0 overflow) and its previews. "eight-night tradition" is "eight night tradition". The PDF file name and the `/eight-nights` page address keep their hyphens (addresses, not copy).
+3. Gift Shop moved up to third, right after the "A new Hanukkah tradition is here." statement.
+
+Home order: hero > brand-statement > gift-shop > ritual-feature > book-feature > product-world > cast-world > eight-nights > authors > kit-band > faq.
+
+Checks (local build): 15 of 15 flow checks (no-submit), 9 of 9 tests, no console errors or overflow at 1440 and 390. Shots in `reviews/rebuild-20261112/shots`.
