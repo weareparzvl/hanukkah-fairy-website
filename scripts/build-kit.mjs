@@ -1,4 +1,4 @@
-// Builds The Fairy's 8-Night Kit (US Letter PDF) and the page previews the site shows.
+// Builds The Fairy's 8 Night Kit (US Letter PDF) and the page previews the site shows.
 // Run: npm run kit. Needs Playwright: set PLAYWRIGHT_PATH or install it locally.
 import { mkdir, writeFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
@@ -59,7 +59,7 @@ const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>The Fairy’s 8-Night Kit | The Hanukkah Fairy</title>
+<title>The Fairy’s 8 Night Kit | The Hanukkah Fairy</title>
 <style>
 @font-face { font-family: "Bricolage"; font-weight: 200 800; src: url("${font("@fontsource-variable/bricolage-grotesque", "bricolage-grotesque-latin-wght-normal.woff2")}") format("woff2"); }
 @font-face { font-family: "DM Sans"; font-weight: 100 1000; src: url("${font("@fontsource-variable/dm-sans", "dm-sans-latin-wght-normal.woff2")}") format("woff2"); }
@@ -150,7 +150,7 @@ h1, h2, h3 { font-family: "Bricolage", sans-serif; font-weight: 800; letter-spac
   </div>
   <div class="cover-copy">
     <span class="tag">Free printable</span>
-    <h1>The Fairy’s<br />8-Night Kit</h1>
+    <h1>The Fairy’s<br />8 Night Kit</h1>
     <p>She hides. You seek. Be kind. Get a treat.<br />Everything you need for all eight nights.</p>
   </div>
   <div class="foot"><span>thehanukkahfairy.com</span><span>Print at home on letter paper</span></div>
@@ -167,7 +167,7 @@ h1, h2, h3 { font-family: "Bricolage", sans-serif; font-weight: 800; letter-spac
     <div class="cut"><span class="cut-label">Cut along the dashes</span><img src="${art("fairy.jpg")}" alt="" /><p>The Fairy. Hide her somewhere new every night.</p></div>
     <div class="cut"><span class="cut-label">Cut along the dashes</span><img src="${art("pup.jpg")}" alt="" /><p>Pup. He guards the donuts. Mostly.</p></div>
   </div>
-  <div class="foot"><span>The Fairy’s 8-Night Kit</span><span>thehanukkahfairy.com</span></div>
+  <div class="foot"><span>The Fairy’s 8 Night Kit</span><span>thehanukkahfairy.com</span></div>
 </section>
 
 ${[0, 4]
@@ -177,7 +177,7 @@ ${[0, 4]
   <h2>Nights ${start + 1} to ${start + 4}</h2>
   <p class="sub">One card a night. Cut them apart or keep the page on the fridge.</p>
   <div class="card-grid">${nights.slice(start, start + 4).map(card).join("")}</div>
-  <div class="foot"><span>The Fairy’s 8-Night Kit</span><span>thehanukkahfairy.com</span></div>
+  <div class="foot"><span>The Fairy’s 8 Night Kit</span><span>thehanukkahfairy.com</span></div>
 </section>`,
   )
   .join("")}
@@ -186,7 +186,7 @@ ${[0, 4]
   <h2>Notes from the Fairy</h2>
   <p class="sub">For grown-ups: fill one in each night and leave it where she hides.</p>
   <div class="note-grid">${nights.map(note).join("")}</div>
-  <div class="foot"><span>The Fairy’s 8-Night Kit</span><span>thehanukkahfairy.com</span></div>
+  <div class="foot"><span>The Fairy’s 8 Night Kit</span><span>thehanukkahfairy.com</span></div>
 </section>
 
 <section class="sheet track">

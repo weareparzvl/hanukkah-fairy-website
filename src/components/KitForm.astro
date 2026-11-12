@@ -1,7 +1,7 @@
 ---
 // One email field. Works as an ordinary form post without JavaScript.
 import { kit, hanukkah } from "../data/book.js";
-const { id, entry, button = "Get my 8-Night Kit" } = Astro.props;
+const { id, entry, button = "Get my 8 Night Kit" } = Astro.props;
 const action = import.meta.env.BASE_URL === "/" ? "/api/subscribe" : "/api/subscribe-v2";
 ---
 

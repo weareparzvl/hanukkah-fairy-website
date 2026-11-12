@@ -3,10 +3,10 @@ import Base from "../../layouts/Base.astro";
 import PageHero from "../../components/PageHero.astro";
 import KitStack from "../../components/KitStack.astro";
 import { kit, hanukkah } from "../../data/book.js";
-const title = "Your 8-Night Kit | The Hanukkah Fairy";
+const title = "Your 8 Night Kit | The Hanukkah Fairy";
 ---
 
-<Base title={title} description="Download The Fairy’s 8-Night Kit." path="/kit/thanks" noindex footerKit={false}>
+<Base title={title} description="Download The Fairy’s 8 Night Kit." path="/kit/thanks" noindex footerKit={false}>
   <PageHero tone="yellow" crumb="Your kit">
     <Fragment slot="title">It’s yours.</Fragment>
     <p>Print it tonight. The first candle is {hanukkah.first}.</p>

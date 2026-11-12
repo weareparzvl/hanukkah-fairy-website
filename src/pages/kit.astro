@@ -12,7 +12,7 @@ import p5 from "../assets/kit/page-5.png";
 import p6 from "../assets/kit/page-6.png";
 import p7 from "../assets/kit/page-7.png";
 
-const title = "The Fairy’s 8-Night Kit | Free Hanukkah Printable for Kids";
+const title = "The Fairy’s 8 Night Kit | Free Hanukkah Printable for Kids";
 const description =
   "A free printable for the eight nights of Hanukkah: a paper Fairy to hide, a card for every night, eight notes from the Fairy, a menorah to color and five coloring pages.";
 const schema = [page("/kit", title, description), breadcrumbs([["The free kit", "/kit"]])];
@@ -27,7 +27,7 @@ const inside = [
 
 <Base title={title} description={description} path="/kit" schema={schema} footerKit={false}>
   <PageHero tone="yellow" crumb="The free kit">
-    <Fragment slot="title">The Fairy’s<br />8-Night Kit</Fragment>
+    <Fragment slot="title">The Fairy’s<br />8 Night Kit</Fragment>
     <p>A free printable for all eight nights. Eleven pages, letter size, ready for the first candle on {hanukkah.first}.</p>
     <p class="kit-retry" data-kit-retry hidden>That didn’t go through. Check the email address and the box, then try once more.</p>
     <KitForm id="kit-page" entry="kit-page" />

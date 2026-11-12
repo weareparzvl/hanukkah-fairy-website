@@ -41,10 +41,10 @@ for (const [width, height] of [[1440, 900], [390, 844]]) {
   check(`${width} night 6 shows`, (await page.locator(".night-copy.is-active h3").innerText()).includes("troll"));
   await page.screenshot({ path: `${out}/flow-nights-${width}.png` });
   // Closing signup: a plain section, no book to open
-  await page.locator(".kit-ending").scrollIntoViewIfNeeded();
+  await page.locator(".kit-band").scrollIntoViewIfNeeded();
   await page.waitForTimeout(300);
   check(`${width} no opening-book reader on the page`, (await page.locator(".reader").count()) === 0);
-  check(`${width} closing kit form visible`, await page.isVisible("#reader-email"));
+  check(`${width} closing kit form visible`, await page.isVisible("#band-email"));
   await page.screenshot({ path: `${out}/flow-ending-${width}.png` });
   check(`${width} no page errors`, errors.length === 0, errors.join(" | "));
   await context.close();

@@ -670,27 +670,6 @@
   }
 }
 
-/* Closing kit signup: a plain section (Donny, 2026-11-11: no book opening to reveal the form). */
-.kit-ending {
-  background: #ffdae8;
-  padding: clamp(64px, 8vw, 124px) 0;
-}
-.kit-ending-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: clamp(32px, 6vw, 96px);
-}
-.kit-ending-copy h2 {
-  font-size: clamp(44px, 6.4vw, 104px);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
-}
-.kit-ending-copy p {
-  margin-top: 22px;
-  max-width: 34em;
-  font-size: clamp(17px, 1.4vw, 20px);
-}
 .inside-grid {
   grid-template-columns: repeat(5, 1fr);
   gap: clamp(16px, 2.2vw, 36px);
@@ -699,7 +678,6 @@
   .inside-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 760px) {
-  .kit-ending-layout { grid-template-columns: 1fr; }
   .inside-grid { grid-template-columns: 1fr 1fr; }
 }
 

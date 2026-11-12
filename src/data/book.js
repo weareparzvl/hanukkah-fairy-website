@@ -113,7 +113,7 @@ export const hanukkah = {
 
 // Kit promises that depend on an email platform stay off until one is connected.
 export const kit = {
-  name: "The Fairy’s 8-Night Kit",
+  name: "The Fairy’s 8 Night Kit",
   file: "/kit/the-fairys-8-night-kit.pdf",
   nightlyNotes: false,
 };

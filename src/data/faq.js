@@ -14,7 +14,7 @@ export const faq = [
     group: "The tradition",
     items: [
       ["How does the tradition work?", "She hides, you seek. Each night of Hanukkah a grown-up hides the Fairy somewhere new. Kids who find her, and who have been helpful and kind, might get a little treat. Leave a jelly donut out at bedtime, because fairies get hungry, too."],
-      ["Do we need a plush toy to enjoy it?", "No. The book is a complete adventure on its own, and the free 8-Night Kit includes a paper Fairy to cut out and hide. The plush pals are still in development."],
+      ["Do we need a plush toy to enjoy it?", "No. The book is a complete adventure on its own, and the free 8 Night Kit includes a paper Fairy to cut out and hide. The plush pals are still in development."],
       ["Is it like Elf on the Shelf?", "It is a nightly hide-and-seek, so families who know that tradition will feel at home. The Fairy has her own story, and she isn’t watching anyone. There is no naughty list. Kindness earns a treat."],
       ["When is Hanukkah in 2026?", "Hanukkah 2026 begins at sundown on Friday, December 4. The eighth candle is lit on Friday, December 11."],
     ],
@@ -22,7 +22,7 @@ export const faq = [
   {
     group: "The free kit",
     items: [
-      ["What is The Fairy’s 8-Night Kit?", "A free eleven-page printable: a paper Fairy and Pup to cut out, a card for each of the eight nights, eight notes from the Fairy, a menorah to color and five coloring pages."],
+      ["What is The Fairy’s 8 Night Kit?", "A free eleven-page printable: a paper Fairy and Pup to cut out, a card for each of the eight nights, eight notes from the Fairy, a menorah to color and five coloring pages."],
       ["What do you do with my email?", "We save it so we can email you news from The Hanukkah Fairy. We don’t sell it or share it for advertising. You can ask to leave the list at any time."],
     ],
   },
