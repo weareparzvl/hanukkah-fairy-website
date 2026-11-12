@@ -83,3 +83,11 @@ Donny and Elise sent seven notes after seeing /v2. All addressed on this branch:
 7. Kit: their five coloring pages (Fairy, Pup, Harold, Grizzlebottom, Mazel) are pages 7 to 11. Kit is 11 pages, 1.7 MB. Copy updated on /kit, the home kit band and the FAQ. Privacy page names Mailchimp and the unsubscribe link.
 
 Checks: 9 unit tests pass, 22 of 22 flow checks pass locally, no console errors or overflow at 1440 and 390.
+
+## Launch, 2026-11-11 about 11:05 PM ET
+
+Harley: "Make v2 the mainsite". The rebuild now serves https://thehanukkahfairy.com/ (production deployment 5bX5giEGyjZRDakzWcuZfyTw6azW, promoted from preview hanukkah-fairy-website-n1q12k7fw-parzvl.vercel.app, commit 3c275b5, deployed from the clean worktree `../site-main-release`).
+- Indexable (`index, follow`), sitemap and robots.txt served. `/v2` and `/v2/*` redirect (307) to the root paths.
+- Signups go to the real list (`production/signups.csv`) and to Mailchimp. The old file is upgraded to the new columns on the first new signup. Backup taken first: `exports/signups-before-launch-20261111.csv` (4 rows).
+- Live checks: 13 URLs respond as expected, 15 of 15 flow checks pass (no-submit), no console errors or overflow at 1440 and 390.
+- Not observed yet: a real signup on production (CSV upgrade plus Mailchimp add).
