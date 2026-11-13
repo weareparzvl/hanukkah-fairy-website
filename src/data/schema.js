@@ -31,7 +31,9 @@ export const coverImage = {
   caption: `Front cover of ${book.title}, a Hanukkah picture book by ${book.authors.join(" and ")}, illustrated by ${book.illustrator}.`,
   representativeOfPage: true,
   creator: { "@id": personId(book.illustrator) },
-  creditText: book.publisher,
+  creditText: book.authors.join(" and "),
+  copyrightHolder: book.authors.map((name) => ({ "@id": personId(name) })),
+  copyrightNotice: `© ${book.published.slice(0, 4)} ${book.authors.join(" and ")}`,
 };
 
 export const organization = {
@@ -80,6 +82,8 @@ export const bookNode = {
   author: book.authors.map((name) => ({ "@id": personId(name) })),
   illustrator: { "@id": personId(book.illustrator) },
   publisher: { "@id": id("organization") },
+  copyrightHolder: book.authors.map((name) => ({ "@id": personId(name) })),
+  copyrightYear: Number(book.published.slice(0, 4)),
   datePublished: book.published,
   inLanguage: "en",
   genre: ["Children's picture book", "Hanukkah fiction"],

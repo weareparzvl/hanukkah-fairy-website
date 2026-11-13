@@ -124,3 +124,5 @@ Changes:
 Left out on purpose (not verified, so not invented): ISBNs for the Kindle and Apple Books editions, prices, copyright holder, founders.
 
 Validation: validator.schema.org on the built `/`, `/book` and `/faq` HTML: 0 errors, 0 warnings. 15 of 15 flow checks (no-submit), 9 of 9 tests, no console errors or overflow at 1440 and 390. Google Rich Results Test needs the live URL; run after the deploy.
+
+Owners' answers, 2026-11-13 10:33 AM ET (Gmail message 1a1d58b0921f4a20): hardcover 979-8-9980079-0-3 and softcover 979-8-9980079-1-0 confirmed; "Digital copies do not need one"; audiobook ISBN 979-8-9980079-2-7; "The Hanukkah Fairy LLC is the publisher. Elise and Donny Dykowsky are the rights holders." Applied: Elise and Donny as `copyrightHolder` on the Book and the cover image, with a copyright notice and credit on the cover. Audiobook not added yet: no listing or release date on record.
