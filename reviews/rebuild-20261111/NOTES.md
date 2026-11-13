@@ -126,3 +126,9 @@ Left out on purpose (not verified, so not invented): ISBNs for the Kindle and Ap
 Validation: validator.schema.org on the built `/`, `/book` and `/faq` HTML: 0 errors, 0 warnings. 15 of 15 flow checks (no-submit), 9 of 9 tests, no console errors or overflow at 1440 and 390. Google Rich Results Test needs the live URL; run after the deploy.
 
 Owners' answers, 2026-11-13 10:33 AM ET (Gmail message 1a1d58b0921f4a20): hardcover 979-8-9980079-0-3 and softcover 979-8-9980079-1-0 confirmed; "Digital copies do not need one"; audiobook ISBN 979-8-9980079-2-7; "The Hanukkah Fairy LLC is the publisher. Elise and Donny Dykowsky are the rights holders." Applied: Elise and Donny as `copyrightHolder` on the Book and the cover image, with a copyright notice and credit on the cover. Audiobook not added yet: no listing or release date on record.
+
+Live, 2026-11-13 10:41 AM ET, on Harley's go ("push to production"): promoted preview `n1wmz5s9o` (deployment `DQ2NckFbpTwmRJLvz9t575D4ScE1`), then a follow-up for the spare domain's home page, which the first redirect rule missed (preview `i6emv3cr7`, deployment `78o3G9FPv7EgDPhyeUTZs7k8ccLw`, commit after `4479f77`).
+
+Live checks: all pages, cover files, sitemap, robots, PDF 200; `/v2` 307; `www.hanukkahfairy.com/` and `/book` 308 to `thehanukkahfairy.com`; cover 200 for a Googlebot user agent, no `X-Robots-Tag`; 15 of 15 flow checks (no-submit).
+- validator.schema.org on live `/`, `/book`, `/faq`: 0 errors, 0 warnings.
+- Google Rich Results Test on live `/book` (crawled 10:41:57 AM): 2 valid items, Breadcrumbs and Image Metadata. The Image Metadata item is `the-hanukkah-fairy-book-cover.jpg` with creator, credit, copyright holders and notice read correctly; 2 non-critical issues, both optional fields with no value to give (`license`, `acquireLicensePage`). Google has no Book rich result for ordinary sites, so none is reported.
