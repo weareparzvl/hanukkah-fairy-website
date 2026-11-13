@@ -1,0 +1,20 @@
+---
+// The official book cover as a plain <img> at one stable, descriptive address,
+// so the image Google crawls on the page is the same one named in the structured data.
+import { cover } from "../data/book.js";
+const { alt = cover.alt, sizes, loading = "lazy", class: className, ...rest } = Astro.props;
+const srcset = cover.srcset.map(([url, width]) => `${url} ${width}w`).join(", ");
+---
+
+<img
+  src={cover.path}
+  srcset={srcset}
+  sizes={sizes}
+  alt={alt}
+  width={cover.width}
+  height={cover.height}
+  loading={loading}
+  decoding="async"
+  class={className}
+  {...rest}
+/>

@@ -105,3 +105,22 @@ Home order: hero > brand-statement > gift-shop > ritual-feature > book-feature >
 Checks (local build): 15 of 15 flow checks (no-submit), 9 of 9 tests, no console errors or overflow at 1440 and 390. Shots in `reviews/rebuild-20261112/shots`.
 
 Update, 2026-11-12 9:15 AM ET: pushed to GitHub branch `dev` (`c1a5e70`, dev URL https://hanukkah-fairy-website-git-dev-parzvl.vercel.app), then promoted preview `jox0p8kbt` to production on Harley's go ("Push to production"), deployment `78tJ96pxwz3fEnPtpSEBRQPGhSMN`. Live checks: all pages, PDF, sitemap and robots 200, `/v2` 307, 15 of 15 flow checks (no-submit). Owners emailed in the "Website Notes" thread (Gmail message 1a1d01d41e0e39c8).
+
+## SEO pass, 2026-11-13 (owners' email, Gmail message 1a1d57c594d50b45)
+
+Goal: help Google tie "Hanukkah Fairy" searches to the real book and its official cover. No visual change (screenshots differ from 2026-11-12 by under 0.6% of pixels, all inside the cover image).
+
+Audit of the live site before the change:
+- Already right: Book, WebSite and Organization JSON-LD; two print ISBNs; canonical tags; `index, follow, max-image-preview:large`; robots.txt allows everything but `/api/`; sitemap; cover present as a real `<img>` on `/` and `/book`.
+- Gaps: the cover reached Google under three different addresses (page image `/_astro/cover.<hash>.webp`, JSON-LD `/assets/cover.webp`, social `/og-cover.jpg`), none descriptive and none shared; Book data had no audience, no image object, no linked author or illustrator entities, and sat on `/` and `/book` only; sitemap listed no images; `www.hanukkahfairy.com` served a full copy of the site (200) instead of redirecting.
+
+Changes:
+- One official cover address, `/images/the-hanukkah-fairy-book-cover.jpg` (2000 x 2000, exported from the original `assets/covers/Cover Front.jpg`), used by the page `<img>` on `/` and `/book` (`src/components/Cover.astro`), JSON-LD, Open Graph, X card and the sitemap. Old addresses still resolve.
+- `src/data/schema.js`: ImageObject for the cover, Person entities for Elise Dykowsky, Donny Dykowsky and Tincho Schmidt (Goodreads profiles as `sameAs`, each returned 200 on 2026-11-13), PeopleAudience ages 3 to 10, per-edition image and Amazon ASIN, every page marked `about` the book. The whole book entity now ships on every page.
+- Head: home title "The Hanukkah Fairy | Picture Book by Elise and Donny Dykowsky", home description names authors and illustrator, book title "The Hanukkah Fairy Book | Editions, ISBNs and Where to Buy", `og:image:type`, `twitter:image:alt`, `book:tag`, `meta author`.
+- Sitemap: image entries for `/` and `/book`.
+- `vercel.json`: `www.hanukkahfairy.com` and `hanukkahfairy.com` 301/308 to `thehanukkahfairy.com`; cache header for `/images/`.
+
+Left out on purpose (not verified, so not invented): ISBNs for the Kindle and Apple Books editions, prices, copyright holder, founders.
+
+Validation: validator.schema.org on the built `/`, `/book` and `/faq` HTML: 0 errors, 0 warnings. 15 of 15 flow checks (no-submit), 9 of 9 tests, no console errors or overflow at 1440 and 390. Google Rich Results Test needs the live URL; run after the deploy.

@@ -3,16 +3,15 @@ import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import BuyLinks from "../components/BuyLinks.astro";
+import Cover from "../components/Cover.astro";
 import { site, book, editions } from "../data/book.js";
-import { bookNode, breadcrumbs, page } from "../data/schema.js";
-import cover from "../assets/cover.webp";
+import { breadcrumbs, page, withCover } from "../data/schema.js";
 
-const title = "The Hanukkah Fairy | Rhyming Hanukkah Picture Book";
+const title = "The Hanukkah Fairy Book | Editions, ISBNs and Where to Buy";
 const description =
   "The Hanukkah Fairy is a rhyming Hanukkah picture book for ages 3 to 10 by Elise and Donny Dykowsky, illustrated by Tincho Schmidt. Editions, ISBNs and where to buy.";
 const schema = [
-  page("/book", title, description, { mainEntity: { "@id": `${site.origin}/#book` } }),
-  bookNode,
+  page("/book", title, description, { mainEntity: { "@id": `${site.origin}/#book` }, ...withCover }),
   breadcrumbs([["The book", "/book"]]),
 ];
 const slug = (text) => text.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
@@ -23,7 +22,7 @@ const slug = (text) => text.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-
     <Fragment slot="title">The Hanukkah<br />Fairy</Fragment>
     <p>A rhyming Hanukkah picture book for ages {book.ages}. Written by Elise and Donny Dykowsky. Illustrated by {book.illustrator}.</p>
     <div class="page-hero-buy buy-links"><BuyLinks location="book-hero" yellow={false} /></div>
-    <Image slot="art" class="book-cover" src={cover} alt="The Hanukkah Fairy front cover: the Fairy in her blue dress above a neighborhood street at night" widths={[320, 480, 640, 960]} sizes="(max-width: 760px) 78vw, 36vw" loading="eager" />
+    <Cover slot="art" class="book-cover" sizes="(max-width: 760px) 78vw, 36vw" loading="eager" fetchpriority="high" />
   </PageHero>
 
   <section class="page-section">

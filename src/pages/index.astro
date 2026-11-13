@@ -3,17 +3,17 @@ import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
 import BuyLinks from "../components/BuyLinks.astro";
 import KitBand from "../components/KitBand.astro";
+import Cover from "../components/Cover.astro";
 import Nights from "../components/Nights.astro";
 import { site, book, hanukkah } from "../data/book.js";
 import { steps } from "../data/nights.js";
-import { bookNode, page } from "../data/schema.js";
+import { page, withCover } from "../data/schema.js";
 import nightscape from "../assets/nightscape.webp";
 import logo from "../assets/logo-wide.webp";
 import pupSign from "../assets/pup-sign.webp";
 import fairyFlying from "../assets/fairy-flying.png";
 import fairyWand from "../assets/fairy-wand.png";
 import fairyWings from "../assets/fairy-wings.png";
-import cover from "../assets/cover.webp";
 import productBook from "../assets/product-book.webp";
 import productDoll from "../assets/product-doll.webp";
 import productPlush from "../assets/product-plush.webp";
@@ -22,10 +22,10 @@ import pup from "../assets/pup.png";
 import angel from "../assets/angel.png";
 import grizzlebottom from "../assets/grizzlebottom.png";
 
-const title = "The Hanukkah Fairy | Picture Book and Hanukkah Tradition";
+const title = "The Hanukkah Fairy | Picture Book by Elise and Donny Dykowsky";
 const description =
-  "The Hanukkah Fairy is a rhyming picture book for ages 3 to 10, with a hide-and-seek tradition for all eight nights. Get the free printable 8 Night Kit.";
-const schema = [page("/", title, description, { mainEntity: { "@id": `${site.origin}/#book` } }), bookNode];
+  "The Hanukkah Fairy is a rhyming Hanukkah picture book for ages 3 to 10 by Elise and Donny Dykowsky, illustrated by Tincho Schmidt, with a tradition for all eight nights.";
+const schema = [page("/", title, description, { mainEntity: { "@id": `${site.origin}/#book` }, ...withCover })];
 const portrait = "(max-width: 760px) 100vw, 50vw";
 ---
 
@@ -127,7 +127,7 @@ const portrait = "(max-width: 760px) 100vw, 50vw";
   <section class="book-feature" id="book" aria-labelledby="book-title">
     <div class="wrap book-feature-layout">
       <div class="book-feature-cover">
-        <Image src={cover} alt="The Hanukkah Fairy front cover, by Elise and Donny Dykowsky, illustrated by Tincho Schmidt" widths={[320, 480, 640, 960]} sizes="(max-width: 760px) 80vw, 34vw" />
+        <Cover sizes="(max-width: 760px) 80vw, 34vw" />
       </div>
       <div class="book-feature-copy">
         <h2 id="book-title">It starts with<br />the story.</h2>

@@ -1,7 +1,38 @@
-import { site, book, editions, sameAs } from "./book.js";
+import { site, book, cover, editions, people, sameAs } from "./book.js";
 
 const id = (hash) => `${site.origin}/#${hash}`;
-const person = (name) => ({ "@type": "Person", name });
+const slug = (name) => name.toLowerCase().replace(/[^a-z]+/g, "-");
+const personId = (name) => id(`person-${slug(name)}`);
+const coverUrl = `${site.origin}${cover.path}`;
+
+const person = (name, jobTitle) => ({
+  "@type": "Person",
+  "@id": personId(name),
+  name,
+  jobTitle,
+  ...(people[name] ? { sameAs: [people[name]] } : {}),
+});
+
+// Authors and illustrator are named entities on every page, so the book is tied to real people.
+export const contributors = [
+  ...book.authors.map((name) => person(name, "Author")),
+  person(book.illustrator, "Illustrator"),
+];
+
+export const coverImage = {
+  "@type": "ImageObject",
+  "@id": id("cover"),
+  url: coverUrl,
+  contentUrl: coverUrl,
+  width: cover.width,
+  height: cover.height,
+  encodingFormat: "image/jpeg",
+  name: `${book.title} book cover`,
+  caption: `Front cover of ${book.title}, a Hanukkah picture book by ${book.authors.join(" and ")}, illustrated by ${book.illustrator}.`,
+  representativeOfPage: true,
+  creator: { "@id": personId(book.illustrator) },
+  creditText: book.publisher,
+};
 
 export const organization = {
   "@type": "Organization",
@@ -9,7 +40,14 @@ export const organization = {
   name: book.publisher,
   alternateName: site.name,
   url: `${site.origin}/`,
-  logo: `${site.origin}/icon-512.png`,
+  logo: {
+    "@type": "ImageObject",
+    "@id": id("logo"),
+    url: `${site.origin}/icon-512.png`,
+    width: 512,
+    height: 512,
+  },
+  image: { "@id": id("cover") },
   sameAs: [site.instagram, site.shop],
 };
 
@@ -18,8 +56,17 @@ export const website = {
   "@id": id("website"),
   url: `${site.origin}/`,
   name: site.name,
+  description: `The official site of ${book.title}, the Hanukkah picture book by ${book.authors.join(" and ")}.`,
   inLanguage: "en",
   publisher: { "@id": id("organization") },
+  about: { "@id": id("book") },
+};
+
+const audience = {
+  "@type": "PeopleAudience",
+  audienceType: "Children",
+  suggestedMinAge: 3,
+  suggestedMaxAge: 10,
 };
 
 export const bookNode = {
@@ -27,17 +74,20 @@ export const bookNode = {
   "@id": id("book"),
   name: book.title,
   url: `${site.origin}/book`,
+  mainEntityOfPage: `${site.origin}/book`,
   description:
     "A rhyming Hanukkah picture book for children ages 3 to 10 about belonging, kindness, courage and Jewish joy, with a hide-and-seek tradition for all eight nights.",
-  author: book.authors.map(person),
-  illustrator: person(book.illustrator),
+  author: book.authors.map((name) => ({ "@id": personId(name) })),
+  illustrator: { "@id": personId(book.illustrator) },
   publisher: { "@id": id("organization") },
   datePublished: book.published,
   inLanguage: "en",
-  genre: "Children's picture book",
+  genre: ["Children's picture book", "Hanukkah fiction"],
+  audience,
   typicalAgeRange: book.ageRange,
   numberOfPages: book.pages,
-  image: `${site.origin}/assets/cover.webp`,
+  image: { "@id": id("cover") },
+  thumbnailUrl: coverUrl,
   about: ["Hanukkah", "Kindness", "Belonging"].map((name) => ({
     "@type": "Thing",
     name,
@@ -47,11 +97,21 @@ export const bookNode = {
     .filter((edition) => edition.schemaFormat)
     .map((edition) => ({
       "@type": "Book",
+      "@id": id(`edition-${edition.id}`),
       name: `${book.title} (${edition.format})`,
       bookFormat: edition.schemaFormat,
       ...(edition.isbn ? { isbn: edition.isbn } : {}),
+      ...(edition.asin
+        ? { identifier: { "@type": "PropertyValue", propertyID: "ASIN", value: edition.asin } }
+        : {}),
       inLanguage: "en",
       datePublished: book.published,
+      author: book.authors.map((name) => ({ "@id": personId(name) })),
+      illustrator: { "@id": personId(book.illustrator) },
+      publisher: { "@id": id("organization") },
+      audience,
+      image: coverUrl,
+      exampleOfWork: { "@id": id("book") },
       url: edition.links[0].url.split("?tag=")[0],
     })),
 };
@@ -66,6 +126,7 @@ export const breadcrumbs = (trail) => ({
   })),
 });
 
+// Every page says it is about the book; pages that show the cover name it as their main image.
 export const page = (path, name, description, extra = {}) => ({
   "@type": "WebPage",
   "@id": `${site.origin}${path}#webpage`,
@@ -73,6 +134,9 @@ export const page = (path, name, description, extra = {}) => ({
   name,
   description,
   isPartOf: { "@id": id("website") },
+  about: { "@id": id("book") },
   inLanguage: "en",
   ...extra,
 });
+
+export const withCover = { primaryImageOfPage: { "@id": id("cover") }, image: { "@id": id("cover") } };

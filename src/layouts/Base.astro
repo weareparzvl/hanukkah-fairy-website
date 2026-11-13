@@ -8,10 +8,10 @@ import "../styles/kit.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import KitModal from "../components/KitModal.astro";
-import { site } from "../data/book.js";
+import { site, book, cover, editions } from "../data/book.js";
 import displayFont from "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url";
 import bodyFont from "@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url";
-import { organization, website } from "../data/schema.js";
+import { organization, website, bookNode, coverImage, contributors } from "../data/schema.js";
 
 const {
   title,
@@ -25,7 +25,13 @@ const {
 // The approval preview under /v2 is never indexable.
 const preview = import.meta.env.BASE_URL !== "/";
 const canonical = `${site.origin}${path === "/" ? "/" : path}`;
-const graph = { "@context": "https://schema.org", "@graph": [website, organization, ...schema] };
+// Every page carries the full book entity (book, cover, people, publisher) so each one names the same official work.
+const nodes = [website, organization, bookNode, coverImage, ...contributors, ...schema];
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": nodes.filter((node, index) => !node["@id"] || nodes.findIndex((other) => other["@id"] === node["@id"]) === index),
+};
+const coverUrl = `${site.origin}${cover.path}`;
 ---
 
 <!doctype html>
@@ -56,22 +62,28 @@ const graph = { "@context": "https://schema.org", "@graph": [website, organizati
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="The Hanukkah Fairy" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content={`${site.origin}/og-cover.jpg`} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="1200" />
-    <meta property="og:image:alt" content="The Hanukkah Fairy front cover, featuring the Fairy in her blue dress above a neighborhood street" />
+    <meta property="og:image" content={coverUrl} />
+    <meta property="og:image:secure_url" content={coverUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content={String(cover.width)} />
+    <meta property="og:image:height" content={String(cover.height)} />
+    <meta property="og:image:alt" content={cover.alt} />
     {ogType === "book" && (
       <>
-        <meta property="book:author" content="Elise Dykowsky" />
-        <meta property="book:author" content="Donny Dykowsky" />
-        <meta property="book:isbn" content="9798998007903" />
-        <meta property="book:release_date" content="2026-10-15" />
+        {book.authors.map((name) => <meta property="book:author" content={name} />)}
+        <meta property="book:isbn" content={editions[0].isbn} />
+        <meta property="book:release_date" content={book.published} />
+        <meta property="book:tag" content="Hanukkah" />
+        <meta property="book:tag" content="Picture book" />
       </>
     )}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${site.origin}/og-cover.jpg`} />
+    <meta name="twitter:image" content={coverUrl} />
+    <meta name="twitter:image:alt" content={cover.alt} />
+    <meta name="author" content={book.authors.join(" and ")} />
+    <link rel="image_src" href={coverUrl} />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

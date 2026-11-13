@@ -8,6 +8,26 @@ export const site = {
   instagram: "https://www.instagram.com/thehanukkahfairy/",
 };
 
+// The official front cover. One address everywhere: the page image, JSON-LD, Open Graph and the sitemap.
+export const cover = {
+  path: "/images/the-hanukkah-fairy-book-cover.jpg",
+  width: 2000,
+  height: 2000,
+  alt: "The Hanukkah Fairy book cover: a picture book by Elise and Donny Dykowsky, illustrated by Tincho Schmidt",
+  srcset: [
+    ["/images/the-hanukkah-fairy-book-cover-480.webp", 480],
+    ["/images/the-hanukkah-fairy-book-cover-960.webp", 960],
+    ["/images/the-hanukkah-fairy-book-cover.jpg", 2000],
+  ],
+};
+
+// Public profiles for each contributor (Goodreads, read 2026-11-13).
+export const people = {
+  "Elise Dykowsky": "https://www.goodreads.com/author/show/72366182.Elise_Dykowsky",
+  "Donny Dykowsky": "https://www.goodreads.com/author/show/72366183.Donny_Dykowsky",
+  "Tincho Schmidt": "https://www.goodreads.com/author/show/20665793.Tincho_Schmidt",
+};
+
 export const book = {
   title: "The Hanukkah Fairy",
   authors: ["Elise Dykowsky", "Donny Dykowsky"],
@@ -32,6 +52,7 @@ export const editions = [
     schemaFormat: "https://schema.org/Hardcover",
     isbn: "9798998007903",
     isbnText: "979-8-9980079-0-3",
+    asin: "B0HN6MZKP8",
     links: [
       { retailer: "Amazon", url: amazon("B0HN6MZKP8") },
       {
@@ -46,12 +67,14 @@ export const editions = [
     schemaFormat: "https://schema.org/Paperback",
     isbn: "9798998007910",
     isbnText: "979-8-9980079-1-0",
+    asin: "B0HLK3JFL7",
     links: [{ retailer: "Amazon", url: amazon("B0HLK3JFL7") }],
   },
   {
     id: "kindle",
     format: "Kindle",
     schemaFormat: "https://schema.org/EBook",
+    asin: "B0HMG4H8MN",
     links: [{ retailer: "Amazon", url: amazon("B0HMG4H8MN") }],
   },
   {
