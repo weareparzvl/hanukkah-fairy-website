@@ -239,6 +239,19 @@
 .editions {
   border-top: 1px solid var(--line);
 }
+.editions-bus {
+  display: block;
+  margin-top: clamp(28px, 4vw, 56px);
+  transition: transform 0.3s ease;
+}
+.editions-bus img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.editions-bus:hover {
+  transform: translateX(6px);
+}
 .edition {
   display: flex;
   justify-content: space-between;
@@ -475,6 +488,9 @@
   }
   .facts > div {
     grid-template-columns: 110px 1fr;
+  }
+  .editions-bus {
+    display: none;
   }
   .edition {
     flex-direction: column;
