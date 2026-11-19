@@ -132,3 +132,19 @@ Live, 2026-11-13 10:41 AM ET, on Harley's go ("push to production"): promoted pr
 Live checks: all pages, cover files, sitemap, robots, PDF 200; `/v2` 307; `www.hanukkahfairy.com/` and `/book` 308 to `thehanukkahfairy.com`; cover 200 for a Googlebot user agent, no `X-Robots-Tag`; 15 of 15 flow checks (no-submit).
 - validator.schema.org on live `/`, `/book`, `/faq`: 0 errors, 0 warnings.
 - Google Rich Results Test on live `/book` (crawled 10:41:57 AM): 2 valid items, Breadcrumbs and Image Metadata. The Image Metadata item is `the-hanukkah-fairy-book-cover.jpg` with creator, credit, copyright holders and notice read correctly; 2 non-critical issues, both optional fields with no value to give (`license`, `acquireLicensePage`). Google has no Book rich result for ordinary sites, so none is reported.
+
+## Audiobook buttons, 2026-11-18 (owners' email, Gmail message 1a1f13e29823b1be)
+
+Ask: "Possible to add 2 more buttons to the website ecosystem?" Spotify and Audible.
+
+Both links read 2026-11-18 8:30 PM ET: Spotify `show/4wzUSedzyQICBAJRMdz3SZ` is "The Hanukkah Fairy - Listen to the Audiobook by Elise Dykowsky & Donny Dykowsky"; Audible `B0HRHQ5CKN` JSON-LD gives Audiobook, read by Dave Auerbach, publisher The Hanukkah Fairy LLC, datePublished 2026-11-12, PT5M. ISBN 979-8-9980079-2-7 is from the owners' 2026-11-13 email (Audible lists none).
+
+Commit `58092b0`:
+- `buyLinks`: Audible and Spotify after Barnes & Noble, so they show on the `/book` hero and the home book section. The home hero keeps its first two buttons plus the Gift Shop.
+- `editions`: new Audiobook row with ISBN and both buttons on `/book#editions`.
+- JSON-LD: Audiobook `workExample` with ISBN, Audible ASIN, readBy, duration, its own datePublished; both listings in the Book `sameAs`.
+- Copy: FAQ "Where can I buy", home FAQ line, privacy retailer list, home book facts ("Hardcover, paperback, ebook and audiobook.").
+
+Checks (local build): 9 of 9 tests, 15 of 15 flow checks (no-submit), no console errors, failed requests or overflow at 1440 and 390; shots in `reviews/rebuild-20261118/shots`. Preview https://hanukkah-fairy-website-76rtvyzej-parzvl.vercel.app (private) serves both buttons in all three places. Not live: production promote waits on Harley's go.
+
+QA note: `scripts/qa-*.mjs` default Playwright path (`~/atlasrr-shop/_qa`) no longer exists; run with `PLAYWRIGHT_PATH` pointing at a Playwright whose browser revision is installed.
