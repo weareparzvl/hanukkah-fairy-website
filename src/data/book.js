@@ -89,6 +89,23 @@ export const editions = [
     ],
   },
   {
+    // Audible and Spotify listings read 2026-11-18 (owners' email, Gmail message 1a1f13e29823b1be).
+    id: "audiobook",
+    format: "Audiobook",
+    schemaFormat: "https://schema.org/AudiobookFormat",
+    isbn: "9798998007927",
+    isbnText: "979-8-9980079-2-7",
+    asin: "B0HRHQ5CKN",
+    published: "2026-11-12",
+    readBy: "Dave Auerbach",
+    duration: "PT5M",
+    schemaType: "Audiobook",
+    links: [
+      { retailer: "Audible", url: "https://www.audible.com/pd/The-Hanukkah-Fairy-Audiobook/B0HRHQ5CKN" },
+      { retailer: "Spotify", url: "https://open.spotify.com/show/4wzUSedzyQICBAJRMdz3SZ" },
+    ],
+  },
+  {
     id: "signed",
     format: "Signed paperback and tote",
     links: [
@@ -115,6 +132,8 @@ export const buyLinks = [
     edition: "hardcover",
     url: "https://www.barnesandnoble.com/w/the-hanukkah-fairy-elise-dykowsky/1151693795?ean=9798998007903",
   },
+  { label: "Audible", retailer: "audible", edition: "audiobook", url: "https://www.audible.com/pd/The-Hanukkah-Fairy-Audiobook/B0HRHQ5CKN" },
+  { label: "Spotify", retailer: "spotify", edition: "audiobook", url: "https://open.spotify.com/show/4wzUSedzyQICBAJRMdz3SZ" },
 ];
 
 export const sameAs = [
@@ -124,6 +143,8 @@ export const sameAs = [
   "https://www.barnesandnoble.com/w/the-hanukkah-fairy-elise-dykowsky/1151693795",
   "https://www.goodreads.com/book/show/261273213-the-hanukkah-fairy",
   "https://openlibrary.org/works/OL46100052W",
+  "https://www.audible.com/pd/The-Hanukkah-Fairy-Audiobook/B0HRHQ5CKN",
+  "https://open.spotify.com/show/4wzUSedzyQICBAJRMdz3SZ",
 ];
 
 // Hanukkah 2026 (Hebcal, per BEHAVIOR.md): first candle at sundown Friday, Dec 4.

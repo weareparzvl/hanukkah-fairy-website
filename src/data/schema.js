@@ -100,7 +100,7 @@ export const bookNode = {
   workExample: editions
     .filter((edition) => edition.schemaFormat)
     .map((edition) => ({
-      "@type": "Book",
+      "@type": edition.schemaType ?? "Book",
       "@id": id(`edition-${edition.id}`),
       name: `${book.title} (${edition.format})`,
       bookFormat: edition.schemaFormat,
@@ -109,7 +109,9 @@ export const bookNode = {
         ? { identifier: { "@type": "PropertyValue", propertyID: "ASIN", value: edition.asin } }
         : {}),
       inLanguage: "en",
-      datePublished: book.published,
+      datePublished: edition.published ?? book.published,
+      ...(edition.readBy ? { readBy: { "@type": "Person", name: edition.readBy } } : {}),
+      ...(edition.duration ? { duration: edition.duration } : {}),
       author: book.authors.map((name) => ({ "@id": personId(name) })),
       illustrator: { "@id": personId(book.illustrator) },
       publisher: { "@id": id("organization") },
