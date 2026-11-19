@@ -148,3 +148,5 @@ Commit `58092b0`:
 Checks (local build): 9 of 9 tests, 15 of 15 flow checks (no-submit), no console errors, failed requests or overflow at 1440 and 390; shots in `reviews/rebuild-20261118/shots`. Preview https://hanukkah-fairy-website-76rtvyzej-parzvl.vercel.app (private) serves both buttons in all three places. Not live: production promote waits on Harley's go.
 
 QA note: `scripts/qa-*.mjs` default Playwright path (`~/atlasrr-shop/_qa`) no longer exists; run with `PLAYWRIGHT_PATH` pointing at a Playwright whose browser revision is installed.
+
+Live, 2026-11-18, on Harley's go ("push to production"): promoted preview `76rtvyzej` (deployment `822LY4sgXRFJM3XZDxyLcqLTt5Ds`). Live checks: `/`, `/book`, `/faq`, `/privacy`, `/tradition`, `/eight-nights`, `/kit`, sitemap, robots, cover and kit PDF 200; Audible and Spotify buttons on `/book` (hero and editions) and `/` (home book section); Audiobook JSON-LD served; 15 of 15 flow checks (no-submit). Owners emailed in the "Website Notes" thread (Gmail message 1a1f17f0418033b0).
