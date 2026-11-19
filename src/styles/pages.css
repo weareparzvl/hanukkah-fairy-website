@@ -163,6 +163,27 @@
 .page-hero-buy .button {
   justify-content: center;
 }
+/* Five buy buttons sit in a 3 x 2 grid of equal cells on wide screens. */
+.page-hero-buy.buy-links,
+.book-feature-buy {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(100%, 652px);
+  gap: 10px;
+}
+.page-hero-buy.buy-links .button,
+.book-feature-buy .button {
+  justify-content: space-between;
+  gap: 14px;
+  padding-inline: 20px;
+}
+@media (max-width: 1199px) {
+  .page-hero-buy.buy-links,
+  .book-feature-buy {
+    display: flex;
+    width: auto;
+  }
+}
 .page-hero-figure {
   width: 100%;
   max-height: 560px;
