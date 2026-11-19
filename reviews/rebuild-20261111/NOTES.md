@@ -150,3 +150,14 @@ Checks (local build): 9 of 9 tests, 15 of 15 flow checks (no-submit), no console
 QA note: `scripts/qa-*.mjs` default Playwright path (`~/atlasrr-shop/_qa`) no longer exists; run with `PLAYWRIGHT_PATH` pointing at a Playwright whose browser revision is installed.
 
 Live, 2026-11-18, on Harley's go ("push to production"): promoted preview `76rtvyzej` (deployment `822LY4sgXRFJM3XZDxyLcqLTt5Ds`). Live checks: `/`, `/book`, `/faq`, `/privacy`, `/tradition`, `/eight-nights`, `/kit`, sitemap, robots, cover and kit PDF 200; Audible and Spotify buttons on `/book` (hero and editions) and `/` (home book section); Audiobook JSON-LD served; 15 of 15 flow checks (no-submit). Owners emailed in the "Website Notes" thread (Gmail message 1a1f17f0418033b0).
+
+## Gift Shop bus and 3 x 2 buy grid, 2026-11-18 (Harley's notes)
+
+- `7616f76`: the owners' Gift Shop bus art (`src/assets/gift-shop-bus.png`, from IMG_1650.png) under "Every edition" on `/book`. Tagline "A little magic. A lot of chutzpah." cropped off; background cut away along the bus outline with a soft edge so it sits on the page paper (a plain feather left a visible peach box). Links to the Fairy Gift Shop (`shop_click`, location `book-editions-bus`). Hidden at 760px and under.
+- `868cfe0`: the five buy buttons on the `/book` hero and the home book section in a 3 x 2 grid of equal cells from 1200px up; wrapping row below that, where equal thirds would cut "Barnes & Noble".
+
+Checks (local): 9 of 9 tests, 15 of 15 flow checks (no-submit), no console errors or overflow; widths 1600, 1440, 1280, 1200, 1100, 390.
+
+Live 2026-11-18 ~10:58 PM ET on Harley's go ("push to production"): promoted preview `2r4owjwkl` (deployment `EeMuc5mLzqqtzkw9Txow1h2mS5Cy`, URL `dam2a1iwk`). Live `/book` 200 with the bus and five buttons (fetched through Vercel), live CSS `Base.Dcw9uRGq.css` identical to the build. GitHub `dev` and `rebuild/kit-2026-11` at `868cfe0`.
+
+Incident: a no-pause polling loop from this Mac tripped Vercel's automatic system mitigations, so plain curl and headless Chrome from this IP get the "Vercel Security Checkpoint" (403). Firewall "Not configured", Attack Mode Off, no anomalies: it is per-client, not site-wide. Never poll the live domain in a tight loop; check through `vercel curl --deployment` or the Vercel MCP fetch.
